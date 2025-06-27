@@ -1,0 +1,83 @@
+/**
+ * App Component - Main Application Entry
+ * Purpose: Root component, layout structure, section routing
+ * Dependencies: React, custom sections
+ * Features: One-page portfolio layout, smooth scrolling, responsive design
+ */
+
+function App() {
+  return (
+    <div className="min-h-screen bg-background text-accent font-body">
+      {/* Navigation Header */}
+      <header className="fixed top-0 w-full z-50">
+        <nav className="flex justify-center items-center py-6 px-6">
+          <div className="nav-glass-card">
+            <div className="flex space-x-4 md:space-x-6">
+              {["Home", "About", "Projects", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="nav-link transition-colors duration-300"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main>
+        {/* Hero Section */}
+        <section
+          id="home"
+          className="min-h-screen flex items-center justify-center px-6"
+        >
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6">
+              Welcome to Our{" "}
+              <span className="text-gradient">Digital Universe</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 opacity-80">
+              Crafting innovative web solutions with cutting-edge technology
+            </p>
+            <button className="btn-gradient px-8 py-4 rounded-full font-semibold text-lg hover:scale-hover transition-all duration-300">
+              Explore Our Work
+            </button>
+          </div>
+        </section>
+
+        {/* Quick Demo Section */}
+        <section className="py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="font-heading text-4xl font-bold text-center mb-12">
+              Our <span className="text-gradient">Technology Stack</span>
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {["React", "TypeScript", "Tailwind", "Vite"].map((tech) => (
+                <div
+                  key={tech}
+                  className="card-glow p-6 rounded-lg text-center hover:scale-hover transition-all duration-300"
+                >
+                  <h3 className="font-heading text-xl font-semibold">{tech}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="py-8 px-6 border-t border-primary/20">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="opacity-60">
+            © 2024 Portfolio Website. Built with React + Vite + TailwindCSS
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;

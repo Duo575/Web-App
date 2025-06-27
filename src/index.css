@@ -1,0 +1,164 @@
+/**
+ * Global Styles - Main CSS Entry Point
+ * Purpose: TailwindCSS imports, global styles, font imports
+ * Dependencies: @tailwindcss/base, @tailwindcss/components, @tailwindcss/utilities
+ * Features: Google Fonts (Inter, Orbitron), global reset, smooth scrolling
+ */
+
+/* Google Fonts Import */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+
+/* TailwindCSS Imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Reset & Base Styles */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: "Inter", sans-serif;
+  }
+
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Orbitron", monospace;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  /* Smooth scroll for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  /* Button gradient hover effect */
+  .btn-gradient {
+    @apply bg-gradient-to-r from-secondary to-primary hover:from-primary hover:to-secondary;
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Card with glow effect */
+  .card-glow {
+    @apply border border-primary/20 hover:border-secondary/50;
+    @apply shadow-lg hover:shadow-secondary/25;
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent;
+  }
+
+  /* Navigation Glass Card */
+  .nav-glass-card {
+    width: 400px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 0 10px 5px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .nav-glass-card {
+      width: 480px;
+      padding: 0 4rem;
+    }
+  }
+
+  .nav-glass-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    );
+  }
+
+  .nav-glass-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+  }
+
+  /* Navigation Links */
+  .nav-link {
+    @apply text-white font-medium rounded-lg transition-all duration-300;
+    position: relative;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .nav-link:hover {
+    color: #a855f7 !important; /* Purple-400 */
+    transform: translateY(-1px);
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
