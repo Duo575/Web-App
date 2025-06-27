@@ -194,39 +194,63 @@ export default function AnimatedBeamMultipleOutputDemo({ className }) {
       )}
       ref={containerRef}
     >
-      <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
-        <div className="flex flex-col justify-center gap-2">
-          <Circle ref={div1Ref}>
-            <Icons.fast />
-          </Circle>
-          <Circle ref={div2Ref}>
-            <Icons.quality />
-          </Circle>
-          <Circle ref={div3Ref}>
-            <Icons.costEffective />
-          </Circle>
-          <Circle ref={div4Ref}>
-            <Icons.negotiable />
-          </Circle>
-          <Circle ref={div5Ref}>
-            <Icons.modernTech />
-          </Circle>
+      <div className="flex size-full max-w-4xl flex-row items-center justify-between gap-10">
+        {/* Left labels and icons */}
+        <div className="flex flex-row items-center gap-4">
+          <div className="flex flex-col justify-center gap-6 text-white text-sm font-medium min-w-[160px] text-right">
+            <span className="flex items-center justify-end h-12">Fast</span>
+            <span className="flex items-center justify-end h-12">Quality</span>
+            <span className="flex items-center justify-end h-12">
+              Cost effective
+            </span>
+            <span className="flex items-center justify-end h-12">
+              Negotiable
+            </span>
+            <span className="flex items-center justify-end h-12">
+              Modern Technologies
+            </span>
+          </div>
+          <div className="flex flex-col justify-center gap-6">
+            <Circle ref={div1Ref}>
+              <Icons.fast />
+            </Circle>
+            <Circle ref={div2Ref}>
+              <Icons.quality />
+            </Circle>
+            <Circle ref={div3Ref}>
+              <Icons.costEffective />
+            </Circle>
+            <Circle ref={div4Ref}>
+              <Icons.negotiable />
+            </Circle>
+            <Circle ref={div5Ref}>
+              <Icons.modernTech />
+            </Circle>
+          </div>
         </div>
-        <div className="flex flex-col justify-center">
-          <Circle
-            ref={div6Ref}
-            className="size-16 border-purple-500 shadow-[0_0_30px_-12px_rgba(127,0,255,0.8)]"
-          >
-            <Icons.companyLogo />
-          </Circle>
+        {/* Center company */}
+        <div className="flex flex-col items-center mx-9">
+          <div className="flex items-center justify-center h-full mt-9">
+            <Circle
+              ref={div6Ref}
+              className="size-16 border-purple-500 shadow-[0_0_30px_-12px_rgba(127,0,255,0.8)]"
+            >
+              <Icons.companyLogo />
+            </Circle>
+          </div>
+          <span className="mt-2 text-white text-lg font-semibold">Company</span>
         </div>
-        <div className="flex flex-col justify-center">
-          <Circle
-            ref={div7Ref}
-            className="border-blue-400 shadow-[0_0_20px_-12px_rgba(10,25,47,0.6)]"
-          >
-            <Icons.client />
-          </Circle>
+        {/* Right client */}
+        <div className="flex flex-col items-center">
+          <div className="flex items-center justify-center h-full mt-9">
+            <Circle
+              ref={div7Ref}
+              className="border-blue-400 shadow-[0_0_20px_-12px_rgba(10,25,47,0.6)]"
+            >
+              <Icons.client />
+            </Circle>
+          </div>
+          <span className="mt-2 text-white text-lg font-semibold">Client</span>
         </div>
       </div>
 
@@ -235,49 +259,79 @@ export default function AnimatedBeamMultipleOutputDemo({ className }) {
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div6Ref}
-        duration={3}
+        duration={2.2}
+        delay={0.3}
         gradientStartColor="#E5E7EB"
         gradientStopColor="#F8FAFC"
+        pathColor="#E5E7EB"
+        pathOpacity={0.2}
+        pathWidth={2}
+        curvature={25}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div2Ref}
         toRef={div6Ref}
-        duration={3.5}
+        duration={2.8}
+        delay={0.7}
         gradientStartColor="#E5E7EB"
         gradientStopColor="#F8FAFC"
+        pathColor="#E5E7EB"
+        pathOpacity={0.2}
+        pathWidth={2}
+        curvature={15}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div3Ref}
         toRef={div6Ref}
-        duration={2.8}
+        duration={1.9}
+        delay={1.2}
         gradientStartColor="#E5E7EB"
         gradientStopColor="#F8FAFC"
+        pathColor="#E5E7EB"
+        pathOpacity={0.2}
+        pathWidth={2}
+        curvature={5}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div4Ref}
         toRef={div6Ref}
-        duration={4}
+        duration={2.5}
+        delay={0.1}
         gradientStartColor="#E5E7EB"
         gradientStopColor="#F8FAFC"
+        pathColor="#E5E7EB"
+        pathOpacity={0.2}
+        pathWidth={2}
+        curvature={-15}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div5Ref}
         toRef={div6Ref}
-        duration={3.2}
+        duration={2.1}
+        delay={1.6}
         gradientStartColor="#E5E7EB"
         gradientStopColor="#F8FAFC"
+        pathColor="#E5E7EB"
+        pathOpacity={0.2}
+        pathWidth={2}
+        curvature={-25}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div6Ref}
         toRef={div7Ref}
-        duration={3.8}
+        duration={2.4}
+        delay={0.5}
         gradientStartColor="#E5E7EB"
         gradientStopColor="#F8FAFC"
+        pathColor="#E5E7EB"
+        pathOpacity={0.4}
+        pathWidth={3}
+        curvature={0}
       />
     </div>
   );
