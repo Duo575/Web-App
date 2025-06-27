@@ -6,6 +6,7 @@
  */
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
+import { FrameworksSection } from "@/Components/frameworks";
 
 function App() {
   return (
@@ -74,6 +75,9 @@ function App() {
 
         {/* Animated Beam Demo Section */}
         <AnimatedBeamDemo />
+
+        {/* Frameworks Section */}
+        <FrameworksSection />
       </main>
 
       {/* Footer */}

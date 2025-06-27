@@ -1,13 +1,14 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "path";
+import vue from "@vitejs/plugin-vue";
+// import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+  plugins: [vue()],
+  // If you need path aliases, use vite's built-in alias option or @rollup/plugin-alias
+  // resolve: {
+  //   alias: {
+  //     "@": path.resolve(__dirname, "./src"),
+  //   },
+  // },
 });

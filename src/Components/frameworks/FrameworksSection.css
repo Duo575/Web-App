@@ -1,0 +1,119 @@
+.frameworks-section {
+  margin-top: 150px;
+}
+
+@media (min-width: 768px) {
+  .frameworks-section {
+    margin-top: 240px;
+  }
+}
+
+.frameworks-section h2 {
+  background: linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0.76) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 668px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  font-family: "Orbitron", monospace;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .frameworks-section h2 {
+    font-size: 2rem;
+  }
+}
+
+.frameworks-container {
+  width: 100%;
+  background-color: rgba(38, 38, 38, 0.15);
+  position: relative;
+  margin-top: -20px;
+  overflow: hidden;
+}
+
+@media (min-width: 840px) {
+  .frameworks-container {
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #ffffff 300px,
+      #ffffff calc(100vw - 300px),
+      transparent 100%
+    );
+  }
+}
+
+.frameworks-container:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(
+    0deg,
+    rgba(23, 23, 23, 0) 0%,
+    rgba(16, 16, 16, 0.7) 50%,
+    #101010 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.frameworks-container:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 23, 23, 0) 0%,
+    rgba(16, 16, 16, 0.7) 50%,
+    #101010 100%
+  );
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.framework-row {
+  display: grid;
+  grid-auto-columns: 96px;
+  grid-gap: 24px;
+  justify-content: flex-start;
+  margin-bottom: 24px;
+  position: relative;
+  white-space: nowrap;
+  grid-auto-flow: column;
+}
+
+.framework-row:nth-child(even) {
+  --row-offset: 36px;
+}
+
+.framework-row:nth-child(odd) {
+  --row-offset: 12px;
+}
+
+@media (min-width: 1080px) {
+  .framework-row:nth-child(even) {
+    --row-offset: 24px;
+  }
+
+  .framework-row:nth-child(odd) {
+    --row-offset: -24px;
+  }
+}

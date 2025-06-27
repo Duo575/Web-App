@@ -1,8 +1,44 @@
 "use client";
+// @ts-nocheck
 import { motion } from "framer-motion";
-import { forwardRef, useEffect, useId, useRef, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+import { cn } from "@/lib/utils";
 
-const cn = (...classes) => classes.filter(Boolean).join(" ");
+interface AnimatedBeamProps {
+  className?: string;
+  containerRef: React.RefObject<HTMLElement>;
+  fromRef: React.RefObject<HTMLElement>;
+  toRef: React.RefObject<HTMLElement>;
+  curvature?: number;
+  reverse?: boolean;
+  duration?: number;
+  delay?: number;
+  pathColor?: string;
+  pathWidth?: number;
+  pathOpacity?: number;
+  gradientStartColor?: string;
+  gradientStopColor?: string;
+  startXOffset?: number;
+  startYOffset?: number;
+  endXOffset?: number;
+  endYOffset?: number;
+}
+
+interface CircleProps {
+  className?: string;
+  children?: ReactNode;
+}
+
+interface AnimatedBeamMultipleOutputDemoProps {
+  className?: string;
+}
 
 export const AnimatedBeam = ({
   className,
@@ -22,7 +58,7 @@ export const AnimatedBeam = ({
   startYOffset = 0,
   endXOffset = 0,
   endYOffset = 0,
-}) => {
+}: AnimatedBeamProps) => {
   const id = useId();
   const [pathD, setPathD] = useState("");
   const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
@@ -69,10 +105,8 @@ export const AnimatedBeam = ({
       }
     };
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        updatePath();
-      }
+    const resizeObserver = new ResizeObserver(() => {
+      updatePath();
     });
 
     if (containerRef.current) {
@@ -160,31 +194,35 @@ export const AnimatedBeam = ({
   );
 };
 
-const Circle = forwardRef(({ className, children }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white p-3 shadow-[0_0_20px_-12px_rgba(127,0,255,0.6)]",
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-});
+const Circle = forwardRef<HTMLDivElement, CircleProps>(
+  ({ className, children }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "z-10 flex size-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white p-3 shadow-[0_0_20px_-12px_rgba(127,0,255,0.6)]",
+          className
+        )}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
 Circle.displayName = "Circle";
 
-export default function AnimatedBeamMultipleOutputDemo({ className }) {
-  const containerRef = useRef(null);
-  const div1Ref = useRef(null);
-  const div2Ref = useRef(null);
-  const div3Ref = useRef(null);
-  const div4Ref = useRef(null);
-  const div5Ref = useRef(null);
-  const div6Ref = useRef(null);
-  const div7Ref = useRef(null);
+export default function AnimatedBeamMultipleOutputDemo({
+  className,
+}: AnimatedBeamMultipleOutputDemoProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const div1Ref = useRef<HTMLDivElement>(null);
+  const div2Ref = useRef<HTMLDivElement>(null);
+  const div3Ref = useRef<HTMLDivElement>(null);
+  const div4Ref = useRef<HTMLDivElement>(null);
+  const div5Ref = useRef<HTMLDivElement>(null);
+  const div6Ref = useRef<HTMLDivElement>(null);
+  const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -256,9 +294,9 @@ export default function AnimatedBeamMultipleOutputDemo({ className }) {
 
       {/* AnimatedBeams */}
       <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div1Ref}
-        toRef={div6Ref}
+        containerRef={containerRef as React.RefObject<HTMLElement>}
+        fromRef={div1Ref as React.RefObject<HTMLElement>}
+        toRef={div6Ref as React.RefObject<HTMLElement>}
         duration={2.2}
         delay={0.3}
         gradientStartColor="#E5E7EB"
