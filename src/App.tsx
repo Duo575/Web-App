@@ -5,9 +5,14 @@
  * Features: One-page portfolio layout, smooth scrolling, responsive design
  */
 
+import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
+
 function App() {
   return (
-    <div className="min-h-screen bg-background text-accent font-body">
+    <div
+      className="min-h-screen font-body"
+      style={{ backgroundColor: "#000000", color: "#ffffff" }}
+    >
       {/* Navigation Header */}
       <header className="fixed top-0 w-full z-50">
         <nav className="flex justify-center items-center py-6 px-6">
@@ -66,6 +71,9 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* Animated Beam Demo Section */}
+        <AnimatedBeamDemo />
       </main>
 
       {/* Footer */}

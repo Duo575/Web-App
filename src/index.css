@@ -27,11 +27,11 @@
   }
 
   body {
-    background-color: #000000;
-    color: #ffffff;
     font-family: "Inter", sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    background-color: #000000 !important;
+    color: #ffffff !important;
   }
 
   h1,
@@ -48,6 +48,59 @@
   /* Smooth scroll for anchor links */
   html {
     scroll-behavior: smooth;
+  }
+  :root {
+    --background: 0 0% 0%; /* #000000 - Black background */
+    --foreground: 0 0% 100%; /* #FFFFFF - White text */
+    --card: 210 100% 12%; /* #0A192F - Dark blue cards */
+    --card-foreground: 0 0% 100%; /* White text on cards */
+    --popover: 210 100% 12%; /* #0A192F - Dark blue popover */
+    --popover-foreground: 0 0% 100%; /* White text */
+    --primary: 210 100% 12%; /* #0A192F - Dark blue primary */
+    --primary-foreground: 0 0% 100%; /* White text */
+    --secondary: 270 100% 50%; /* #7F00FF - Purple secondary */
+    --secondary-foreground: 0 0% 100%; /* White text */
+    --muted: 210 100% 12%; /* #0A192F - Dark blue muted */
+    --muted-foreground: 0 0% 70%; /* Light gray text */
+    --accent: 0 0% 100%; /* #FFFFFF - White accent */
+    --accent-foreground: 0 0% 0%; /* Black text on white */
+    --destructive: 0 84.2% 60.2%; /* Red for destructive actions */
+    --destructive-foreground: 0 0% 98%; /* White text */
+    --border: 210 100% 12%; /* #0A192F - Dark blue borders */
+    --input: 210 100% 12%; /* #0A192F - Dark blue inputs */
+    --ring: 270 100% 50%; /* #7F00FF - Purple focus ring */
+    --chart-1: 270 100% 50%; /* Purple */
+    --chart-2: 210 100% 12%; /* Dark blue */
+    --chart-3: 0 0% 100%; /* White */
+    --chart-4: 270 100% 70%; /* Light purple */
+    --chart-5: 210 100% 20%; /* Lighter dark blue */
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 0%; /* #000000 - Black background */
+    --foreground: 0 0% 100%; /* #FFFFFF - White text */
+    --card: 210 100% 12%; /* #0A192F - Dark blue cards */
+    --card-foreground: 0 0% 100%; /* White text on cards */
+    --popover: 210 100% 12%; /* #0A192F - Dark blue popover */
+    --popover-foreground: 0 0% 100%; /* White text */
+    --primary: 210 100% 12%; /* #0A192F - Dark blue primary */
+    --primary-foreground: 0 0% 100%; /* White text */
+    --secondary: 270 100% 50%; /* #7F00FF - Purple secondary */
+    --secondary-foreground: 0 0% 100%; /* White text */
+    --muted: 210 100% 12%; /* #0A192F - Dark blue muted */
+    --muted-foreground: 0 0% 70%; /* Light gray text */
+    --accent: 0 0% 100%; /* #FFFFFF - White accent */
+    --accent-foreground: 0 0% 0%; /* Black text on white */
+    --destructive: 0 84.2% 60.2%; /* Red for destructive actions */
+    --destructive-foreground: 0 0% 98%; /* White text */
+    --border: 210 100% 12%; /* #0A192F - Dark blue borders */
+    --input: 210 100% 12%; /* #0A192F - Dark blue inputs */
+    --ring: 270 100% 50%; /* #7F00FF - Purple focus ring */
+    --chart-1: 270 100% 50%; /* Purple */
+    --chart-2: 210 100% 12%; /* Dark blue */
+    --chart-3: 0 0% 100%; /* White */
+    --chart-4: 270 100% 70%; /* Light purple */
+    --chart-5: 210 100% 20%; /* Lighter dark blue */
   }
 }
 
@@ -161,4 +214,23 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+}
+/*---break---
+ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+}
+
+/* Force Night Sky theme colors */
+html,
+body,
+#root {
+  background-color: #000000 !important;
+  color: #ffffff !important;
 }
