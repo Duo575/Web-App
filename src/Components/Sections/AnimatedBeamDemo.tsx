@@ -9,7 +9,7 @@ import AnimatedBeamMultipleInputs from "@/Components/UI/animated-beam-multiple-i
 
 export default function AnimatedBeamDemo() {
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-background to-primary/5">
+    <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl font-bold mb-4">
