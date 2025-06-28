@@ -1,14 +1,13 @@
 import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-// import path from "path";
+import react from "@vitejs/plugin-react";
+import { fileURLToPath, URL } from "node:url";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue()],
-  // If you need path aliases, use vite's built-in alias option or @rollup/plugin-alias
-  // resolve: {
-  //   alias: {
-  //     "@": path.resolve(__dirname, "./src"),
-  //   },
-  // },
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
 });
