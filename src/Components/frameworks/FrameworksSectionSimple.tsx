@@ -3,7 +3,7 @@ import React from "react";
 const FrameworksSectionSimple: React.FC = () => {
   return (
     <section
-      style={{ padding: "50px", backgroundColor: "#101010", color: "white" }}
+      style={{ padding: "50px", backgroundColor: "#000000", color: "white" }}
     >
       <h2 style={{ textAlign: "center", marginBottom: "30px" }}>
         Powering your favorite frameworks and tools
