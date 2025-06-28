@@ -66,15 +66,19 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
           value: "#ffffff",
         },
         move: {
-          enable: true,
-          speed: isMobile ? 0.5 : 1,
-          random: true,
+          enable: false,
         },
         number: {
           value: isMobile ? 60 : 120,
         },
         opacity: {
           value: 0.9,
+          animation: {
+            enable: true,
+            speed: 2,
+            opacity_min: 0.1,
+            sync: false,
+          },
         },
         shape: {
           type: "circle",

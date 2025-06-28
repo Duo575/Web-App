@@ -7,7 +7,7 @@
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
 import { FrameworksSection } from "@/Components/frameworks";
-import { ParticlesBackground } from "@/Components/UI";
+import { ShootingStars, StarsBackground } from "@/Components/UI";
 
 function App() {
   return (
@@ -15,8 +15,22 @@ function App() {
       className="min-h-screen font-body relative"
       style={{ backgroundColor: "#000000", color: "#ffffff" }}
     >
-      {/* Particles Background */}
-      <ParticlesBackground />
+      {/* Shooting Stars and Stars Background */}
+      <ShootingStars
+        starColor="#ffffff"
+        trailColor="#ffffff"
+        minSpeed={5}
+        maxSpeed={15}
+        minDelay={800}
+        maxDelay={3000}
+      />
+      <StarsBackground
+        starDensity={0.0002}
+        allStarsTwinkle={true}
+        twinkleProbability={0.8}
+        minTwinkleSpeed={0.3}
+        maxTwinkleSpeed={1.2}
+      />
       {/* Navigation Header */}
       <header className="fixed top-0 w-full z-50 content-above-particles">
         <nav className="flex justify-center items-center py-6 px-6">
