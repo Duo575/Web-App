@@ -25,6 +25,12 @@ import logoAdonis from "./image/adonis.svg";
 import logoEmber from "./image/ember.svg";
 import logoPreact from "./image/preact.svg";
 import logoHono from "./image/hono.svg";
+import logoPostman from "./image/postman.svg";
+import logoTypescript from "./image/typescript.svg";
+import logoMongodb from "./image/mongodb.svg";
+import logoJavascript from "./image/javascript.svg";
+import logoTailwind from "./image/Tailwind_CSS.svg";
+import logoNodejs from "./image/nodejs.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +38,18 @@ gsap.registerPlugin(ScrollTrigger);
  * The frameworks and tools to display in this section.
  */
 const frameworksData: Omit<Framework, "visible">[] = [
+  {
+    name: "TypeScript",
+    logo: logoTypescript,
+    color: "#3178c6",
+    url: "https://www.typescriptlang.org/",
+  },
+  {
+    name: "MongoDB",
+    logo: logoMongodb,
+    color: "#47a248",
+    url: "https://www.mongodb.com/",
+  },
   {
     name: "Vitest",
     logo: logoVitest,
@@ -73,6 +91,12 @@ const frameworksData: Omit<Framework, "visible">[] = [
     logo: logoPreact,
     color: "#673ab8",
     url: "https://preactjs.com/",
+  },
+  {
+    name: "JavaScript",
+    logo: logoJavascript,
+    color: "#f7df1e",
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
     name: "Astro",
@@ -117,6 +141,18 @@ const frameworksData: Omit<Framework, "visible">[] = [
     url: "https://playwright.dev/",
   },
   {
+    name: "Tailwind CSS",
+    logo: logoTailwind,
+    color: "#06b6d4",
+    url: "https://tailwindcss.com/",
+  },
+  {
+    name: "Node.js",
+    logo: logoNodejs,
+    color: "#339933",
+    url: "https://nodejs.org/",
+  },
+  {
     name: "Storybook",
     logo: logoStorybook,
     color: "#fd4684",
@@ -151,6 +187,12 @@ const frameworksData: Omit<Framework, "visible">[] = [
     logo: logoHono,
     color: "#ff5c13",
     url: "https://hono.dev/",
+  },
+  {
+    name: "Postman",
+    logo: logoPostman,
+    color: "#ff6b35",
+    url: "https://www.postman.com/",
   },
 ];
 
