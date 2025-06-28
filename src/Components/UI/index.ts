@@ -1,0 +1,8 @@
+/**
+ * UI Components Export Index
+ * Purpose: Centralized exports for UI components
+ * Features: Clean imports, better organization
+ */
+
+export { default as ParticlesBackground } from "./ParticlesBackground";
+export { default as AnimatedBeamMultipleInputs } from "./animated-beam-multiple-inputs";

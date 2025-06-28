@@ -7,15 +7,18 @@
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
 import { FrameworksSection } from "@/Components/frameworks";
+import { ParticlesBackground } from "@/Components/UI";
 
 function App() {
   return (
     <div
-      className="min-h-screen font-body"
+      className="min-h-screen font-body relative"
       style={{ backgroundColor: "#000000", color: "#ffffff" }}
     >
+      {/* Particles Background */}
+      <ParticlesBackground />
       {/* Navigation Header */}
-      <header className="fixed top-0 w-full z-50">
+      <header className="fixed top-0 w-full z-50 content-above-particles">
         <nav className="flex justify-center items-center py-6 px-6">
           <div className="nav-glass-card">
             <div className="flex space-x-4 md:space-x-6">
@@ -34,7 +37,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main>
+      <main className="content-above-particles">
         {/* Hero Section */}
         <section
           id="home"
@@ -81,7 +84,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-primary/20">
+      <footer className="py-8 px-6 border-t border-primary/20 content-above-particles">
         <div className="max-w-6xl mx-auto text-center">
           <p className="opacity-60">
             © 2024 Portfolio Website. Built with React + Vite + TailwindCSS

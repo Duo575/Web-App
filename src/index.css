@@ -137,14 +137,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .75rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     position: relative;
   }
 
   @media (min-width: 768px) {
     .nav-glass-card {
       width: 500px;
-      padding: .75rem 4rem;
+      padding: 0.75rem 4rem;
     }
   }
 
@@ -215,6 +215,12 @@
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Ensure content appears above particles */
+  .content-above-particles {
+    position: relative;
+    z-index: 1;
   }
 }
 /*---break---
