@@ -7,6 +7,7 @@
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
 import { FrameworksSection } from "@/Components/frameworks";
+import { About } from "@/Components/About";
 import { ShootingStars, StarsBackground } from "@/Components/UI";
 
 function App() {
@@ -95,6 +96,9 @@ function App() {
 
         {/* Frameworks Section */}
         <FrameworksSection />
+
+        {/* About Section */}
+        <About />
       </main>
 
       {/* Footer */}
