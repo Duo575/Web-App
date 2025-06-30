@@ -6,7 +6,7 @@
  */
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
-import { ProjectsSection, ProfileSection } from "@/Components/Sections";
+import { ProjectsSection, ProfileSection, ContactSection } from "@/Components/Sections";
 import { FrameworksSection } from "@/Components/frameworks";
 import { About } from "@/Components/About";
 import { Testimonials } from "@/Components/Sections/Testimonials";
@@ -110,6 +110,9 @@ function App() {
 
         {/* Profile Section */}
         <ProfileSection />
+
+        {/* Contact Section */}
+        <ContactSection />
       </main>
 
       {/* Footer */}
