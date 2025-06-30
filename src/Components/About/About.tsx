@@ -18,7 +18,7 @@ const About: React.FC = () => {
 
   return (
     <section className="c-space section-spacing" id="about">
-      <h2 className="text-heading">About Me</h2>
+      <h2 className="text-heading">About Us</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[27rem] mt-12">
         {/* Grid 1 - Personal Introduction */}
         <div className="flex items-end grid-black-color grid-1 relative overflow-hidden">

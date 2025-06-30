@@ -19,40 +19,40 @@ interface Review {
 // Sample review data (can be replaced with dynamic data from an API)
 const reviews: Review[] = [
   {
-    name: "Jack",
-    username: "@jack",
+    name: "Raj",
+    username: "@raj",
     body: "I've never seen anything like this before. The portfolio website showcases cutting-edge technology with a beautiful night sky theme.",
-    img: "https://avatar.vercel.sh/jack",
+    img: "https://avatar.vercel.sh/raj",
   },
   {
-    name: "Jill",
-    username: "@jill",
+    name: "Emma",
+    username: "@emma",
     body: "The 3D elements and animations are incredibly smooth. This is exactly the kind of modern web development I was looking for.",
-    img: "https://avatar.vercel.sh/jill",
+    img: "https://avatar.vercel.sh/emma",
   },
   {
-    name: "John",
-    username: "@john",
+    name: "Mike",
+    username: "@mike",
     body: "The responsive design works flawlessly on my mobile device. The glass morphism effects add a premium feel to the entire experience.",
-    img: "https://avatar.vercel.sh/john",
+    img: "https://avatar.vercel.sh/mike",
   },
   {
-    name: "Jane",
-    username: "@jane",
+    name: "Priya",
+    username: "@priya",
     body: "I'm impressed by the attention to detail in this portfolio. The gradient text effects and hover animations are subtle yet effective.",
-    img: "https://avatar.vercel.sh/jane",
+    img: "https://avatar.vercel.sh/priya",
   },
   {
-    name: "Jenny",
-    username: "@jenny",
+    name: "Ben",
+    username: "@ben",
     body: "As a UX designer, I appreciate the thoughtful layout and typography choices. The Orbitron headings perfectly match the space theme.",
-    img: "https://avatar.vercel.sh/jenny",
+    img: "https://avatar.vercel.sh/ben",
   },
   {
-    name: "James",
-    username: "@james",
+    name: "Arjun",
+    username: "@arjun",
     body: "The technology stack showcase demonstrates expertise in modern web development. React 19 with TypeScript is an excellent choice.",
-    img: "https://avatar.vercel.sh/james",
+    img: "https://avatar.vercel.sh/arjun",
   },
 ];
 
