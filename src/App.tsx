@@ -102,13 +102,11 @@ function App() {
         {/* About Section */}
         <About />
 
-<<<<<<< HEAD
         {/* Testimonials Section */}
         <Testimonials />
-=======
+        
         {/* Projects Section */}
         <ProjectsSection />
->>>>>>> 8b849971420fe4d727d6f1d11b5180bc6a58be14
       </main>
 
       {/* Footer */}
