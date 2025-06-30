@@ -39,15 +39,17 @@ function App() {
         <nav className="flex justify-center items-center py-6 px-6">
           <div className="nav-glass-card">
             <div className="flex space-x-4 md:space-x-6">
-              {["Home", "About", "Testimonials", "Projects", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="nav-link transition-colors duration-300"
-                >
-                  {item}
-                </a>
-              ))}
+              {["Home", "About", "Projects", "Testimonials", "Contact"].map(
+                (item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="nav-link transition-colors duration-300"
+                  >
+                    {item}
+                  </a>
+                )
+              )}
             </div>
           </div>
         </nav>
@@ -102,11 +104,11 @@ function App() {
         {/* About Section */}
         <About />
 
-        {/* Testimonials Section */}
-        <Testimonials />
-        
         {/* Projects Section */}
         <ProjectsSection />
+
+        {/* Testimonials Section */}
+        <Testimonials />
       </main>
 
       {/* Footer */}
