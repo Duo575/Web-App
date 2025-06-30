@@ -6,6 +6,7 @@
  */
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
+import { ProjectsSection } from "@/Components/Sections";
 import { FrameworksSection } from "@/Components/frameworks";
 import { About } from "@/Components/About";
 import { Testimonials } from "@/Components/Sections/Testimonials";
@@ -101,8 +102,13 @@ function App() {
         {/* About Section */}
         <About />
 
+<<<<<<< HEAD
         {/* Testimonials Section */}
         <Testimonials />
+=======
+        {/* Projects Section */}
+        <ProjectsSection />
+>>>>>>> 8b849971420fe4d727d6f1d11b5180bc6a58be14
       </main>
 
       {/* Footer */}
