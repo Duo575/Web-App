@@ -78,25 +78,6 @@ function App() {
           </div>
         </section>
 
-        {/* Quick Demo Section */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="font-heading text-4xl font-bold text-center mb-12">
-              Our <span className="text-gradient">Technology Stack</span>
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {["React", "TypeScript", "Tailwind", "Vite"].map((tech) => (
-                <div
-                  key={tech}
-                  className="card-glow p-6 rounded-lg text-center hover:scale-hover transition-all duration-300"
-                >
-                  <h3 className="font-heading text-xl font-semibold">{tech}</h3>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Animated Beam Demo Section */}
         <AnimatedBeamDemo />
 
