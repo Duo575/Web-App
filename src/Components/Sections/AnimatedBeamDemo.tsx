@@ -24,12 +24,6 @@ export default function AnimatedBeamDemo() {
         <div className="flex justify-center">
           <AnimatedBeamMultipleInputs className="w-full max-w-4xl" />
         </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-lg opacity-70">
-            Watch as data flows between different services in real-time
-          </p>
-        </div>
       </div>
     </section>
   );
