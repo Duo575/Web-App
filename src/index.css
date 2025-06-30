@@ -19,6 +19,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    @apply border-border;
   }
 
   html {
@@ -45,10 +46,6 @@
     line-height: 1.2;
   }
 
-  /* Smooth scroll for anchor links */
-  html {
-    scroll-behavior: smooth;
-  }
   :root {
     --background: 0 0% 0%; /* #000000 - Black background */
     --foreground: 0 0% 100%; /* #FFFFFF - White text */
@@ -225,17 +222,6 @@
   .content-above-particles {
     position: relative;
     z-index: 1;
-  }
-}
-/*---break---
- */
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    background-color: #000000 !important;
-    color: #ffffff !important;
   }
 }
 
@@ -525,7 +511,7 @@ body,
     .profile-cards-container {
       @apply grid-cols-1 gap-6;
     }
-    
+
     .profile-card {
       width: 100%;
       max-width: 280px;
@@ -1031,33 +1017,24 @@ body,
     font-size: 0.8125rem;
   }
 }
-/*---break---
- */
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+
 /*---break---
  */
 @theme inline {
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
 }
