@@ -36,7 +36,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Grid 2 - Skills & Principles */}
-        <div className="grid-special-color grid-2">
+        <div className="grid-special-color grid-2 overflow-hidden">
           <div
             ref={grid2Container}
             className="flex items-center justify-center w-full h-full relative"
