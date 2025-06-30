@@ -164,21 +164,6 @@
     );
   }
 
-  .nav-glass-card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.8),
-      transparent,
-      rgba(255, 255, 255, 0.3)
-    );
-  }
-
   /* Navigation Links */
   .nav-link {
     @apply text-white font-medium rounded-lg transition-all duration-300;
