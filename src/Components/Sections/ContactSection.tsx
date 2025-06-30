@@ -14,6 +14,7 @@ import {
   User,
   MessageSquare,
   Send,
+  Shield,
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
 
@@ -26,6 +27,7 @@ interface ContactFormData {
   date: string;
   timeSlot: string;
   details: string;
+  privacyAccepted: boolean;
 }
 
 // Country codes for international phone numbers
@@ -78,21 +80,38 @@ export function ContactSection() {
     date: "",
     timeSlot: "",
     details: "",
+    privacyAccepted: false,
   });
 
   const [selectedCountry, setSelectedCountry] = useState(countryCodes[0]);
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Handle input changes
-  const handleInputChange = (field: keyof ContactFormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+  const handleInputChange = (
+    field: keyof ContactFormData,
+    value: string | boolean
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]:
+        field === "privacyAccepted"
+          ? value === "true" || value === true
+          : value,
+    }));
   };
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.privacyAccepted) {
+      alert("Please accept the Privacy Policy to continue.");
+      return;
+    }
+
     console.log("Form submitted:", formData);
     alert("Form submitted! Check console for data.");
   };
@@ -188,6 +207,21 @@ export function ContactSection() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Close modal with Escape key
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && showPrivacyModal) {
+        console.log("Escape key pressed, closing modal");
+        setShowPrivacyModal(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [showPrivacyModal]);
 
   return (
     <section id="contact" className="py-12 sm:py-16 md:py-20 section-spacing">
@@ -402,11 +436,46 @@ export function ContactSection() {
                 />
               </div>
 
+              {/* Privacy Policy Checkbox */}
+              <div className="space-y-2">
+                <div className="flex items-start gap-3">
+                  <input
+                    id="privacyAccepted"
+                    type="checkbox"
+                    checked={formData.privacyAccepted}
+                    onChange={(e) =>
+                      handleInputChange("privacyAccepted", e.target.checked)
+                    }
+                    className="mt-1 w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+                    required
+                  />
+                  <label
+                    htmlFor="privacyAccepted"
+                    className="text-sm text-gray-300"
+                  >
+                    I agree to the{" "}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        console.log("Privacy Policy link clicked");
+                        setShowPrivacyModal(true);
+                      }}
+                      className="text-blue-400 hover:text-blue-300 underline"
+                    >
+                      Privacy Policy
+                    </button>{" "}
+                    and consent to the collection and use of my personal data as
+                    described. *
+                  </label>
+                </div>
+              </div>
+
               {/* Submit Button */}
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="contact-submit-btn btn-gradient"
+                  className="contact-submit-btn btn-gradient disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!formData.privacyAccepted}
                 >
                   <Send size={20} />
                   <span>Send Message</span>
@@ -416,6 +485,270 @@ export function ContactSection() {
           </div>
         </div>
       </div>
+
+      {/* Privacy Policy Modal */}
+      {showPrivacyModal && (
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setShowPrivacyModal(false);
+            }
+          }}
+        >
+          <div
+            className="bg-gray-900 rounded-2xl w-full max-w-4xl h-[90vh] flex flex-col border border-white/20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-white/20 flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <Shield className="text-blue-400" size={24} />
+                <h3 className="text-xl font-semibold text-white">
+                  Privacy Policy
+                </h3>
+              </div>
+              <button
+                onClick={() => {
+                  console.log("Header close button clicked");
+                  setShowPrivacyModal(false);
+                }}
+                className="text-gray-400 hover:text-white transition-colors px-2 py-1 rounded"
+                type="button"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="prose prose-invert max-w-none text-gray-300 space-y-6">
+                <div className="text-sm text-gray-400 mb-4">
+                  Last Updated: June 30, 2025
+                </div>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    1. Introduction
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    Welcome to [Your Website Name], a premier web development
+                    company pioneering a digital universe where innovation
+                    seamlessly integrates with privacy. We are dedicated to
+                    safeguarding your personal information and delivering a
+                    secure, trustworthy experience as you engage with our
+                    cutting-edge services. This Privacy Policy provides a
+                    transparent overview of how we collect, process, utilize,
+                    disclose, and protect your data, ensuring compliance with
+                    relevant regulations, including the Digital Personal Data
+                    Protection Act 2023 (India) and the General Data Protection
+                    Regulation (GDPR) where applicable.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    2. Data We Collect
+                  </h4>
+                  <p className="text-sm leading-relaxed mb-3">
+                    As part of our commitment to delivering exceptional web
+                    solutions, we may collect the following categories of
+                    personal data when you interact with our website or reach
+                    out to us:
+                  </p>
+                  <ul className="text-sm space-y-2 ml-4">
+                    <li>
+                      <strong>Contact Information:</strong> Full name, email
+                      address, and phone number submitted via our "Contact Us"
+                      form.
+                    </li>
+                    <li>
+                      <strong>Usage Data:</strong> IP address, browser type,
+                      pages visited, and session duration, gathered through
+                      cookies and advanced analytics tools.
+                    </li>
+                    <li>
+                      <strong>Optional Data:</strong> Additional details you
+                      choose to provide, such as project inquiries or messages.
+                    </li>
+                  </ul>
+                  <p className="text-sm leading-relaxed mt-3">
+                    This data is obtained via secure form submissions, cookies,
+                    and third-party analytics platforms like Google Analytics.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    3. How We Use Your Data
+                  </h4>
+                  <p className="text-sm leading-relaxed mb-3">
+                    We leverage your data to enhance our services and support
+                    your needs:
+                  </p>
+                  <ul className="text-sm space-y-2 ml-4">
+                    <li>
+                      Respond promptly to your inquiries and provide tailored
+                      support through our "Contact Us" channel.
+                    </li>
+                    <li>
+                      Optimize our website and development offerings using
+                      insightful usage analytics.
+                    </li>
+                    <li>
+                      Share relevant updates, promotional offers, or project
+                      opportunities, subject to your explicit consent.
+                    </li>
+                    <li>
+                      Fulfill legal obligations and safeguard against potential
+                      fraud or security threats.
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    4. Cookies and Tracking Technologies
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    To elevate your experience, our website employs cookies and
+                    similar tracking technologies to improve functionality and
+                    analyze user interactions. You retain full control over your
+                    cookie preferences through your browser settings. For
+                    further details, consult our [Cookie Policy] (if available)
+                    or contact our support team. We collaborate with trusted
+                    third-party tools, such as Google Analytics, which may
+                    deploy additional cookies—opt-out options are accessible via
+                    their configuration settings.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    5. Data Security
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    At [Your Website Name], we prioritize the security of your
+                    data by implementing industry-leading encryption (e.g.,
+                    SSL/TLS) and robust server infrastructure. Our expert team
+                    enforces stringent access controls and conducts regular
+                    security audits to uphold the highest standards. While we
+                    strive to mitigate risks, please note that no digital
+                    transmission is entirely immune to breaches, and we cannot
+                    offer an absolute security guarantee.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    6. Sharing and Disclosure
+                  </h4>
+                  <p className="text-sm leading-relaxed mb-3">
+                    We uphold a strict no-sale policy for your personal data.
+                    Disclosure may occur under the following circumstances:
+                  </p>
+                  <ul className="text-sm space-y-2 ml-4">
+                    <li>
+                      <strong>Service Providers:</strong> Trusted third parties
+                      supporting our operations, such as hosting (e.g., AWS),
+                      analytics, or email services (e.g., Google), under
+                      confidentiality agreements.
+                    </li>
+                    <li>
+                      <strong>Legal Requirements:</strong> Compliance with
+                      lawful requests or to protect our rights and those of our
+                      users.
+                    </li>
+                  </ul>
+                  <p className="text-sm leading-relaxed mt-3">
+                    All partners are contractually obligated to maintain data
+                    confidentiality.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    7. User Rights
+                  </h4>
+                  <p className="text-sm leading-relaxed mb-3">
+                    As a user, you are empowered with the following rights
+                    regarding your personal data:
+                  </p>
+                  <ul className="text-sm space-y-2 ml-4">
+                    <li>
+                      Request access, correction, or deletion of your
+                      information.
+                    </li>
+                    <li>
+                      Limit or object to specific data processing activities.
+                    </li>
+                    <li>
+                      Seek data portability or withdraw consent at any time.
+                    </li>
+                  </ul>
+                  <p className="text-sm leading-relaxed mt-3">
+                    To exercise these rights, please email us at
+                    [privacy@yourwebsite.com]. We aim to respond to your request
+                    within 30 days.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    8. Children's Privacy
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    Our web development services are designed for individuals
+                    aged 13 and above. We do not intentionally collect data from
+                    children under this age. Should we identify such data, it
+                    will be promptly deleted upon notification.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    9. Changes to This Policy
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    As a forward-thinking company, we may revise this Privacy
+                    Policy to reflect evolving practices or regulatory changes.
+                    The most current version will be published on this page,
+                    accompanied by an updated "Last Updated" date. We recommend
+                    periodic reviews to stay informed of any modifications.
+                  </p>
+                </section>
+
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-3">
+                    10. International Data Transfers
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    Your data may be processed in regions such as India, the
+                    European Union, or the United States by our service
+                    providers. We ensure adherence to local data protection
+                    regulations and implement standard contractual clauses to
+                    safeguard cross-border data transfers where necessary.
+                  </p>
+                </section>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-6 border-t border-white/20 flex justify-end flex-shrink-0">
+              <button
+                onClick={() => {
+                  console.log("Close button clicked");
+                  setShowPrivacyModal(false);
+                }}
+                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="button"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

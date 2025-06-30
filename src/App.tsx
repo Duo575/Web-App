@@ -6,7 +6,11 @@
  */
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
-import { ProjectsSection, ProfileSection, ContactSection } from "@/Components/Sections";
+import {
+  ProjectsSection,
+  ProfileSection,
+  ContactSection,
+} from "@/Components/Sections";
 import { FrameworksSection } from "@/Components/frameworks";
 import { About } from "@/Components/About";
 import { Testimonials } from "@/Components/Sections/Testimonials";
@@ -119,7 +123,7 @@ function App() {
       <footer className="py-8 px-6 border-t border-primary/20 content-above-particles">
         <div className="max-w-6xl mx-auto text-center">
           <p className="opacity-60">
-            © 2024 Portfolio Website. Built with React + Vite + TailwindCSS
+            © 2025 Portfolio Website. Built with React + Vite + TailwindCSS
           </p>
         </div>
       </footer>
