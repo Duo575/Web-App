@@ -335,6 +335,210 @@ body,
   }
 }
 
+/* Profile Section Styles */
+@layer components {
+  .profile-cards-container {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center;
+  }
+
+  .profile-card {
+    width: 280px;
+    height: 280px;
+    background: white;
+    border-radius: 32px;
+    padding: 3px;
+    position: relative;
+    box-shadow: rgba(96, 75, 74, 0.2) 0px 70px 30px -50px;
+    transition: all 0.5s ease-in-out;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .profile-card-mail {
+    position: absolute;
+    right: 2rem;
+    top: 1.4rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 4;
+  }
+
+  .profile-card-mail svg {
+    stroke: #fd0000;
+    stroke-width: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .profile-card-mail:hover svg {
+    stroke: #f50e02;
+  }
+
+  .profile-card-pic {
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    top: 3px;
+    left: 3px;
+    border-radius: 29px;
+    z-index: 1;
+    border: 0px solid #000000;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
+  }
+
+  .profile-card-pic img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: 0px 0px;
+    transition: all 0.5s ease-in-out 0s;
+  }
+
+  .profile-card-bottom {
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+    background: rgb(43, 20, 127);
+    top: 80%;
+    border-radius: 29px;
+    z-index: 2;
+    box-shadow: rgba(96, 75, 74, 0.2) 0px 5px 5px 0px inset;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+  }
+
+  .profile-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 160px;
+    padding-top: 1rem;
+  }
+
+  .profile-card-name {
+    display: block;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+
+  .profile-card-role {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .profile-card-about {
+    display: block;
+    font-size: 0.8rem;
+    color: white;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .profile-card-footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .profile-card-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .profile-card-social a {
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .profile-card-social a:hover {
+    color: #ff0d00;
+    transform: scale(1.2);
+  }
+
+  .profile-card-button {
+    background: white;
+    color: #000000;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    box-shadow: rgba(165, 132, 130, 0.2) 0px 5px 5px 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .profile-card-button:hover {
+    background: #f55656;
+    color: white;
+  }
+
+  /* Hover Effects */
+  .profile-card:hover {
+    border-top-left-radius: 55px;
+  }
+
+  .profile-card:hover .profile-card-bottom {
+    top: 20%;
+    border-radius: 80px 29px 29px 29px;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+  }
+
+  .profile-card:hover .profile-card-pic {
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    z-index: 3;
+    border: 7px solid rgb(255, 234, 216);
+    box-shadow: rgba(96, 75, 74, 0.2) 0px 5px 5px 0px;
+    transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
+  }
+
+  .profile-card:hover .profile-card-pic:hover {
+    transform: scale(1.3);
+    border-radius: 0px;
+  }
+
+  .profile-card:hover .profile-card-pic img {
+    transform: scale(2.5);
+    object-position: 0px 25px;
+    transition: all 0.5s ease-in-out 0.5s;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-cards-container {
+      @apply grid-cols-1 gap-6;
+    }
+    
+    .profile-card {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .profile-cards-container {
+      @apply grid-cols-2 gap-6;
+    }
+  }
+}
+
 /* FeatureOptimizedBuild Styles */
 .bolt {
   .bolt__glow {

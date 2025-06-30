@@ -145,7 +145,7 @@ const FeatureOptimizedBuild: React.FC = () => {
 
         document.body.removeChild(svg);
         return { x: point.x, y: point.y };
-      } catch (error) {
+      } catch {
         // Fallback for simple paths
         const match = pathString.match(/M([\d.-]+)\s+([\d.-]+)/);
         if (match) {

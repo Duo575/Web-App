@@ -144,7 +144,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         </CardItem>
 
         {/* Action Buttons - Fourth level */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center items-center">
           {project.liveUrl && (
             <CardItem
               translateZ={60}
@@ -155,18 +155,6 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               className="px-6 py-2 rounded-xl text-sm font-medium text-white border border-white/20 hover:border-secondary/50 hover:bg-secondary/10 transition-all duration-300"
             >
               Live Demo →
-            </CardItem>
-          )}
-          {project.githubUrl && (
-            <CardItem
-              translateZ={60}
-              as="a"
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2 rounded-xl bg-secondary hover:bg-secondary/80 text-white text-sm font-bold transition-all duration-300 hover:shadow-lg hover:shadow-secondary/[0.3]"
-            >
-              View Code
             </CardItem>
           )}
         </div>

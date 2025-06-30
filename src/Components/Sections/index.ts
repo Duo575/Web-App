@@ -7,3 +7,4 @@
 export { default as AnimatedBeamDemo } from "./AnimatedBeamDemo";
 export { default as ShootingStarsDemo } from "./ShootingStarsDemo";
 export { default as ProjectsSection } from "./ProjectsSection";
+export { ProfileSection } from "./ProfileSection";

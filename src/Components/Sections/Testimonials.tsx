@@ -6,7 +6,7 @@
  */
 
 import { cn } from "@/lib/utils";
-import { Marquee } from "@/components/magicui/marquee";
+import { Marquee } from "@/Components/magicui/marquee";
 
 // Define the review data with a TypeScript interface for type safety
 interface Review {
@@ -103,18 +103,23 @@ const ReviewCard = ({ img, name, username, body }: Review) => {
 // Main Testimonials component
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-12 sm:py-16 md:py-20 section-spacing">
+    <section
+      id="testimonials"
+      className="py-12 sm:py-16 md:py-20 section-spacing"
+    >
       <div className="c-space">
-        <h2 className="text-heading mb-8 sm:mb-12">
-          What People Say
-        </h2>
+        <h2 className="text-heading mb-8 sm:mb-12">What People Say</h2>
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:20s] space-x-4">
             {firstRow.map((review) => (
               <ReviewCard key={review.username} {...review} />
             ))}
           </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s] space-x-4 mt-4">
+          <Marquee
+            reverse
+            pauseOnHover
+            className="[--duration:20s] space-x-4 mt-4"
+          >
             {secondRow.map((review) => (
               <ReviewCard key={review.username} {...review} />
             ))}

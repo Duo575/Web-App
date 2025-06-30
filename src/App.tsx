@@ -6,7 +6,7 @@
  */
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
-import { ProjectsSection } from "@/Components/Sections";
+import { ProjectsSection, ProfileSection } from "@/Components/Sections";
 import { FrameworksSection } from "@/Components/frameworks";
 import { About } from "@/Components/About";
 import { Testimonials } from "@/Components/Sections/Testimonials";
@@ -39,17 +39,22 @@ function App() {
         <nav className="flex justify-center items-center py-6 px-6">
           <div className="nav-glass-card">
             <div className="flex space-x-4 md:space-x-6">
-              {["Home", "About", "Projects", "Testimonials", "Contact"].map(
-                (item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="nav-link transition-colors duration-300"
-                  >
-                    {item}
-                  </a>
-                )
-              )}
+              {[
+                "Home",
+                "About",
+                "Projects",
+                "Testimonials",
+                "Profile",
+                "Contact",
+              ].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="nav-link transition-colors duration-300"
+                >
+                  {item}
+                </a>
+              ))}
             </div>
           </div>
         </nav>
@@ -109,6 +114,9 @@ function App() {
 
         {/* Testimonials Section */}
         <Testimonials />
+
+        {/* Profile Section */}
+        <ProfileSection />
       </main>
 
       {/* Footer */}
