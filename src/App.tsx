@@ -6,6 +6,7 @@
  */
 
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
+import { ProjectsSection } from "@/Components/Sections";
 import { FrameworksSection } from "@/Components/frameworks";
 import { About } from "@/Components/About";
 import { ShootingStars, StarsBackground } from "@/Components/UI";
@@ -99,6 +100,9 @@ function App() {
 
         {/* About Section */}
         <About />
+
+        {/* Projects Section */}
+        <ProjectsSection />
       </main>
 
       {/* Footer */}
