@@ -8,6 +8,7 @@
 import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
 import { FrameworksSection } from "@/Components/frameworks";
 import { About } from "@/Components/About";
+import { Testimonials } from "@/Components/Sections/Testimonials";
 import { ShootingStars, StarsBackground } from "@/Components/UI";
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
         <nav className="flex justify-center items-center py-6 px-6">
           <div className="nav-glass-card">
             <div className="flex space-x-4 md:space-x-6">
-              {["Home", "About", "Projects", "Contact"].map((item) => (
+              {["Home", "About", "Testimonials", "Projects", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -99,6 +100,9 @@ function App() {
 
         {/* About Section */}
         <About />
+
+        {/* Testimonials Section */}
+        <Testimonials />
       </main>
 
       {/* Footer */}

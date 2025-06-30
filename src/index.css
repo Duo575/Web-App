@@ -102,6 +102,10 @@
     --chart-4: 270 100% 70%; /* Light purple */
     --chart-5: 210 100% 20%; /* Lighter dark blue */
   }
+  .theme {
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  }
 }
 
 /* Custom Components */
@@ -821,5 +825,35 @@ body,
 
   .meta__description {
     font-size: 0.8125rem;
+  }
+}
+/*---break---
+ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/*---break---
+ */
+@theme inline {
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
   }
 }
