@@ -235,7 +235,7 @@ export default function AnimatedBeamMultipleOutputDemo({
       <div className="flex size-full max-w-4xl flex-row items-center justify-between gap-10">
         {/* Left labels and icons */}
         <div className="flex flex-row items-center gap-4">
-          <div className="flex flex-col justify-center gap-6 text-white text-sm font-medium min-w-[160px] text-right">
+          <div className="flex flex-col justify-center gap-6 text-white text-lg font-medium min-w-[160px] text-right">
             <span className="flex items-center justify-end h-12">Fast</span>
             <span className="flex items-center justify-end h-12">Quality</span>
             <span className="flex items-center justify-end h-12">
