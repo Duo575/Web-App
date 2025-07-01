@@ -36,35 +36,103 @@
 
 ## 🏃‍♂️ **Quick Start**
 
-### Prerequisites
+### 📋 **Prerequisites**
 
-- Node.js 18+
-- npm or yarn
+- **Node.js 18+** (Download from [nodejs.org](https://nodejs.org/))
+- **Git** (for cloning the repository)
+- **VS Code** (recommended IDE)
 
-### Installation
+### 🚀 **Complete Setup Guide**
+
+Follow these steps to run this project on any PC:
 
 ```bash
-# Clone the repository
-git clone <repository-url>
+# 1. Clone the repository
+git clone <your-repository-url>
 
-# Navigate to project directory
-cd portfolio-website
+# 2. Navigate to project directory
+cd "Portfolio website/Version 5/Web-App"
 
-# Install dependencies
-npm install --legacy-peer-deps
+# 3. Install all dependencies (this installs 70+ packages automatically)
+npm install
 
-# Start development server
+# 4. Set up environment variables (optional - only for contact form)
+cp .env.example .env
+# Edit .env with your EmailJS credentials if you want contact form to work
+
+# 5. Start the development server
 npm run dev
 ```
+
+**🎯 That's it!** Your portfolio will be running at `http://localhost:5173`
 
 ### 🔧 **Development Commands**
 
 ```bash
-npm run dev     # Start development server
+npm run dev     # Start development server (http://localhost:5173)
 npm run build   # Build for production
 npm run preview # Preview production build
-npm run lint    # Run ESLint
+npm run lint    # Run ESLint for code quality
 ```
+
+### 💻 **VS Code Setup (Recommended)**
+
+For the best development experience:
+
+1. **Install recommended extensions** (VS Code will prompt you):
+
+   - TailwindCSS IntelliSense
+   - PostCSS Language Support
+
+2. **Settings are pre-configured** in `.vscode/settings.json`:
+   - TailwindCSS autocomplete enabled
+   - CSS validation disabled (to prevent @tailwind errors)
+   - Enhanced IntelliSense for utility classes
+
+### 📧 **Contact Form Setup (Optional)**
+
+To enable the contact form functionality:
+
+1. **Create EmailJS account**: Visit [EmailJS.com](https://www.emailjs.com/)
+2. **Get your credentials**: Service ID, Template ID, and Public Key
+3. **Configure environment**:
+
+   ```bash
+   # Copy the example file
+   cp .env.example .env
+
+   # Edit .env and replace with your actual values:
+   VITE_EMAILJS_SERVICE_ID=your_service_id_here
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
+   ```
+
+### ✅ **What Gets Installed**
+
+Running `npm install` automatically sets up:
+
+- ✅ **React 18** + TypeScript for modern development
+- ✅ **TailwindCSS** for styling with custom theme
+- ✅ **Framer Motion** for smooth animations
+- ✅ **Three.js** for 3D graphics and interactive elements
+- ✅ **Radix UI** components for accessibility
+- ✅ **EmailJS** for contact form functionality
+- ✅ **Vite** for fast development and building
+- ✅ **ESLint** for code quality
+- ✅ All other dependencies (70+ packages total)
+
+### 🚨 **Troubleshooting**
+
+**"Unknown at rule @tailwind" error in CSS?**
+
+- This is just a VS Code warning, not an actual error
+- Install TailwindCSS IntelliSense extension
+- The project will build and run perfectly
+
+**Port 5173 already in use?**
+
+- Vite will automatically use the next available port
+- Check the terminal output for the actual URL
 
 ## 📂 **Project Structure**
 
