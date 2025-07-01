@@ -497,7 +497,7 @@ export function ContactSection() {
           }}
         >
           <div
-            className="bg-gray-900 rounded-2xl w-full max-w-4xl h-[90vh] flex flex-col border border-white/20"
+            className="bg-gray-900 rounded-2xl w-full max-w-4xl h-[90vh] flex flex-col border border-white/20 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -509,7 +509,8 @@ export function ContactSection() {
                 </h3>
               </div>
               <button
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent event bubbling
                   console.log("Header close button clicked");
                   setShowPrivacyModal(false);
                 }}
@@ -521,7 +522,10 @@ export function ContactSection() {
             </div>
 
             {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div
+              className="flex-1 overflow-y-auto p-6"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="prose prose-invert max-w-none text-gray-300 space-y-6">
                 <div className="text-sm text-gray-400 mb-4">
                   Last Updated: June 30, 2025
@@ -736,7 +740,8 @@ export function ContactSection() {
             {/* Modal Footer */}
             <div className="p-6 border-t border-white/20 flex justify-end flex-shrink-0">
               <button
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent event bubbling
                   console.log("Close button clicked");
                   setShowPrivacyModal(false);
                 }}

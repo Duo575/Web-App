@@ -30,12 +30,9 @@ export default defineConfig({
             ) {
               return "animation-vendor";
             }
-            if (id.includes("@tsparticles")) {
-              return "particles-vendor";
-            }
-            if (id.includes("@emailjs")) {
-              return "email-vendor";
-            }
+            // Removed empty particles-vendor chunk
+            // Include email-related code in the main vendor chunk
+            // to avoid creating a tiny chunk
             // Other vendor libraries
             return "vendor";
           }
