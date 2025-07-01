@@ -2,23 +2,24 @@
  * App Component - Main Application Entry
  * Purpose: Root component, layout structure, section routing
  * Dependencies: React, custom sections
- * Features: One-page portfolio layout, smooth scrolling, responsive design
+ * Features: One-page portfolio layout, smooth scrolling, responsive design, code splitting
  */
 
-import AnimatedBeamDemo from "@/Components/Sections/AnimatedBeamDemo";
-import {
-  ProjectsSection,
-  ProfileSection,
-  ContactSection,
-} from "@/Components/Sections";
-import { FrameworksSection } from "@/Components/frameworks";
-import { About } from "@/Components/About";
-import { Testimonials } from "@/Components/Sections/Testimonials";
-import { ShootingStars, StarsBackground } from "@/Components/UI";
+import React, { Suspense } from "react";
+import { ShootingStars, StarsBackground, LoadingSpinner, LazyImage } from "@/Components/UI";
 import { useParallax } from "@/hooks/useParallax";
 import "@/styles/parallax.css";
 import "@/styles/scrollbar.css";
 import ScrollProgressBar from "@/Components/ScrollProgressBar";
+
+// Lazy load heavy components for better performance
+const AnimatedBeamDemo = React.lazy(() => import("@/Components/Sections/AnimatedBeamDemo"));
+const ProjectsSection = React.lazy(() => import("@/Components/Sections").then(module => ({ default: module.ProjectsSection })));
+const ProfileSection = React.lazy(() => import("@/Components/Sections").then(module => ({ default: module.ProfileSection })));
+const ContactSection = React.lazy(() => import("@/Components/Sections").then(module => ({ default: module.ContactSection })));
+const FrameworksSection = React.lazy(() => import("@/Components/frameworks").then(module => ({ default: module.FrameworksSection })));
+const About = React.lazy(() => import("@/Components/About").then(module => ({ default: module.About })));
+const Testimonials = React.lazy(() => import("@/Components/Sections/Testimonials").then(module => ({ default: module.Testimonials })));
 
 // Parallax images imports
 import moonImg from "@/assets/parallax images/moon.png";
@@ -35,21 +36,13 @@ function App() {
       {/* Scroll Progress Bar - Top layer */}
       <ScrollProgressBar />
 
-      {/* Shooting Stars and Stars Background */}
-      <ShootingStars
-        starColor="#ffffff"
-        trailColor="#ffffff"
-        minSpeed={5}
-        maxSpeed={15}
-        minDelay={800}
-        maxDelay={3000}
-      />
+      {/* Global Stars Background for other sections */}
       <StarsBackground
-        starDensity={0.0002}
+        starDensity={0.0001}
         allStarsTwinkle={true}
-        twinkleProbability={0.8}
+        twinkleProbability={0.6}
         minTwinkleSpeed={0.3}
-        maxTwinkleSpeed={1.2}
+        maxTwinkleSpeed={1.0}
       />
       {/* Navigation Header */}
       <header className="fixed top-0 w-full z-50 content-above-particles">
@@ -77,9 +70,29 @@ function App() {
           id="home"
           className="h-screen relative overflow-hidden"
           ref={parallaxRef}
+          style={{ backgroundColor: "#000000" }}
         >
+          {/* Night Sky Background - Immediate Layer */}
+          <div className="absolute inset-0 z-0">
+            <ShootingStars
+              starColor="#ffffff"
+              trailColor="#ffffff"
+              minSpeed={5}
+              maxSpeed={15}
+              minDelay={800}
+              maxDelay={3000}
+            />
+            <StarsBackground
+              starDensity={0.0003}
+              allStarsTwinkle={true}
+              twinkleProbability={0.8}
+              minTwinkleSpeed={0.3}
+              maxTwinkleSpeed={1.2}
+            />
+          </div>
+
           {/* Parallax Layers */}
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 z-10">
             {/* Layer 1: Moon (Background - Curved Movement) */}
             <div
               className="absolute inset-0 parallax-layer moon-layer"
@@ -87,7 +100,7 @@ function App() {
               data-speed="0.1"
               data-effect="curve"
             >
-              <img
+              <LazyImage
                 src={moonImg}
                 alt="Moon"
                 className="parallax-moon absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-auto md:w-32 lg:w-36 opacity-90"
@@ -104,7 +117,7 @@ function App() {
               data-speed="0.5"
               data-effect="slide"
             >
-              <img
+              <LazyImage
                 src={mountainsBehindImg}
                 alt="Mountains Behind"
                 className="parallax-mountains-behind absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-[110vw] h-auto object-cover object-bottom opacity-80"
@@ -118,7 +131,7 @@ function App() {
               data-speed="0.6"
               data-effect="zoom"
             >
-              <img
+              <LazyImage
                 src={mountainsFrontImg}
                 alt="Mountains Front"
                 className="parallax-mountains-front absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[150vw] h-auto object-cover object-bottom opacity-90"
@@ -129,25 +142,39 @@ function App() {
         </section>
 
         {/* Animated Beam Demo Section */}
-        <AnimatedBeamDemo />
+        <Suspense fallback={<LoadingSpinner size="lg" className="min-h-[200px]" />}>
+          <AnimatedBeamDemo />
+        </Suspense>
 
         {/* Frameworks Section */}
-        <FrameworksSection />
+        <Suspense fallback={<LoadingSpinner size="lg" className="min-h-[400px]" />}>
+          <FrameworksSection />
+        </Suspense>
 
         {/* About Section */}
-        <About />
+        <Suspense fallback={<LoadingSpinner size="lg" className="min-h-[300px]" />}>
+          <About />
+        </Suspense>
 
         {/* Projects Section */}
-        <ProjectsSection />
+        <Suspense fallback={<LoadingSpinner size="lg" className="min-h-[500px]" />}>
+          <ProjectsSection />
+        </Suspense>
 
         {/* Testimonials Section */}
-        <Testimonials />
+        <Suspense fallback={<LoadingSpinner size="lg" className="min-h-[300px]" />}>
+          <Testimonials />
+        </Suspense>
 
         {/* Profile Section */}
-        <ProfileSection />
+        <Suspense fallback={<LoadingSpinner size="lg" className="min-h-[400px]" />}>
+          <ProfileSection />
+        </Suspense>
 
         {/* Contact Section */}
-        <ContactSection />
+        <Suspense fallback={<LoadingSpinner size="lg" className="min-h-[300px]" />}>
+          <ContactSection />
+        </Suspense>
       </main>
 
       {/* Footer */}
