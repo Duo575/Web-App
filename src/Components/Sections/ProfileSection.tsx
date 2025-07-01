@@ -26,11 +26,11 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: "Alex Johnson",
+    name: "Debi Prasad Panda",
     role: "Lead Developer",
     bio: "",
-    image: "https://avatar.vercel.sh/alex",
-    email: "alex@company.com",
+    image: "https://avatar.vercel.sh/debi",
+    email: "debi@company.com",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -39,11 +39,11 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 2,
-    name: "Sarah Chen",
+    name: "Pratik Kiran Rout",
     role: "UI/UX Designer",
     bio: "",
-    image: "https://avatar.vercel.sh/sarah",
-    email: "sarah@company.com",
+    image: "https://avatar.vercel.sh/pratik",
+    email: "pratik@company.com",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -52,11 +52,11 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 3,
-    name: "Michael Rodriguez",
+    name: "Manas Ranjan Kishan",
     role: "Backend Engineer",
     bio: "",
-    image: "https://avatar.vercel.sh/michael",
-    email: "michael@company.com",
+    image: "https://avatar.vercel.sh/manas",
+    email: "manas@company.com",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -65,11 +65,11 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 4,
-    name: "Emma Thompson",
+    name: "Srujan Sattwik",
     role: "Project Manager",
     bio: "",
-    image: "https://avatar.vercel.sh/emma",
-    email: "emma@company.com",
+    image: "https://avatar.vercel.sh/srujan",
+    email: "srujan@company.com",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
