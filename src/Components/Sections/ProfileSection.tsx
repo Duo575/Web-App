@@ -95,12 +95,9 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="L22 6L12 13L2 6"
+            d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z"
+            stroke="currentColor"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />

@@ -127,19 +127,26 @@
 
   /* Navigation Glass Card */
   .nav-glass-card {
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2.8px);
-    -webkit-backdrop-filter: blur(2.8px);
-    border: 1px solid rgba(255, 255, 255, 0.27);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(168, 85, 247, 0.15),
+      0 0 30px rgba(168, 85, 247, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     /* Center the card content */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.75rem 1.5rem;
     position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-glass-card:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 85, 247, 0.2),
+      0 0 40px rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.35);
   }
 
   @media (min-width: 768px) {
@@ -159,7 +166,9 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.8),
+      rgba(168, 85, 247, 0.4),
+      rgba(192, 132, 252, 0.3),
+      rgba(168, 85, 247, 0.4),
       transparent
     );
   }
@@ -180,8 +189,14 @@
   }
 
   .nav-link:hover {
-    color: #a855f7 !important; /* Purple-400 */
-    transform: translateY(-1px);
+    color: #c084fc !important; /* Purple glow */
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(192, 132, 252, 0.4);
+  }
+
+  .nav-link.active {
+    color: #a855f7 !important;
+    text-shadow: 0 0 6px rgba(168, 85, 247, 0.3);
   }
 }
 
@@ -298,6 +313,64 @@ body,
     @apply backdrop-blur-sm;
   }
 
+  /* About Section Animations */
+  .animate-slide-from-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-slide-from-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-fade-in {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-visible {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+
+  .animate-hidden {
+    pointer-events: none;
+  }
+
+  /* Staggered animation delays for smoother sequence */
+  [data-grid="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-grid="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-grid="3"] {
+    transition-delay: 0.3s;
+  }
+
+  [data-grid="4"] {
+    transition-delay: 0.4s;
+  }
+
+  /* Balanced timing for third row - after second row completes */
+  [data-grid="5"] {
+    transition-delay: 0.5s;
+  }
+
+  [data-grid="6"] {
+    transition-delay: 0.55s;
+  }
+
+  [data-grid="7"] {
+    transition-delay: 0.6s;
+  }
+
   /* Contact Form Styles */
   .contact-input {
     @apply w-full px-4 py-3 bg-black/50 border border-white/20 rounded-lg;
@@ -371,13 +444,17 @@ body,
   }
 
   .profile-card-mail svg {
-    stroke: #fd0000;
-    stroke-width: 3px;
+    stroke: #ffffff;
+    stroke-width: 2.5px;
+    fill: none;
     transition: all 0.3s ease;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
   }
 
   .profile-card-mail:hover svg {
-    stroke: #f50e02;
+    stroke: #e2e8f0;
+    filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.6));
+    transform: scale(1.1);
   }
 
   .profile-card-pic {
@@ -466,11 +543,13 @@ body,
   .profile-card-social a {
     color: white;
     transition: all 0.3s ease;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
   }
 
   .profile-card-social a:hover {
-    color: #ff0d00;
+    color: #c084fc;
     transform: scale(1.2);
+    filter: drop-shadow(0 0 6px rgba(192, 132, 252, 0.6));
   }
 
   .profile-card-button {
@@ -480,14 +559,16 @@ body,
     border-radius: 20px;
     font-size: 0.6rem;
     padding: 0.4rem 0.6rem;
-    box-shadow: rgba(165, 132, 130, 0.2) 0px 5px 5px 0px;
+    box-shadow: rgba(168, 85, 247, 0.2) 0px 5px 5px 0px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .profile-card-button:hover {
-    background: #f55656;
+    background: #a855f7;
     color: white;
+    box-shadow: rgba(168, 85, 247, 0.4) 0px 8px 12px 0px;
+    transform: translateY(-2px);
   }
 
   /* Hover Effects */
