@@ -104,8 +104,7 @@ src/
 │   │   ├── animated-beam-multiple-inputs.tsx
 │   │   ├── ParticlesBackground.tsx
 │   │   ├── shooting-stars.tsx
-│   │   ├── stars-background.tsx
-│   │   └── SimpleParticles.tsx
+│   │   └── stars-background.tsx
 │   ├── Sections/           # Page sections
 │   │   ├── AnimatedBeamDemo.tsx
 │   │   ├── ContactSection.tsx
@@ -437,21 +436,52 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
   build: {
-    target: "esnext",
-    minify: "terser",
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom"],
-          animations: ["framer-motion", "gsap"],
-          three: ["three", "@react-three/fiber", "@react-three/drei"],
+        manualChunks: (id) => {
+          // Vendor chunks
+          if (id.includes("node_modules")) {
+            if (id.includes("react") || id.includes("react-dom")) {
+              return "react-vendor";
+            }
+            if (id.includes("@radix-ui") || id.includes("lucide-react")) {
+              return "ui-vendor";
+            }
+            if (
+              id.includes("framer-motion") ||
+              id.includes("gsap") ||
+              id.includes("@react-three") ||
+              id.includes("three")
+            ) {
+              return "animation-vendor";
+            }
+            // Other vendor libraries
+            return "vendor";
+          }
+
+          // Feature-based chunks
+          if (id.includes("/Components/Sections/")) {
+            return "sections";
+          }
+          if (id.includes("/Components/frameworks/")) {
+            return "frameworks";
+          }
+          if (id.includes("/Components/About/")) {
+            return "about";
+          }
+          if (id.includes("/Components/UI/")) {
+            return "ui-components";
+          }
         },
       },
     },
+    chunkSizeWarningLimit: 1000,
+    minify: true,
+    sourcemap: false,
   },
 });
 ```
@@ -519,6 +549,7 @@ VITE_EMAILJS_PUBLIC_KEY=your_public_key
 - **Vendor Chunks**: React, animations, 3D libraries separated
 - **Code Splitting**: Route-based and component-based
 - **Tree Shaking**: Unused code eliminated
+- **Chunk Optimization**: Removed empty chunks and merged small chunks
 
 ### **Loading Performance**
 
@@ -535,6 +566,8 @@ VITE_EMAILJS_PUBLIC_KEY=your_public_key
 - **Font Loading**: Font display swap for text visibility
 - **Animation Performance**: RAF-based animations, GPU acceleration
 - **Memory Management**: Proper cleanup of event listeners and timelines
+- **Dead Code Elimination**: Removed unused components and files
+- **Build Configuration**: Optimized chunk loading strategy
 
 ---
 
@@ -610,6 +643,23 @@ VITE_EMAILJS_PUBLIC_KEY=your_public_key
 
 ---
 
+## 🔍 **Recent Optimizations**
+
+### **Performance Improvements**
+
+- **Removed Unused Files**: Eliminated unused components and test files
+- **Optimized Build Configuration**: Improved chunk loading strategy
+- **Fixed UI Issues**: Enhanced modal interactions and event handling
+- **Reduced Bundle Size**: Merged small chunks and removed empty ones
+- **Improved Event Handling**: Added proper event propagation control
+
+### **Code Quality Enhancements**
+
+- **Cleaner Component Structure**: Removed redundant framework section implementations
+- **Better Error Handling**: Added proper error boundaries and logging
+- **Enhanced User Experience**: Fixed privacy policy modal close functionality
+- **Documentation**: Updated project documentation to reflect changes
+
 ## 📈 **Future Enhancements**
 
 ### **Planned Features**
@@ -636,9 +686,11 @@ The Portfolio Website v5.0 represents a cutting-edge implementation of modern we
 
 The modular architecture ensures maintainability and extensibility, while the comprehensive performance optimizations deliver a fast, responsive experience across all devices. The integration of advanced 3D graphics and animations demonstrates technical proficiency without compromising usability.
 
-This project serves as both a functional portfolio and a technical demonstration of current best practices in web development.
+Recent optimizations have further improved the project's performance by removing unused code, optimizing build configuration, and fixing UI issues. These changes have resulted in a more efficient application with faster load times and a smoother user experience.
+
+This project serves as both a functional portfolio and a technical demonstration of current best practices in web development, including performance optimization techniques and modern React patterns.
 
 ---
 
 **Project Status**: Complete and Ready for Deployment
-**Last Updated**: June 2024
+**Last Updated**: July 2024
