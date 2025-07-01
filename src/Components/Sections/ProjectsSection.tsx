@@ -8,14 +8,14 @@ import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/Components/UI/3d-card";
 
 // Tech logo imports
-import ReactLogo from "@/Components/frameworks/image/react.svg";
-import NodeJSLogo from "@/Components/frameworks/image/nodejs.svg";
-import MongoDBLogo from "@/Components/frameworks/image/mongodb.svg";
-import VueLogo from "@/Components/frameworks/image/vue.svg";
-import TypeScriptLogo from "@/Components/frameworks/image/typescript.svg";
-import TailwindLogo from "@/Components/frameworks/image/Tailwind_CSS.svg";
-import JavaScriptLogo from "@/Components/frameworks/image/javascript.svg";
-import AngularLogo from "@/Components/frameworks/image/angular.svg";
+import ReactLogo from "@/assets/icons/react.svg";
+import NodeJSLogo from "@/assets/icons/nodejs.svg";
+import MongoDBLogo from "@/assets/icons/mongodb.svg";
+import VueLogo from "@/assets/icons/vue.svg";
+import TypeScriptLogo from "@/assets/icons/typescript.svg";
+import TailwindLogo from "@/assets/icons/Tailwind_CSS.svg";
+import JavaScriptLogo from "@/assets/icons/javascript.svg";
+import AngularLogo from "@/assets/icons/angular.svg";
 
 // Technology logo mapping
 const techLogos: Record<string, string> = {

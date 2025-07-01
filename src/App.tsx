@@ -59,23 +59,9 @@ function App() {
 
       {/* Main Content */}
       <main className="content-above-particles">
-        {/* Hero Section */}
-        <section
-          id="home"
-          className="min-h-screen flex items-center justify-center px-6"
-        >
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6">
-              Welcome to Our{" "}
-              <span className="text-gradient">Digital Universe</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-80">
-              Crafting innovative web solutions with cutting-edge technology
-            </p>
-            <button className="btn-gradient px-8 py-4 rounded-full font-semibold text-lg hover:scale-hover transition-all duration-300">
-              Explore Our Work
-            </button>
-          </div>
+        {/* Hero Section - Parallax Container */}
+        <section id="home" className="min-h-screen relative overflow-hidden">
+          {/* Parallax images will be added here */}
         </section>
 
         {/* Animated Beam Demo Section */}
