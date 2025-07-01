@@ -1,0 +1,82 @@
+/* Parallax Hero Section Styles */
+
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+}
+
+.parallax-layer {
+  position: absolute;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Individual layer styles with specific classes */
+
+/* Moon layer - curved movement effect */
+.moon-layer {
+  transform-origin: center center;
+}
+
+.moon-layer .parallax-moon {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 200, 0.6));
+}
+
+/* Mountains Behind layer - slide up effect */
+.mountains-behind-layer {
+  transform-origin: center bottom;
+}
+
+.mountains-behind-layer .parallax-mountains-behind {
+  opacity: 0.8;
+}
+
+/* Mountains Front layer - zoom effect */
+.mountains-front-layer {
+  transform-origin: center bottom;
+}
+
+.mountains-front-layer .parallax-mountains-front {
+  opacity: 0.9;
+  max-height: none; /* Allow full height */
+}
+
+/* Removed gradient overlays for better performance */
+
+/* Responsive adjustments with specific classes */
+@media (max-width: 768px) {
+  .moon-layer .parallax-moon {
+    width: 120px !important;
+  }
+
+  .mountains-behind-layer .parallax-mountains-behind {
+    max-height: 60vh !important;
+  }
+
+  .mountains-front-layer .parallax-mountains-front {
+    max-height: 70vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .moon-layer .parallax-moon {
+    width: 80px !important;
+  }
+
+  .mountains-behind-layer .parallax-mountains-behind {
+    max-height: 50vh !important;
+  }
+
+  .mountains-front-layer .parallax-mountains-front {
+    max-height: 60vh !important;
+  }
+}
+
+/* Smooth scrolling performance */
+.parallax-container * {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
