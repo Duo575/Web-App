@@ -56,7 +56,7 @@ const About: React.FC = () => {
         {/* Grid 1 - Personal Introduction */}
         <div
           data-grid="1"
-          className={`flex items-end grid-black-color grid-1 relative overflow-hidden animate-slide-from-left ${
+          className={`flex items-end grid-hover-background-border grid-1 relative overflow-hidden animate-slide-from-left ${
             visibleGrids.has(1) ? "animate-visible" : "animate-hidden"
           }`}
         >
@@ -130,7 +130,7 @@ const About: React.FC = () => {
         {/* Grid 3 - Location & Time Zone (Now first in row 2) */}
         <div
           data-grid="3"
-          className={`grid-black-color grid-3 relative animate-slide-from-left ${
+          className={`grid-hover-white-border grid-3 relative animate-slide-from-left ${
             visibleGrids.has(3) ? "animate-visible" : "animate-hidden"
           }`}
         >
@@ -163,7 +163,7 @@ const About: React.FC = () => {
         {/* Grid 5 - SSR Support Feature (Now first in row 3) */}
         <div
           data-grid="5"
-          className={`grid-black-color grid-5 animate-fade-in ${
+          className={`grid-hover-white-border grid-5 animate-fade-in ${
             visibleGrids.has(5) ? "animate-visible" : "animate-hidden"
           }`}
         >
@@ -183,7 +183,7 @@ const About: React.FC = () => {
         {/* Grid 7 - Typed API Feature */}
         <div
           data-grid="7"
-          className={`grid-black-color grid-7 animate-fade-in ${
+          className={`grid-hover-white-border grid-7 animate-fade-in ${
             visibleGrids.has(7) ? "animate-visible" : "animate-hidden"
           }`}
         >

@@ -31,7 +31,7 @@
 }
 
 .mountains-behind-layer .parallax-mountains-behind {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Mountains Front layer - zoom effect */
@@ -40,7 +40,7 @@
 }
 
 .mountains-front-layer .parallax-mountains-front {
-  opacity: 0.9;
+  opacity: 1;
   max-height: none; /* Allow full height */
 }
 

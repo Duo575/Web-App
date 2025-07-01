@@ -333,6 +333,34 @@ body,
     @apply backdrop-blur-sm;
   }
 
+  /* Hover-Only Border Effects for About Section */
+  .grid-hover-background-border {
+    @apply bg-gradient-to-br from-black/80 to-gray-900/60;
+    @apply border border-transparent;
+    @apply shadow-lg;
+    @apply transition-all duration-75 ease-out;
+    @apply backdrop-blur-sm;
+  }
+
+  .grid-hover-background-border:hover {
+    @apply border-gray-700/70;
+    box-shadow: 0 0 10px rgba(75, 85, 99, 0.2), 0 0 20px rgba(75, 85, 99, 0.1);
+  }
+
+  .grid-hover-white-border {
+    @apply bg-gradient-to-br from-black/80 to-gray-900/60;
+    @apply border border-transparent;
+    @apply shadow-lg;
+    @apply transition-all duration-75 ease-out;
+    @apply backdrop-blur-sm;
+  }
+
+  .grid-hover-white-border:hover {
+    @apply border-white/50;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15),
+      0 0 20px rgba(255, 255, 255, 0.08);
+  }
+
   /* About Section Animations */
   .animate-slide-from-left {
     transform: translateX(-100px);
