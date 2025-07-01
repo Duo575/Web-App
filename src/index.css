@@ -99,9 +99,30 @@
     --chart-4: 270 100% 70%; /* Light purple */
     --chart-5: 210 100% 20%; /* Lighter dark blue */
   }
-  .theme {
+
+  /* Animation variables */
+  :root {
     --animate-marquee: marquee var(--duration) infinite linear;
     --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  }
+
+  /* Keyframe animations */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
   }
 }
 
