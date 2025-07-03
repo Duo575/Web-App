@@ -87,6 +87,20 @@ export function ContactSection() {
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+
+  // Add/remove modal-open class to body when modal state changes
+  useEffect(() => {
+    if (showPrivacyModal) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove("modal-open");
+    };
+  }, [showPrivacyModal]);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Handle input changes
@@ -489,7 +503,8 @@ export function ContactSection() {
       {/* Privacy Policy Modal */}
       {showPrivacyModal && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          style={{ zIndex: 2147483647 }}
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               setShowPrivacyModal(false);
@@ -497,7 +512,8 @@ export function ContactSection() {
           }}
         >
           <div
-            className="bg-gray-900 rounded-2xl w-full max-w-4xl h-[90vh] flex flex-col border border-white/20 overflow-hidden"
+            className="bg-gray-900 rounded-2xl w-full max-w-4xl h-[90vh] flex flex-col border border-white/20 overflow-hidden relative"
+            style={{ zIndex: 2147483647 }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -508,17 +524,6 @@ export function ContactSection() {
                   Privacy Policy
                 </h3>
               </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent event bubbling
-                  console.log("Header close button clicked");
-                  setShowPrivacyModal(false);
-                }}
-                className="text-gray-400 hover:text-white transition-colors px-2 py-1 rounded"
-                type="button"
-              >
-                ✕
-              </button>
             </div>
 
             {/* Modal Content */}
@@ -738,14 +743,18 @@ export function ContactSection() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-6 border-t border-white/20 flex justify-end flex-shrink-0">
+            <div
+              className="p-6 border-t border-white/20 flex justify-end flex-shrink-0 relative"
+              style={{ zIndex: 2147483647 }}
+            >
               <button
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent event bubbling
                   console.log("Close button clicked");
                   setShowPrivacyModal(false);
                 }}
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer select-none relative"
+                style={{ zIndex: 2147483647 }}
                 type="button"
               >
                 Close

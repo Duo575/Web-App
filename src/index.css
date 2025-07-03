@@ -243,6 +243,13 @@
     position: relative;
     z-index: 1;
   }
+
+  /* Hide footer when modal is open - keep space but make invisible */
+  .modal-open footer {
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+  }
 }
 
 /* Force Night Sky theme colors */
