@@ -34,23 +34,14 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
   // Initialize particles engine once
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      console.log("Initializing particles engine...");
       await loadSlim(engine);
-      console.log("Particles engine loaded successfully");
     }).then(() => {
       setInit(true);
     });
   }, []);
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log("Particles loaded:", container);
-    if (container) {
-      console.log(
-        "Particles container is ready with",
-        container.particles.count,
-        "particles"
-      );
-    }
+    // Particles loaded callback - container is ready
   };
 
   const options: ISourceOptions = useMemo(

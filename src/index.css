@@ -288,7 +288,7 @@ body,
 
   /* Grid layouts for About section */
   .grid-1 {
-    @apply col-span-1 md:col-span-3 p-6 rounded-xl;
+    @apply col-span-1 md:col-span-4 p-6 rounded-xl;
   }
 
   .grid-2 {

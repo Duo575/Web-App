@@ -9,10 +9,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 
 const FeatureSSRSupport: React.FC = () => {
-  const [isCardActive, setIsCardActive] = useState(false);
+  const [isCardActive, setIsCardActive] = useState(true); // Start active
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Slide in animation when component mounts
+  // Slide in animation when component mounts and start the feature animation
   useEffect(() => {
     if (cardRef.current) {
       gsap.set(cardRef.current, { x: -60, opacity: 0 });
@@ -22,6 +22,22 @@ const FeatureSSRSupport: React.FC = () => {
         duration: 0.6,
         ease: "power2.out",
       });
+
+      // Auto-start the animation
+      setIsCardActive(true);
+
+      // Set up animation loop
+      const animationLoop = () => {
+        // Reset and restart animation every 5 seconds
+        setIsCardActive(false);
+        setTimeout(() => setIsCardActive(true), 100);
+      };
+
+      // Start loop after initial animation
+      const loopTimer = setInterval(animationLoop, 5000);
+
+      // Clean up
+      return () => clearInterval(loopTimer);
     }
   }, []);
 
@@ -34,11 +50,6 @@ const FeatureSSRSupport: React.FC = () => {
       ref={cardRef}
       className="feature-card md:transform md:-translate-x-[60px] max-w-full flex flex-col"
       id="ssr-support"
-      onMouseOver={(e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        startAnimation();
-      }}
     >
       <div
         className={`feature__visualization flex-1 flex items-center justify-center ${

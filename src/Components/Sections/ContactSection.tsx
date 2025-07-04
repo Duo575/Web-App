@@ -126,8 +126,8 @@ export function ContactSection() {
       return;
     }
 
-    console.log("Form submitted:", formData);
-    alert("Form submitted! Check console for data.");
+    // Form submission logic would go here
+    alert("Form submitted successfully!");
   };
 
   // Handle country selection
@@ -226,7 +226,7 @@ export function ContactSection() {
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === "Escape" && showPrivacyModal) {
-        console.log("Escape key pressed, closing modal");
+
         setShowPrivacyModal(false);
       }
     };
@@ -471,7 +471,7 @@ export function ContactSection() {
                     <button
                       type="button"
                       onClick={() => {
-                        console.log("Privacy Policy link clicked");
+
                         setShowPrivacyModal(true);
                       }}
                       className="text-blue-400 hover:text-blue-300 underline"
@@ -750,7 +750,7 @@ export function ContactSection() {
               <button
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent event bubbling
-                  console.log("Close button clicked");
+
                   setShowPrivacyModal(false);
                 }}
                 className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer select-none relative"

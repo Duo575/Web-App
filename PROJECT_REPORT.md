@@ -1,12 +1,7 @@
-# 📊 Portfolio Website - Comprehensive Project Report
-
-> **Modern React Portfolio Website with Advanced 3D Graphics and Interactive Features**
-
----
-
-## 📋 **Project Overview**
-
-### **Project Name**: Portfolio Website v5.0
+# DUPLICATE FILE REMOVED
+# This was a duplicate of docs/PROJECT_REPORT.md
+# The main project report is located in docs/PROJECT_REPORT.md
+# This file was removed during codebase cleanup
 
 ### **Project Type**: Single Page Application (SPA)
 

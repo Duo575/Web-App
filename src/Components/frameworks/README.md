@@ -16,22 +16,12 @@ This section displays a grid of framework and tool logos with smooth animations 
 
 ### FrameworksSection Components
 
-#### FrameworksSectionSimple
-- Basic grid layout for testing
-- Simple responsive design
-- No complex animations
-
-#### FrameworksSectionFixed
-- Simplified version with basic GSAP animations
-- Grid layout with scroll-triggered visibility
-- Good for performance-conscious implementations
-
 #### FrameworksSectionComplete
-- Full-featured version matching the original Vue implementation
-- Complex responsive grid calculations
+- Full-featured version with complex responsive grid calculations
 - Staggered row layouts with offset animations
 - Advanced scroll-triggered animations
 - Handles various screen sizes with dynamic padding
+- Main component exported as FrameworksSection
 
 ## Features
 

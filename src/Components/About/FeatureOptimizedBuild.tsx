@@ -22,18 +22,41 @@ const FeatureOptimizedBuild: React.FC = () => {
     }))
   );
   const cardRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<gsap.core.Timeline | null>(null);
 
-  // Slide in animation when component mounts
+  // Slide in animation when component mounts and start the continuous animation
   useEffect(() => {
     if (cardRef.current) {
+      // Initial slide-in animation
       gsap.set(cardRef.current, { x: 60, opacity: 0 });
       gsap.to(cardRef.current, {
         x: 0,
         opacity: 1,
         duration: 0.6,
         ease: "power2.out",
+        onComplete: () => {
+          // Start the animation immediately after slide-in
+          const timeline = startAnimation();
+          animationRef.current = timeline;
+          
+          // Set up continuous animation loop
+          timeline.eventCallback("onComplete", () => {
+            // Wait a bit before restarting
+            setTimeout(() => {
+              const newTimeline = startAnimation();
+              animationRef.current = newTimeline;
+            }, 1000);
+          });
+        }
       });
     }
+    
+    // Clean up
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.kill();
+      }
+    };
   }, []);
 
   const startAnimation = () => {
@@ -195,11 +218,6 @@ const FeatureOptimizedBuild: React.FC = () => {
       ref={cardRef}
       className="feature-card md:transform md:translate-x-[60px] flex flex-col"
       id="optimized-build-card"
-      onMouseOver={(e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        startAnimation();
-      }}
     >
       <div className="feature__visualization relative flex-1 flex items-center justify-center">
         {/* Left-side lines/nodes */}

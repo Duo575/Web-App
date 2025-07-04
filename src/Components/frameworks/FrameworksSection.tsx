@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import FrameworkCard, { type Framework } from "./FrameworkCard";
-import "./FrameworksSection.css";
+// FILE DELETED - This was a duplicate of FrameworksSectionComplete.tsx
+// Main FrameworksSection is in FrameworksSectionComplete.tsx
+// This file was removed during codebase cleanup
 
 // Framework assets
 import logoAstro from "@/assets/icons/astro.svg";

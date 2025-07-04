@@ -18,7 +18,7 @@ export const preloadImages = async (sources: string[]): Promise<void> => {
   try {
     await Promise.all(sources.map(preloadImage));
   } catch (error) {
-    console.warn("Some images failed to preload:", error);
+    // Some images failed to preload, but continue silently
   }
 };
 
