@@ -64,7 +64,7 @@ const About: React.FC = () => {
             💻
           </div>
           <div className="z-10 max-w-2xl">
-            <p className="headtext">Hi, I'm Ali Sanati</p>
+            <p className="headtext">Hi, we are web dev</p>
             <p className="subtext">
               Over the last 4 years, I developed my frontend and backend dev
               skills to deliver dynamic software and web applications.
