@@ -41,9 +41,7 @@ const FeatureSSRSupport: React.FC = () => {
     }
   }, []);
 
-  const startAnimation = () => {
-    setIsCardActive(true);
-  };
+
 
   return (
     <div

@@ -8,7 +8,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Container, ISourceOptions } from "@tsparticles/engine";
+import type { ISourceOptions } from "@tsparticles/engine";
 
 interface ParticlesBackgroundProps {
   className?: string;
@@ -40,7 +40,7 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
+  const particlesLoaded = async (): Promise<void> => {
     // Particles loaded callback - container is ready
   };
 

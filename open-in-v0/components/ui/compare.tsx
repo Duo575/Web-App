@@ -1,21 +1,9 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { SparklesCore } from "@/Components/UI/Sparkles";
-import { AnimatePresence, motion } from "framer-motion";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
-// Temporary fallback icon component until @tabler/icons-react is installed
-const IconDotsVertical = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <circle cx="12" cy="5" r="1"></circle>
-    <circle cx="12" cy="12" r="1"></circle>
-    <circle cx="12" cy="19" r="1"></circle>
-  </svg>
-);
+import { IconDotsVertical } from "@tabler/icons-react";
 
 interface CompareProps {
   firstImage?: string;
@@ -46,7 +34,7 @@ export const Compare = ({
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const [, setIsMouseOver] = useState(false);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -96,7 +84,7 @@ export const Compare = ({
   }
 
   const handleStart = useCallback(
-    (_clientX: number) => {
+    (clientX: number) => {
       if (slideMode === "drag") {
         setIsDragging(true);
       }
@@ -162,10 +150,7 @@ export const Compare = ({
   return (
     <div
       ref={sliderRef}
-      className={cn(
-        "w-full max-w-5xl h-[600px] overflow-hidden mx-auto",
-        className
-      )}
+      className={cn("w-[400px] h-[400px] overflow-hidden", className)}
       style={{
         position: "relative",
         cursor: slideMode === "drag" ? "grab" : "col-resize",
@@ -223,7 +208,7 @@ export const Compare = ({
             >
               <img
                 alt="first image"
-                src={firstImage || "/placeholder.svg"}
+                src={firstImage}
                 className={cn(
                   "absolute inset-0  z-20 rounded-2xl shrink-0 w-full h-full select-none",
                   firstImageClassName

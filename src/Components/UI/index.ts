@@ -13,3 +13,5 @@ export { useMouseEnter } from "./use-mouse-enter";
 export { default as LoadingSpinner } from "./LoadingSpinner";
 export { default as LazyImage } from "./LazyImage";
 export { Compare } from "./Compare";
+export { SparklesCore } from "./Sparkles";
+export { default as CompareDemo } from "./CompareDemo";

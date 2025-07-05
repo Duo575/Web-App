@@ -6,15 +6,12 @@
  */
 
 import { useRef, useEffect, useState } from "react";
-import Card from "./Card";
 import { Globe } from "./Globe";
-import CopyEmailButton from "./CopyEmailButton";
 import FeatureSSRSupport from "./FeatureSSRSupport";
 import FeatureOptimizedBuild from "./FeatureOptimizedBuild";
 import FeatureTypedAPI from "./FeatureTypedAPI";
 
 const About: React.FC = () => {
-  const grid2Container = useRef<HTMLDivElement>(null);
   const aboutSectionRef = useRef<HTMLElement>(null);
   const [visibleGrids, setVisibleGrids] = useState<Set<number>>(new Set());
 

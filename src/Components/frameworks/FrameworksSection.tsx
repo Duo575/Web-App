@@ -2,6 +2,12 @@
 // Main FrameworksSection is in FrameworksSectionComplete.tsx
 // This file was removed during codebase cleanup
 
+import React, { useEffect, useRef, useState, useMemo } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FrameworkCard, { type Framework } from "./FrameworkCard";
+import "./FrameworksSection.css";
+
 // Framework assets
 import logoAstro from "@/assets/icons/astro.svg";
 import logoNuxt from "@/assets/icons/nuxt.svg";
