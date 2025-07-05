@@ -6,10 +6,7 @@
  */
 
 import React, { Suspense } from "react";
-import {
-  StarsBackground,
-  LoadingSpinner,
-} from "@/Components/UI";
+import { StarsBackground, LoadingSpinner } from "@/Components/UI";
 
 import "@/styles/scrollbar.css";
 import ScrollProgressBar from "@/Components/ScrollProgressBar";
