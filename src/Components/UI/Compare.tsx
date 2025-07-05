@@ -225,10 +225,11 @@ export const Compare = ({
                 alt="first image"
                 src={firstImage || "/placeholder.svg"}
                 className={cn(
-                  "absolute inset-0  z-20 rounded-2xl shrink-0 w-full h-full select-none",
+                  "absolute inset-0 z-20 rounded-2xl shrink-0 w-full h-full select-none object-cover",
                   firstImageClassName
                 )}
                 draggable={false}
+                loading="eager"
               />
             </motion.div>
           ) : null}
@@ -239,12 +240,13 @@ export const Compare = ({
         {secondImage ? (
           <motion.img
             className={cn(
-              "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
+              "absolute top-0 left-0 z-[19] rounded-2xl w-full h-full select-none object-cover",
               secondImageClassname
             )}
             alt="second image"
             src={secondImage}
             draggable={false}
+            loading="eager"
           />
         ) : null}
       </AnimatePresence>

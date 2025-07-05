@@ -7,11 +7,13 @@ export default function CompareDemo() {
       <div className="ml-[7.5%]">
         <Compare
           firstImage="/code-snippet.png"
-          secondImage="/website-look.png"
+          secondImage="/website_view.webp"
           firstImageClassName="object-cover object-left-top"
           secondImageClassname="object-cover object-left-top"
           className="h-[250px] w-[240px] md:h-[500px] md:w-[600px]"
           slideMode="hover"
+          initialSliderPercentage={50}
+          showHandlebar={true}
         />
       </div>
     </div>
