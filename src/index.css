@@ -378,24 +378,24 @@ body,
   .animate-slide-from-left {
     transform: translateX(-50px);
     opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
-                opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     will-change: transform, opacity;
   }
 
   .animate-slide-from-right {
     transform: translateX(50px);
     opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
-                opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     will-change: transform, opacity;
   }
 
   .animate-fade-in {
     transform: translateY(30px);
     opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
-                opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     will-change: transform, opacity;
   }
 
@@ -437,82 +437,94 @@ body,
   [data-grid="7"] {
     transition-delay: 0.6s;
   }
-  
+
   /* Responsive adjustments for animations and layout */
   @media (max-width: 768px) {
     .animate-slide-from-left,
     .animate-slide-from-right {
       transform: translateY(30px);
     }
-    
+
     .animate-visible {
       transform: translateY(0);
     }
-    
+
     /* Ensure cards maintain proper height on mobile */
-    .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7 {
+    .grid-1,
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .grid-5,
+    .grid-6,
+    .grid-7 {
       min-height: 22rem;
     }
-    
+
     /* Adjust globe positioning on smaller screens */
     .grid-3 .Globe {
       transform-origin: top left;
     }
   }
-  
+
   /* Additional responsive breakpoints */
   @media (min-width: 600px) and (max-width: 1024px) {
     /* Tablet-specific adjustments */
-    .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7 {
+    .grid-1,
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .grid-5,
+    .grid-6,
+    .grid-7 {
       min-height: 24rem;
     }
   }
-  
+
   /* Ensure feature cards maintain their aspect ratio and content positioning */
   .feature-card {
     @apply h-full flex flex-col;
     position: relative;
   }
-  
+
   .feature__visualization {
     @apply flex-1 flex items-center justify-center relative;
     min-height: 180px;
     overflow: hidden;
   }
-  
+
   /* Prevent content overflow */
   .about-card {
     @apply flex flex-col;
     position: relative;
   }
-  
+
   /* Ensure Globe component remains untouched */
   .Globe {
     position: relative;
     z-index: 5;
   }
-  
+
   /* Specific styling for feature components */
   #ssr-support .feature__visualization svg {
     max-width: 100%;
     height: auto;
   }
-  
+
   #optimized-build-card .left-lines,
   #optimized-build-card .right-lines {
     max-width: 45%;
   }
-  
+
   #fully-typed-api .ide {
     max-width: 100%;
     overflow: hidden;
   }
-  
+
   /* Tooltip positioning */
   #fully-typed-api .tooltip {
     max-width: 100%;
   }
-  
+
   /* Ensure consistent card heights */
   @media (min-width: 768px) {
     .feature__meta {
@@ -864,12 +876,10 @@ body,
     transition: opacity 0.3s ease;
     will-change: opacity;
     opacity: 0.5;
-    transition: opacity 0.3s ease;
   }
 
   .bolt__color {
     opacity: 0.05;
-    transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
   }
 
@@ -898,50 +908,203 @@ body,
     }
 
     .bolt__highlight {
-      animation: bolt-highlight-flash 1.5s ease forward8;
       animation: bolt-highlight-flash 1.5s ease forwards;
     }
   }
 }
 
+/* Seamless bolt glow extension */
+#optimized-build-card {
+  position: relative;
+  overflow: visible;
+}
+
+#optimized-build-card .feature__visualization {
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#optimized-build-card .feature__meta {
+  position: relative;
+  margin-top: 0;
+  padding-top: 0;
+  overflow: visible;
+}
+
+/* Extended glow effect that covers the gap */
+#optimized-build-card .bolt {
+  position: relative;
+  outline: none !important;
+  border: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  -moz-backface-visibility: hidden !important;
+  transform-style: flat !important;
+  -webkit-transform-style: flat !important;
+}
+
+#optimized-build-card .bolt:hover,
+#optimized-build-card .bolt:focus,
+#optimized-build-card .bolt:active {
+  outline: none !important;
+  border: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+#optimized-build-card .bolt *,
+#optimized-build-card .bolt *:hover,
+#optimized-build-card .bolt *:focus {
+  outline: none !important;
+  border: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+/* Remove all possible browser default styling */
+#optimized-build-card .bolt,
+#optimized-build-card .bolt * {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-focus-ring-color: transparent !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+/* Force remove any browser inspection highlights */
+#optimized-build-card .bolt::-webkit-selection,
+#optimized-build-card .bolt *::-webkit-selection {
+  background: transparent !important;
+}
+
+#optimized-build-card .bolt::selection,
+#optimized-build-card .bolt *::selection {
+  background: transparent !important;
+}
+
+/* Prevent any hover/focus states completely */
+#optimized-build-card .bolt {
+  cursor: default !important;
+  will-change: auto !important;
+  transform: none !important;
+}
+
+#optimized-build-card .bolt:hover,
+#optimized-build-card .bolt:focus,
+#optimized-build-card .bolt:active,
+#optimized-build-card .bolt[tabindex]:focus {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Prevent parent hover effects from affecting the bolt */
+#optimized-build-card:hover .bolt,
+#optimized-build-card:focus .bolt,
+#optimized-build-card:active .bolt,
+.about-card:hover .bolt,
+.feature-card:hover .bolt {
+  transform: none !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Override any global SVG styles - only outline and border effects */
+#optimized-build-card .bolt path,
+#optimized-build-card .bolt g,
+#optimized-build-card .bolt rect,
+#optimized-build-card .bolt circle {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#optimized-build-card .bolt path:hover,
+#optimized-build-card .bolt g:hover,
+#optimized-build-card .bolt rect:hover,
+#optimized-build-card .bolt circle:hover {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#optimized-build-card .bolt::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 120px;
+  background: radial-gradient(
+    ellipse at center top,
+    rgba(255, 227, 88, 0.15) 0%,
+    rgba(255, 221, 53, 0.1) 30%,
+    rgba(255, 168, 0, 0.05) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#optimized-build-card .meta__title {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+/* Active state - seamless glow */
+#optimized-build-card .bolt.active::after {
+  opacity: 1;
+  animation: seamless-glow-pulse 2s ease-in-out infinite;
+}
+
 @keyframes bolt-edge-entrance {
   0% {
+    opacity: 0.1;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  30% {
     opacity: 0.9;
   }
   40% {
-    opacity: 0.8.1;
-  }
-  10% {
-    opacity: 0.8;
-  }
-  200% {
-    opacity: 2;
-  }
-  000% {
-    opacity: 0.3;
-  }
-  70% {
-    opacity: 0.1;
-  }
-  90% {
     opacity: 0.7;
+  }
+  50% {
+    opacity: 0.8;
   }
   60% {
     opacity: 0.5;
   }
   70% {
-    opacity: 0.8;
+    opacity: 0.9;
   }
   80% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
-  40% {
-    opacity: 0.5;
+  90% {
+    opacity: 0.8;
   }
-  900% {
-    opacity: 1;
-  }
-  0100% {
+  100% {
     opacity: 0.7;
   }
 }
@@ -977,39 +1140,25 @@ body,
   }
 }
 
-@keyframes bolt-highlight-flash {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  40% {
-    opacity: 0.3;
-  }
-  60% {
-    opacity: 0.9;
-  }
-  80% {
-    opacity: 0.05;
+@keyframes text-outline-glow {
+  0%,
+  100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 4px #ffe358);
   }
   50% {
-    opacity: 0.7;
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #ffe358);
   }
-  60% {
-    opacity: 0.2;
-  }
-  70% {
-    opacity: 0.6;
-  }
-  80% {
-    opacity: 0.3;
-  }
-  90% {
-    opacity: 0.9;
-  }
+}
+
+@keyframes text-glow-pulse {
+  0%,
   100% {
-    opacity: 0.5;
+    text-shadow: 0 0 10px #ffe358, 0 0 20px #ffdd35, 0 0 30px #ffa800;
+  }
+  50% {
+    text-shadow: 0 0 15px #ffe358, 0 0 25px #ffdd35, 0 0 35px #ffa800;
   }
 }
 
@@ -1369,5 +1518,17 @@ body,
     to {
       transform: translateY(calc(-100% - var(--gap)));
     }
+  }
+}
+
+@keyframes seamless-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
   }
 }
