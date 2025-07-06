@@ -77,11 +77,11 @@ export default function HeroSection() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
           {/* Left Side - Hero Title with Animation */}
-          <div className="text-left space-y-8 flex flex-col justify-center min-h-[60vh]">
-            <div className="space-y-6">
+          <div className="text-left space-y-6 md:space-y-8 flex flex-col justify-center min-h-[60vh] lg:pr-8">
+            <div className="space-y-4 md:space-y-6">
               {/* Animated Title */}
               <motion.h1
-                className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight hero-title"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-4 leading-tight hero-title"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -130,7 +130,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.p
-                  className="text-xl md:text-2xl text-gray-300 max-w-2xl hero-subtitle"
+                  className="text-lg sm:text-xl lg:text-lg xl:text-xl 2xl:text-2xl text-gray-300 hero-subtitle leading-relaxed max-w-none lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
@@ -160,7 +160,7 @@ export default function HeroSection() {
 
               {/* Animated Decorative Line */}
               <motion.div
-                className="w-20 h-1 hero-gradient-line rounded-full"
+                className="w-16 sm:w-20 h-1 hero-gradient-line rounded-full"
                 initial={{ width: 0, opacity: 0 }}
                 animate={{ width: 80, opacity: 1 }}
                 transition={{

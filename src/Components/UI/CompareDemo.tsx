@@ -26,7 +26,7 @@ export default function CompareDemo() {
       <div className="flex justify-center items-center">
         <Compare
           firstImage="/code-snippet.png"
-          secondImage="/website_view.webp"
+          secondImage="/website-design.png"
           firstImageClassName="object-cover object-left-top w-full h-full"
           secondImageClassname="object-cover object-left-top w-full h-full"
           className="h-[250px] w-[230px] md:h-[350px] md:w-[500px] lg:h-[470px] lg:w-[680px] rounded-2xl overflow-hidden"
