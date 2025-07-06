@@ -49,11 +49,11 @@ const About: React.FC = () => {
       id="about"
     >
       <h2 className="text-heading">About Us</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[27rem] mt-12">
+      <div className="grid grid-cols-1 gap-6 sm:gap-4 md:grid-cols-6 mt-12">
         {/* Grid 1 - Personal Introduction (Wider) */}
         <div
           data-grid="1"
-          className={`flex items-end grid-hover-background-border grid-1 relative overflow-hidden animate-slide-from-left ${
+          className={`flex items-end about-card grid-1 relative overflow-hidden animate-slide-from-left ${
             visibleGrids.has(1) ? "animate-visible" : "animate-hidden"
           }`}
         >
@@ -73,7 +73,7 @@ const About: React.FC = () => {
         {/* Grid 3 - Location & Time Zone (Moved to first row) */}
         <div
           data-grid="3"
-          className={`grid-hover-white-border grid-3 relative animate-slide-from-right ${
+          className={`about-card grid-3 relative animate-slide-from-right ${
             visibleGrids.has(3) ? "animate-visible" : "animate-hidden"
           }`}
         >
@@ -91,7 +91,7 @@ const About: React.FC = () => {
         {/* Grid 5 - SSR Support Feature (Moved up to row 2) */}
         <div
           data-grid="5"
-          className={`grid-hover-white-border grid-5 animate-slide-from-left ${
+          className={`about-card grid-5 animate-slide-from-left ${
             visibleGrids.has(5) ? "animate-visible" : "animate-hidden"
           }`}
         >
@@ -101,7 +101,7 @@ const About: React.FC = () => {
         {/* Grid 6 - Optimized Build Feature (Moved up to row 2) */}
         <div
           data-grid="6"
-          className={`grid-hover-white-border grid-6 animate-slide-from-right ${
+          className={`about-card grid-6 animate-slide-from-right ${
             visibleGrids.has(6) ? "animate-visible" : "animate-hidden"
           }`}
         >
@@ -111,7 +111,7 @@ const About: React.FC = () => {
         {/* Grid 7 - Typed API Feature (Moved up to row 3) */}
         <div
           data-grid="7"
-          className={`grid-hover-white-border grid-7 animate-fade-in ${
+          className={`about-card grid-7 animate-fade-in ${
             visibleGrids.has(7) ? "animate-visible" : "animate-hidden"
           }`}
         >

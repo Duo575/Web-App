@@ -12,16 +12,11 @@ const FeatureTypedAPI: React.FC = () => {
   const [isCardActive, setIsCardActive] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Slide in animation when component mounts
+  // Initialize animation when component mounts
   useEffect(() => {
-    if (cardRef.current) {
-      gsap.set(cardRef.current, { x: 60, opacity: 0 });
-      gsap.to(cardRef.current, {
-        x: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-      });
+    // Auto-start animation on desktop
+    if (window.innerWidth >= 1024) {
+      startAnimation();
     }
   }, []);
 
@@ -32,7 +27,7 @@ const FeatureTypedAPI: React.FC = () => {
   return (
     <div
       ref={cardRef}
-      className="feature-card md:transform md:translate-x-[60px] flex flex-col"
+      className="feature-card"
       id="fully-typed-api"
       onMouseOver={(e) => {
         e.stopPropagation();

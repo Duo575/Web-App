@@ -15,14 +15,6 @@ const FeatureSSRSupport: React.FC = () => {
   // Slide in animation when component mounts and start the feature animation
   useEffect(() => {
     if (cardRef.current) {
-      gsap.set(cardRef.current, { x: -60, opacity: 0 });
-      gsap.to(cardRef.current, {
-        x: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-      });
-
       // Auto-start the animation
       setIsCardActive(true);
 
@@ -46,7 +38,7 @@ const FeatureSSRSupport: React.FC = () => {
   return (
     <div
       ref={cardRef}
-      className="feature-card md:transform md:-translate-x-[60px] max-w-full flex flex-col"
+      className="feature-card max-w-full"
       id="ssr-support"
     >
       <div

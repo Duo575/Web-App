@@ -289,33 +289,58 @@ body,
   /* Grid layouts for About section */
   .grid-1 {
     @apply col-span-1 md:col-span-4 p-6 rounded-xl;
+    min-height: 27rem;
   }
 
   .grid-2 {
     @apply col-span-1 md:col-span-3 p-6 rounded-xl;
+    min-height: 27rem;
   }
 
   .grid-3 {
     @apply col-span-1 md:col-span-2 p-6 rounded-xl;
+    min-height: 27rem;
   }
 
   .grid-4 {
     @apply col-span-1 md:col-span-4 p-6 rounded-xl;
+    min-height: 27rem;
   }
 
   .grid-5 {
     @apply col-span-1 md:col-span-2 p-6 rounded-xl;
+    min-height: 27rem;
   }
 
   .grid-6 {
     @apply col-span-1 md:col-span-2 p-6 rounded-xl;
+    min-height: 27rem;
   }
 
   .grid-7 {
     @apply col-span-1 md:col-span-2 p-6 rounded-xl;
+    min-height: 27rem;
   }
 
-  /* Grid background colors */
+  /* About Card Styles - Unified card styling with improved hover effect */
+  .about-card {
+    @apply bg-gradient-to-br from-black/80 to-gray-900/60;
+    @apply border border-transparent;
+    @apply shadow-lg;
+    @apply backdrop-blur-sm;
+    @apply transition-all duration-200 ease-in-out;
+    @apply h-full;
+    @apply overflow-hidden;
+    @apply relative;
+  }
+
+  /* Single, instantaneous hover effect */
+  .about-card:hover {
+    @apply border-white/50;
+    @apply shadow-[0_0_8px_1px_rgba(255,255,255,0.15)];
+  }
+
+  /* Legacy grid styles - kept for backward compatibility */
   .grid-default-color {
     @apply bg-gradient-to-br from-black/50 to-black/30;
     @apply border border-white hover:border-secondary;
@@ -340,51 +365,38 @@ body,
     @apply backdrop-blur-sm;
   }
 
-  /* Hover-Only Border Effects for About Section */
+  /* Legacy hover effects - kept for backward compatibility */
   .grid-hover-background-border {
-    @apply bg-gradient-to-br from-black/80 to-gray-900/60;
-    @apply border border-transparent;
-    @apply shadow-lg;
-    @apply transition-all duration-75 ease-out;
-    @apply backdrop-blur-sm;
-  }
-
-  .grid-hover-background-border:hover {
-    @apply border-gray-700/70;
-    box-shadow: 0 0 10px rgba(75, 85, 99, 0.2), 0 0 20px rgba(75, 85, 99, 0.1);
+    @apply about-card;
   }
 
   .grid-hover-white-border {
-    @apply bg-gradient-to-br from-black/80 to-gray-900/60;
-    @apply border border-transparent;
-    @apply shadow-lg;
-    @apply transition-all duration-75 ease-out;
-    @apply backdrop-blur-sm;
-  }
-
-  .grid-hover-white-border:hover {
-    @apply border-white/50;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15),
-      0 0 20px rgba(255, 255, 255, 0.08);
+    @apply about-card;
   }
 
   /* About Section Animations */
   .animate-slide-from-left {
-    transform: translateX(-100px);
+    transform: translateX(-50px);
     opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, opacity;
   }
 
   .animate-slide-from-right {
-    transform: translateX(100px);
+    transform: translateX(50px);
     opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, opacity;
   }
 
   .animate-fade-in {
     transform: translateY(30px);
     opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, opacity;
   }
 
   .animate-visible {
@@ -424,6 +436,88 @@ body,
 
   [data-grid="7"] {
     transition-delay: 0.6s;
+  }
+  
+  /* Responsive adjustments for animations and layout */
+  @media (max-width: 768px) {
+    .animate-slide-from-left,
+    .animate-slide-from-right {
+      transform: translateY(30px);
+    }
+    
+    .animate-visible {
+      transform: translateY(0);
+    }
+    
+    /* Ensure cards maintain proper height on mobile */
+    .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7 {
+      min-height: 22rem;
+    }
+    
+    /* Adjust globe positioning on smaller screens */
+    .grid-3 .Globe {
+      transform-origin: top left;
+    }
+  }
+  
+  /* Additional responsive breakpoints */
+  @media (min-width: 600px) and (max-width: 1024px) {
+    /* Tablet-specific adjustments */
+    .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7 {
+      min-height: 24rem;
+    }
+  }
+  
+  /* Ensure feature cards maintain their aspect ratio and content positioning */
+  .feature-card {
+    @apply h-full flex flex-col;
+    position: relative;
+  }
+  
+  .feature__visualization {
+    @apply flex-1 flex items-center justify-center relative;
+    min-height: 180px;
+    overflow: hidden;
+  }
+  
+  /* Prevent content overflow */
+  .about-card {
+    @apply flex flex-col;
+    position: relative;
+  }
+  
+  /* Ensure Globe component remains untouched */
+  .Globe {
+    position: relative;
+    z-index: 5;
+  }
+  
+  /* Specific styling for feature components */
+  #ssr-support .feature__visualization svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  #optimized-build-card .left-lines,
+  #optimized-build-card .right-lines {
+    max-width: 45%;
+  }
+  
+  #fully-typed-api .ide {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Tooltip positioning */
+  #fully-typed-api .tooltip {
+    max-width: 100%;
+  }
+  
+  /* Ensure consistent card heights */
+  @media (min-width: 768px) {
+    .feature__meta {
+      min-height: 80px;
+    }
   }
 
   /* Contact Form Styles */
@@ -481,7 +575,7 @@ body,
     border-radius: 32px;
     padding: 3px;
     position: relative;
-    box-shadow: rgba(96, 75, 74, 0.2) 0px 70px 30px -50px;
+    @apply shadow-[0px_70px_30px_-50px_rgba(96,75,74,0.2)];
     transition: all 0.9s cubic-bezier(0.34, 1.36, 0.64, 1); /* Slower, smoother bounce */
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
@@ -544,7 +638,7 @@ body,
     top: 80%;
     border-radius: 29px;
     z-index: 2;
-    box-shadow: rgba(96, 75, 74, 0.2) 0px 5px 5px 0px inset;
+    @apply shadow-[inset_0px_5px_5px_0px_rgba(96,75,74,0.2)];
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
   }
@@ -616,7 +710,7 @@ body,
     border-radius: 20px;
     font-size: 0.6rem;
     padding: 0.4rem 0.6rem;
-    box-shadow: rgba(168, 85, 247, 0.2) 0px 5px 5px 0px;
+    @apply shadow-[0px_5px_5px_0px_rgba(168,85,247,0.2)];
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -624,7 +718,7 @@ body,
   .profile-card-button:hover {
     background: #a855f7;
     color: white;
-    box-shadow: rgba(168, 85, 247, 0.4) 0px 8px 12px 0px;
+    @apply shadow-[0px_8px_12px_0px_rgba(168,85,247,0.4)];
     transform: translateY(-2px);
   }
 
@@ -648,7 +742,7 @@ body,
     border-radius: 50%;
     z-index: 3;
     border: 7px solid rgb(255, 234, 216);
-    box-shadow: rgba(96, 75, 74, 0.2) 0px 5px 5px 0px;
+    @apply shadow-[0px_5px_5px_0px_rgba(96,75,74,0.2)];
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s,
       z-index 0.4s ease-in-out 0s;
   }
