@@ -6,6 +6,7 @@
  */
 
 import { useState, useRef, useEffect } from "react";
+import { DayPicker } from "react-day-picker";
 import {
   Calendar,
   Clock,
@@ -15,8 +16,10 @@ import {
   MessageSquare,
   Send,
   Shield,
+  ChevronDown,
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
+import "react-day-picker/dist/style.css";
 
 // Form data interface
 interface ContactFormData {
@@ -87,6 +90,8 @@ export function ContactSection() {
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
   // Add/remove modal-open class to body when modal state changes
   useEffect(() => {
@@ -101,7 +106,29 @@ export function ContactSection() {
       document.body.classList.remove("modal-open");
     };
   }, [showPrivacyModal]);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const calendarRef = useRef<HTMLDivElement>(null);
+
+  // Handle click outside to close calendar
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        calendarRef.current &&
+        !calendarRef.current.contains(event.target as Node)
+      ) {
+        setShowCalendar(false);
+      }
+    };
+
+    if (showCalendar) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showCalendar]);
 
   // Handle input changes
   const handleInputChange = (
@@ -156,6 +183,27 @@ export function ContactSection() {
     // More detailed validation for days in month
     const daysInMonth = new Date(year, month, 0).getDate();
     return day <= daysInMonth;
+  };
+
+  // Handle calendar date selection
+  const handleCalendarDateSelect = (date: Date | undefined) => {
+    if (date) {
+      // Format date as dd/mm/yyyy
+      const day = date.getDate().toString().padStart(2, "0");
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const year = date.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
+
+      setSelectedDate(date);
+      handleInputChange("date", formattedDate);
+      setShowCalendar(false);
+    }
+  };
+
+  // Format date for display
+  const formatDateForDisplay = (dateString: string): string => {
+    if (!dateString) return "";
+    return dateString;
   };
 
   // Handle form submission
@@ -429,20 +477,87 @@ export function ContactSection() {
               {/* Date and Time Scheduling */}
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Date Picker */}
-                <div className="space-y-2">
+                <div className="space-y-2 relative">
                   <label className="flex items-center gap-2 text-sm font-medium text-white">
                     <Calendar size={16} />
                     Select Date *
                   </label>
-                  <input
-                    type="text"
-                    value={formData.date}
-                    onChange={handleDateChange}
-                    className="contact-input"
-                    placeholder="Enter your date (dd/mm/yyyy)"
-                    required
-                    maxLength={10}
-                  />
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={formData.date}
+                      onChange={handleDateChange}
+                      className="contact-input pr-10"
+                      placeholder="Click calendar or type dd/mm/yyyy"
+                      required
+                      maxLength={10}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowCalendar(!showCalendar)}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-colors"
+                    >
+                      <Calendar size={16} />
+                    </button>
+                  </div>
+
+                  {/* Calendar Dropdown */}
+                  {showCalendar && (
+                    <div
+                      ref={calendarRef}
+                      className="absolute top-full left-0 mt-1 z-50 bg-black border border-white/20 rounded-xl shadow-2xl p-2 scale-75 origin-top-left"
+                    >
+                      <DayPicker
+                        mode="single"
+                        selected={selectedDate}
+                        onSelect={handleCalendarDateSelect}
+                        disabled={(date) => date < new Date()}
+                        modifiers={{
+                          selected: selectedDate,
+                        }}
+                        modifiersStyles={{
+                          selected: {
+                            backgroundColor: "#3b82f6",
+                            color: "white",
+                          },
+                        }}
+                        className="calendar-custom"
+                        styles={{
+                          day: {
+                            color: "white",
+                            borderRadius: "4px",
+                            fontSize: "10px",
+                            padding: "4px",
+                            margin: "1px",
+                          },
+                          head_cell: {
+                            color: "white",
+                            fontSize: "8px",
+                            fontWeight: "bold",
+                          },
+                          nav_button: {
+                            color: "white",
+                            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                            border: "none",
+                            borderRadius: "3px",
+                            padding: "2px",
+                          },
+                          nav_button_previous: {
+                            color: "white",
+                          },
+                          nav_button_next: {
+                            color: "white",
+                          },
+                          caption: {
+                            color: "white",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                          },
+                        }}
+                      />
+                    </div>
+                  )}
+
                   {formData.date && !isValidDate(formData.date) && (
                     <p className="text-red-400 text-sm mt-1">
                       Please enter a valid date in dd/mm/yyyy format
