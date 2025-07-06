@@ -117,12 +117,58 @@ export function ContactSection() {
     }));
   };
 
+  // Handle date input formatting (dd/mm/yyyy)
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, ""); // Remove non-digits
+
+    // Format as dd/mm/yyyy
+    if (value.length >= 2) {
+      value = value.substring(0, 2) + "/" + value.substring(2);
+    }
+    if (value.length >= 5) {
+      value = value.substring(0, 5) + "/" + value.substring(5, 9);
+    }
+
+    // Limit to 10 characters (dd/mm/yyyy)
+    if (value.length > 10) {
+      value = value.substring(0, 10);
+    }
+
+    handleInputChange("date", value);
+  };
+
+  // Validate date format (dd/mm/yyyy)
+  const isValidDate = (dateString: string): boolean => {
+    const regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+    const match = dateString.match(regex);
+
+    if (!match) return false;
+
+    const day = parseInt(match[1], 10);
+    const month = parseInt(match[2], 10);
+    const year = parseInt(match[3], 10);
+
+    // Basic validation
+    if (month < 1 || month > 12) return false;
+    if (day < 1 || day > 31) return false;
+    if (year < new Date().getFullYear()) return false;
+
+    // More detailed validation for days in month
+    const daysInMonth = new Date(year, month, 0).getDate();
+    return day <= daysInMonth;
+  };
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.privacyAccepted) {
       alert("Please accept the Privacy Policy to continue.");
+      return;
+    }
+
+    if (formData.date && !isValidDate(formData.date)) {
+      alert("Please enter a valid date in dd/mm/yyyy format.");
       return;
     }
 
@@ -226,7 +272,6 @@ export function ContactSection() {
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === "Escape" && showPrivacyModal) {
-
         setShowPrivacyModal(false);
       }
     };
@@ -390,12 +435,19 @@ export function ContactSection() {
                     Select Date *
                   </label>
                   <input
-                    type="date"
+                    type="text"
                     value={formData.date}
-                    onChange={(e) => handleInputChange("date", e.target.value)}
+                    onChange={handleDateChange}
                     className="contact-input"
+                    placeholder="Enter your date (dd/mm/yyyy)"
                     required
+                    maxLength={10}
                   />
+                  {formData.date && !isValidDate(formData.date) && (
+                    <p className="text-red-400 text-sm mt-1">
+                      Please enter a valid date in dd/mm/yyyy format
+                    </p>
+                  )}
                 </div>
 
                 {/* Time Slot Selector */}
@@ -471,7 +523,6 @@ export function ContactSection() {
                     <button
                       type="button"
                       onClick={() => {
-
                         setShowPrivacyModal(true);
                       }}
                       className="text-blue-400 hover:text-blue-300 underline"
