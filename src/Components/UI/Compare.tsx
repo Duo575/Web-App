@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { SparklesCore } from "@/Components/UI/Sparkles";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 // Temporary fallback icon component until @tabler/icons-react is installed
@@ -89,8 +89,9 @@ export const Compare = ({
     if (slideMode === "hover") {
       setSliderXPercent(initialSliderPercentage);
     }
-    if (slideMode === "drag") {
-      setIsDragging(false);
+    if (slideMode === "drag" && isDragging) {
+      // Don't reset dragging state on mouse leave - let global handlers manage it
+      // This prevents the glitch when dragging outside the component
     }
     startAutoplay();
   }
@@ -107,8 +108,10 @@ export const Compare = ({
   const handleEnd = useCallback(() => {
     if (slideMode === "drag") {
       setIsDragging(false);
+      // Return to original position when drag ends
+      setSliderXPercent(initialSliderPercentage);
     }
-  }, [slideMode]);
+  }, [slideMode, initialSliderPercentage]);
 
   const handleMove = useCallback(
     (clientX: number) => {
@@ -126,7 +129,10 @@ export const Compare = ({
   );
 
   const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => handleStart(e.clientX),
+    (e: React.MouseEvent) => {
+      e.preventDefault(); // Prevent text selection and other default behaviors
+      handleStart(e.clientX);
+    },
     [handleStart]
   );
   const handleMouseUp = useCallback(() => handleEnd(), [handleEnd]);
@@ -134,6 +140,24 @@ export const Compare = ({
     (e: React.MouseEvent) => handleMove(e.clientX),
     [handleMove]
   );
+
+  // Global mouse event handlers to fix drag issues when mouse leaves component
+  useEffect(() => {
+    if (slideMode === "drag" && isDragging) {
+      const handleGlobalMouseMove = (e: MouseEvent) => handleMove(e.clientX);
+      const handleGlobalMouseUp = () => handleEnd();
+
+      // Add global listeners
+      document.addEventListener("mousemove", handleGlobalMouseMove);
+      document.addEventListener("mouseup", handleGlobalMouseUp);
+
+      // Cleanup
+      return () => {
+        document.removeEventListener("mousemove", handleGlobalMouseMove);
+        document.removeEventListener("mouseup", handleGlobalMouseUp);
+      };
+    }
+  }, [slideMode, isDragging, handleMove, handleEnd]);
 
   const handleTouchStart = useCallback(
     (e: React.TouchEvent) => {
@@ -163,12 +187,21 @@ export const Compare = ({
     <div
       ref={sliderRef}
       className={cn(
-        "w-full max-w-5xl h-[600px] overflow-hidden mx-auto",
+        "w-full h-full overflow-hidden mx-auto relative",
         className
       )}
       style={{
         position: "relative",
-        cursor: slideMode === "drag" ? "grab" : "col-resize",
+        cursor:
+          slideMode === "drag"
+            ? isDragging
+              ? "grabbing"
+              : "grab"
+            : "col-resize",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        MozUserSelect: "none",
+        msUserSelect: "none",
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={mouseLeaveHandler}
@@ -189,18 +222,6 @@ export const Compare = ({
           }}
           transition={{ duration: 0 }}
         >
-          <div className="w-36 h-full [mask-image:radial-gradient(100px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-indigo-400 via-transparent to-transparent z-20 opacity-50" />
-          <div className="w-10 h-1/2 [mask-image:radial-gradient(50px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-cyan-400 via-transparent to-transparent z-10 opacity-100" />
-          <div className="w-10 h-3/4 top-1/2 -translate-y-1/2 absolute -right-10 [mask-image:radial-gradient(100px_at_left,white,transparent)]">
-            <MemoizedSparklesCore
-              background="transparent"
-              minSize={0.4}
-              maxSize={1}
-              particleDensity={1200}
-              className="w-full h-full"
-              particleColor="#FFFFFF"
-            />
-          </div>
           {showHandlebar && (
             <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute   flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
               <IconDotsVertical className="h-4 w-4 text-black" />
@@ -223,13 +244,17 @@ export const Compare = ({
             >
               <img
                 alt="first image"
-                src={firstImage || "/placeholder.svg"}
+                src={firstImage}
                 className={cn(
                   "absolute inset-0 z-20 rounded-2xl shrink-0 w-full h-full select-none object-cover",
                   firstImageClassName
                 )}
                 draggable={false}
                 loading="eager"
+                onError={(e) => {
+                  console.error("Error loading first image:", firstImage);
+                  e.currentTarget.style.display = "none";
+                }}
               />
             </motion.div>
           ) : null}
@@ -247,11 +272,13 @@ export const Compare = ({
             src={secondImage}
             draggable={false}
             loading="eager"
+            onError={(e) => {
+              console.error("Error loading second image:", secondImage);
+              e.currentTarget.style.display = "none";
+            }}
           />
         ) : null}
       </AnimatePresence>
     </div>
   );
 };
-
-const MemoizedSparklesCore = React.memo(SparklesCore);

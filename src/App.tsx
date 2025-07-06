@@ -9,6 +9,7 @@ import React, { Suspense } from "react";
 import { StarsBackground, LoadingSpinner } from "@/Components/UI";
 
 import "@/styles/scrollbar.css";
+import "@/styles/parallax.css";
 import ScrollProgressBar from "@/Components/ScrollProgressBar";
 
 // Lazy load heavy components for better performance
@@ -66,24 +67,6 @@ function App() {
         minTwinkleSpeed={0.3}
         maxTwinkleSpeed={1.0}
       />
-      {/* Navigation Header */}
-      <header className="fixed top-0 w-full z-50 content-above-particles">
-        <nav className="flex justify-center items-center py-1 px-4">
-          <div className="nav-glass-card">
-            <div className="flex space-x-4 md:space-x-6">
-              {["Home", "About", "Projects", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="nav-link transition-colors duration-300"
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-          </div>
-        </nav>
-      </header>
 
       {/* Main Content */}
       <main className="content-above-particles">

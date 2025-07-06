@@ -1,15 +1,31 @@
 import { CompareDemo } from "@/Components/UI";
 import { ShootingStars, StarsBackground } from "@/Components/UI";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
+  const handleNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section
       id="home"
-      className="min-h-screen relative overflow-hidden flex items-center justify-center"
+      className="min-h-screen relative overflow-hidden flex flex-col justify-center"
       style={{ backgroundColor: "#000000" }}
     >
-      {/* Night Sky Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Night Sky Background with Animation */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+      >
         <ShootingStars
           starColor="#ffffff"
           trailColor="#ffffff"
@@ -25,45 +41,143 @@ export default function HeroSection() {
           minTwinkleSpeed={0.3}
           maxTwinkleSpeed={1.2}
         />
-      </div>
+      </motion.div>
+
+      {/* Navigation */}
+      <motion.header
+        className="absolute top-0 w-full z-50 pt-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+      >
+        <nav className="flex justify-center items-center py-2 px-2 sm:py-3 sm:px-4">
+          <div className="nav-glass-card">
+            <div className="flex space-x-2 sm:space-x-4 md:space-x-6">
+              {["Home", "About", "Projects", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="nav-link transition-colors duration-300 text-sm sm:text-base px-2 sm:px-3 py-1 sm:py-2"
+                  onClick={(e) => handleNavigation(e, item.toLowerCase())}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        </nav>
+      </motion.header>
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full py-8">
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-4 w-full py-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
-          {/* Left Side - Hero Title and CTA */}
-          <div className="text-left space-y-8">
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                Welcome to My <span className="text-blue-400">Portfolio</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-300 max-w-2xl">
-                Interactive comparison showcasing my development journey
-              </p>
-            </div>
+          {/* Left Side - Hero Title with Animation */}
+          <div className="text-left space-y-8 flex flex-col justify-center min-h-[60vh]">
+            <div className="space-y-6">
+              {/* Animated Title */}
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight hero-title"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: 0.2,
+                }}
+              >
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: 0.5,
+                  }}
+                >
+                  Welcome to My{" "}
+                </motion.span>
+                <motion.span
+                  className="hero-portfolio-text inline-block"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: 0.8,
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.6))",
+                  }}
+                >
+                  Portfolio
+                </motion.span>
+              </motion.h1>
 
-            {/* Call to Action */}
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#projects"
-                className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+              {/* Animated Subtitle with Typewriter Effect */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: 1.2,
+                }}
               >
-                View My Work
-              </a>
-              <a
-                href="#contact"
-                className="border-2 border-blue-600 text-blue-400 px-8 py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-colors"
-              >
-                Get In Touch
-              </a>
+                <motion.p
+                  className="text-xl md:text-2xl text-gray-300 max-w-2xl hero-subtitle"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 1.5,
+                  }}
+                >
+                  {"Interactive comparison showcasing my development journey"
+                    .split(" ")
+                    .map((word, index) => (
+                      <motion.span
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: 1.8 + index * 0.1,
+                          ease: "easeOut",
+                        }}
+                        className="inline-block mr-2"
+                      >
+                        {word}
+                      </motion.span>
+                    ))}
+                </motion.p>
+              </motion.div>
+
+              {/* Animated Decorative Line */}
+              <motion.div
+                className="w-20 h-1 hero-gradient-line rounded-full"
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: 80, opacity: 1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 2.5,
+                  ease: "easeOut",
+                }}
+              />
             </div>
           </div>
 
-          {/* Right Side - Compare Demo Component */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right Side - Compare Demo Component with Animation */}
+          <div className="flex justify-center lg:justify-end mt-4 lg:mt-8">
             <CompareDemo />
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
