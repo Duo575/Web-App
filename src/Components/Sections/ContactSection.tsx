@@ -16,7 +16,7 @@ import {
   MessageSquare,
   Send,
   Shield,
-  ChevronDown,
+  // ChevronDown,
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
 import "react-day-picker/dist/style.css";
@@ -201,10 +201,10 @@ export function ContactSection() {
   };
 
   // Format date for display
-  const formatDateForDisplay = (dateString: string): string => {
-    if (!dateString) return "";
-    return dateString;
-  };
+  // const formatDateForDisplay = (dateString: string): string => {
+  //   if (!dateString) return "";
+  //   return dateString;
+  // };
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {

@@ -6,7 +6,7 @@
  */
 
 import React, { useRef, useState, useEffect } from "react";
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
 const FeatureSSRSupport: React.FC = () => {
   const [isCardActive, setIsCardActive] = useState(true); // Start active
@@ -33,14 +33,8 @@ const FeatureSSRSupport: React.FC = () => {
     }
   }, []);
 
-
-
   return (
-    <div
-      ref={cardRef}
-      className="feature-card max-w-full"
-      id="ssr-support"
-    >
+    <div ref={cardRef} className="feature-card max-w-full" id="ssr-support">
       <div
         className={`feature__visualization flex-1 flex items-center justify-center ${
           isCardActive ? "active" : ""

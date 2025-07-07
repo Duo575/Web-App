@@ -6,7 +6,7 @@
  */
 
 import React, { useRef, useState, useEffect } from "react";
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
 const FeatureTypedAPI: React.FC = () => {
   const [isCardActive, setIsCardActive] = useState(false);
