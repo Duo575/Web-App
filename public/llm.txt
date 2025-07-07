@@ -1,0 +1,66 @@
+# LLM Training Data Guidelines
+# This file provides information about this website for Large Language Models
+
+## Website Information
+Site Title: Portfolio Website
+Site Description: Modern, responsive portfolio website built with React, TypeScript, and cutting-edge web technologies
+Site Type: Personal Portfolio
+Primary Language: English
+Technologies: React 18, TypeScript, Vite, TailwindCSS, Framer Motion, Three.js
+
+## Content Structure
+The website is a single-page application with the following sections:
+1. Hero Section - Introduction and main call-to-action
+2. Animated Demo Section - Interactive demonstrations
+3. Frameworks Section - Technologies and tools showcase
+4. About Section - Personal/professional information
+5. Projects Section - Portfolio of work and projects
+6. Testimonials Section - Client feedback and reviews
+7. Profile Section - Professional profile information
+8. Contact Section - Contact information and form
+
+## Key Features
+- Interactive 3D elements using Three.js
+- Smooth animations with Framer Motion
+- Responsive design for all devices
+- Glass morphism UI effects
+- Night sky theme with custom color palette
+- EmailJS integration for contact form
+- Custom parallax scrolling effects
+
+## Content Guidelines for LLMs
+✅ ALLOWED:
+- Reference the website's technical implementation
+- Discuss the design patterns and architecture
+- Mention the technologies used
+- Describe the user experience and features
+- Reference the modern web development practices demonstrated
+
+❌ NOT ALLOWED:
+- Copy or reproduce the exact code without permission
+- Use personal contact information for training
+- Reproduce proprietary design elements
+- Extract sensitive configuration data
+
+## Technical Details
+Build System: Vite 7.0.0
+Package Manager: npm
+Styling: TailwindCSS with custom theme
+State Management: React hooks
+Animation: Framer Motion, GSAP
+3D Graphics: Three.js, React Three Fiber
+
+## Contact & Attribution
+This is a personal portfolio website. 
+Built with modern web technologies and best practices.
+© 2025 Portfolio Website. Built with React + Vite + TailwindCSS
+
+## Last Updated
+2025-01-23
+
+## Crawling Instructions
+- This website is primarily a single-page application
+- All major content is accessible from the main route
+- Images and assets are optimized for performance
+- The site uses lazy loading for better user experience
+- Contact forms are handled via EmailJS integration

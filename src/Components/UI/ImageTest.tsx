@@ -4,7 +4,6 @@ export default function ImageTest() {
   const [imageStatus, setImageStatus] = useState({
     codeSnippet: "loading",
     websiteView: "loading",
-    websiteLook: "loading",
   });
 
   const testImageLoad = (src: string, key: string) => {
@@ -23,7 +22,6 @@ export default function ImageTest() {
   useEffect(() => {
     testImageLoad("/code-snippet.png", "codeSnippet");
     testImageLoad("/website-view.png", "websiteView");
-    testImageLoad("/website-look.png", "websiteLook");
   }, []);
 
   const getStatusColor = (status: string) => {
@@ -55,7 +53,7 @@ export default function ImageTest() {
       {/* Status Summary */}
       <div className="mb-4 p-3 bg-gray-800 rounded">
         <p className="text-white text-sm mb-2">Status Summary:</p>
-        <div className="grid grid-cols-3 gap-2 text-xs">
+        <div className="grid grid-cols-2 gap-2 text-xs">
           <div
             className={`p-2 rounded ${getStatusColor(imageStatus.codeSnippet)}`}
           >
@@ -70,14 +68,6 @@ export default function ImageTest() {
             <div className="text-white">Website View</div>
             <div className="text-gray-300">
               {getStatusText(imageStatus.websiteView)}
-            </div>
-          </div>
-          <div
-            className={`p-2 rounded ${getStatusColor(imageStatus.websiteLook)}`}
-          >
-            <div className="text-white">Website Look</div>
-            <div className="text-gray-300">
-              {getStatusText(imageStatus.websiteLook)}
             </div>
           </div>
         </div>
@@ -105,20 +95,11 @@ export default function ImageTest() {
               /website-view.png
             </a>
           </div>
-          <div>
-            <a
-              href="/website-look.png"
-              target="_blank"
-              className="text-blue-400 hover:underline"
-            >
-              /website-look.png
-            </a>
-          </div>
         </div>
       </div>
 
       {/* Image Display */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <p className="text-white text-sm mb-2">Code Snippet:</p>
           <img
@@ -132,7 +113,7 @@ export default function ImageTest() {
           />
         </div>
         <div>
-          <p className="text-white text-sm mb-2">Website View (New):</p>
+          <p className="text-white text-sm mb-2">Website View:</p>
           <img
             src="/website-view.png"
             alt="Website view"
@@ -140,18 +121,6 @@ export default function ImageTest() {
             onLoad={() => console.log("✅ IMG tag: website-view.png loaded")}
             onError={(e) =>
               console.error("❌ IMG tag: website-view.png failed:", e)
-            }
-          />
-        </div>
-        <div>
-          <p className="text-white text-sm mb-2">Website Look (Old):</p>
-          <img
-            src="/website-look.png"
-            alt="Website look"
-            className="w-full h-32 object-cover border border-gray-600 rounded"
-            onLoad={() => console.log("✅ IMG tag: website-look.png loaded")}
-            onError={(e) =>
-              console.error("❌ IMG tag: website-look.png failed:", e)
             }
           />
         </div>
