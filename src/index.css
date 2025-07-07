@@ -791,16 +791,96 @@ body,
 /* Contact Section Styles */
 @layer components {
   .contact-input {
-    @apply w-full px-4 py-3 rounded-lg;
+    @apply w-full px-4 rounded-lg;
     @apply bg-black/50 border border-white/20;
     @apply text-white placeholder-gray-400;
     @apply focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50;
     @apply transition-all duration-300;
     @apply backdrop-blur-sm;
+    height: 46px !important;
+    line-height: 46px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Special handling for textarea */
+  textarea.contact-input {
+    height: auto !important;
+    line-height: 1.6 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  /* Special handling for select */
+  select.contact-input {
+    height: 46px !important;
+    line-height: 46px !important;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px !important;
+  }
+  
+  /* Style for select options */
+  select.contact-input option {
+    background-color: #111827;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Form label consistency */
+  .contact-label {
+    @apply flex items-center gap-2 text-sm font-medium text-white;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Success message animation */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeInDown 0.5s ease-out forwards;
+  }
+  
+  /* Simple popup animation */
+  @keyframes popupSimple {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-popup-simple {
+    animation: popupSimple 0.2s ease-out forwards;
   }
 
   .contact-input:hover {
     @apply border-white/30;
+  }
+  
+  /* Fix for autofill background color */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0.5) inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: white;
   }
 
   .contact-submit-btn {

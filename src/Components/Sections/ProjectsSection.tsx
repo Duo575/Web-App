@@ -185,15 +185,7 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-neutral-600 dark:text-neutral-300 mb-6">
-            Interested in working together on your next project?
-          </p>
-          <button className="btn-gradient px-8 py-4 rounded-full font-semibold text-lg hover:scale-hover transition-all duration-300">
-            Start a Project
-          </button>
-        </div>
+        {/* Removed Call to Action */}
       </div>
     </section>
   );

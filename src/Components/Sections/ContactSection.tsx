@@ -16,6 +16,7 @@ import {
   MessageSquare,
   Send,
   Shield,
+  CheckCircle,
   // ChevronDown,
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
@@ -92,6 +93,8 @@ export function ContactSection() {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   // Add/remove modal-open class to body when modal state changes
   useEffect(() => {
@@ -206,6 +209,21 @@ export function ContactSection() {
   //   return dateString;
   // };
 
+  // Reset form to initial state
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      countryCode: countryCodes[0].code,
+      date: "",
+      timeSlot: "",
+      details: "",
+      privacyAccepted: false,
+    });
+    setSelectedDate(undefined);
+  };
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -221,7 +239,24 @@ export function ContactSection() {
     }
 
     // Form submission logic would go here
-    alert("Form submitted successfully!");
+    // For now, we'll just simulate a successful submission
+    
+    // Show success message and alert
+    setShowSuccessMessage(true);
+    setShowAlert(true);
+    
+    // Reset form
+    resetForm();
+    
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 5000);
+    
+    // Hide alert after 2 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
   };
 
   // Handle country selection
@@ -345,52 +380,70 @@ export function ContactSection() {
         {/* Contact Form */}
         <div className="max-w-4xl mx-auto">
           <div className="grid-default-color rounded-2xl p-8 md:p-12">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Field */}
-              <div className="space-y-2">
-                <label
-                  htmlFor="name"
-                  className="flex items-center gap-2 text-sm font-medium text-white"
-                >
-                  <User size={16} />
-                  Name *
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  className="contact-input"
-                  placeholder="Enter your full name"
-                  required
-                />
+            {/* Success Message */}
+            {showSuccessMessage && (
+              <div className="bg-green-900/50 border border-green-500 rounded-lg p-4 mb-6 flex items-center gap-3 animate-fade-in">
+                <CheckCircle className="text-green-400" size={24} />
+                <div>
+                  <h3 className="font-semibold text-green-400">Message Sent Successfully!</h3>
+                  <p className="text-green-300 text-sm">Thank you for contacting us. We'll get back to you soon.</p>
+                </div>
               </div>
+            )}
+            
+            <form onSubmit={handleSubmit} className="space-y-7" autoComplete="on">
+              {/* Name and Email Fields - Two Column Layout */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Name Field */}
+                <div className="space-y-2">
+                  <label
+                    htmlFor="name"
+                    className="contact-label"
+                  >
+                    <User size={16} />
+                    Name *
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    className="contact-input"
+                    placeholder="Enter your full name"
+                    required
+                    autoComplete="name"
+                    name="name"
+                  />
+                </div>
 
-              {/* Email Field */}
-              <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="flex items-center gap-2 text-sm font-medium text-white"
-                >
-                  <Mail size={16} />
-                  Email *
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="contact-input"
-                  placeholder="Enter your email address"
-                  required
-                />
+                {/* Email Field */}
+                <div className="space-y-2">
+                  <label
+                    htmlFor="email"
+                    className="contact-label"
+                  >
+                    <Mail size={16} />
+                    Email *
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    className="contact-input"
+                    placeholder="Enter your email address"
+                    required
+                    autoComplete="email"
+                    name="email"
+                  />
+                </div>
               </div>
 
               {/* Phone Number Field */}
               <div className="space-y-2">
                 <label
                   htmlFor="phone"
-                  className="flex items-center gap-2 text-sm font-medium text-white"
+                  className="contact-label"
                 >
                   <Phone size={16} />
                   Phone Number *
@@ -404,6 +457,7 @@ export function ContactSection() {
                         setShowCountryDropdown(!showCountryDropdown)
                       }
                       className="contact-input w-32 flex items-center justify-between gap-1 text-sm"
+                      style={{ height: "46px" }}
                     >
                       <div className="flex items-center gap-1">
                         <span>{selectedCountry.flag}</span>
@@ -421,7 +475,8 @@ export function ContactSection() {
                             placeholder="Search countries..."
                             value={countrySearch}
                             onChange={(e) => setCountrySearch(e.target.value)}
-                            className="w-full px-3 py-2 bg-gray-800 text-white rounded border border-white/20 focus:border-blue-500 focus:outline-none text-sm"
+                            className="w-full px-3 bg-gray-800 text-white rounded border border-white/20 focus:border-blue-500 focus:outline-none text-sm"
+                            style={{ height: "36px" }}
                             autoFocus
                           />
                         </div>
@@ -470,6 +525,8 @@ export function ContactSection() {
                     className="contact-input flex-1"
                     placeholder="Enter your phone number"
                     required
+                    autoComplete="tel"
+                    name="phone"
                   />
                 </div>
               </div>
@@ -478,7 +535,7 @@ export function ContactSection() {
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Date Picker */}
                 <div className="space-y-2 relative">
-                  <label className="flex items-center gap-2 text-sm font-medium text-white">
+                  <label className="contact-label">
                     <Calendar size={16} />
                     Select Date *
                   </label>
@@ -491,6 +548,7 @@ export function ContactSection() {
                       placeholder="Click calendar or type dd/mm/yyyy"
                       required
                       maxLength={10}
+                      style={{ height: "46px" }}
                     />
                     <button
                       type="button"
@@ -566,23 +624,24 @@ export function ContactSection() {
                 </div>
 
                 {/* Time Slot Selector */}
-                <div className="space-y-2">
+                <div className="space-y-2 relative">
                   <label
                     htmlFor="timeSlot"
-                    className="flex items-center gap-2 text-sm font-medium text-white"
+                    className="contact-label"
                   >
                     <Clock size={16} />
                     Time Slot (GMT) *
                   </label>
-                  <select
-                    id="timeSlot"
-                    value={formData.timeSlot}
-                    onChange={(e) =>
-                      handleInputChange("timeSlot", e.target.value)
-                    }
-                    className="contact-input"
-                    required
-                  >
+                  <div className="relative">
+                    <select
+                      id="timeSlot"
+                      value={formData.timeSlot}
+                      onChange={(e) =>
+                        handleInputChange("timeSlot", e.target.value)
+                      }
+                      className="contact-input appearance-none"
+                      required
+                    >
                     <option value="">Select time slot</option>
                     {timeSlots.map((slot) => (
                       <option
@@ -593,7 +652,8 @@ export function ContactSection() {
                         {slot}
                       </option>
                     ))}
-                  </select>
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -601,7 +661,7 @@ export function ContactSection() {
               <div className="space-y-2">
                 <label
                   htmlFor="details"
-                  className="flex items-center gap-2 text-sm font-medium text-white"
+                  className="contact-label"
                 >
                   <MessageSquare size={16} />
                   Details *
@@ -618,7 +678,7 @@ export function ContactSection() {
               </div>
 
               {/* Privacy Policy Checkbox */}
-              <div className="space-y-2">
+              <div className="pt-1">
                 <div className="flex items-start gap-3">
                   <input
                     id="privacyAccepted"
@@ -651,7 +711,7 @@ export function ContactSection() {
               </div>
 
               {/* Submit Button */}
-              <div className="pt-4">
+              <div className="pt-5">
                 <button
                   type="submit"
                   className="contact-submit-btn btn-gradient disabled:opacity-50 disabled:cursor-not-allowed"
@@ -926,6 +986,15 @@ export function ContactSection() {
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Small Alert Popup */}
+      {showAlert && (
+        <div className="fixed top-10 right-10 z-[9999]">
+          <div className="bg-green-600 text-white px-4 py-2 rounded shadow-lg animate-popup-simple text-sm font-medium">
+            Sent successfully!
           </div>
         </div>
       )}

@@ -345,7 +345,7 @@ const FrameworksSection: React.FC = () => {
   };
 
   return (
-    <section className="frameworks-section" id="frameworks-section">
+    <section className="frameworks-section mb-[5vh]" id="frameworks-section">
       <h2>Powering your favorite frameworks and tools</h2>
       <div className="frameworks-container">
         {/* Top Row */}
