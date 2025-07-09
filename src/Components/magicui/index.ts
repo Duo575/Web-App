@@ -4,5 +4,4 @@
  * Features: Clean imports, better organization
  */
 
-export { SparklesCore } from "./sparkles";
 export { Marquee } from "./marquee";
