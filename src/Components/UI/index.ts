@@ -15,3 +15,4 @@ export { default as LazyImage } from "./LazyImage";
 export { Compare } from "./Compare";
 export { SparklesCore } from "./Sparkles";
 export { default as CompareDemo } from "./CompareDemo";
+export { default as ScrollToTopButton } from "./ScrollToTopButton";

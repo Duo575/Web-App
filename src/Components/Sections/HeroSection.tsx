@@ -70,12 +70,12 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 w-full py-8"
+        className="relative z-10 max-w-7xl mx-auto px-4 w-full py-8 pt-24 md:pt-32"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[70vh]">
           {/* Left Side - Hero Title with Animation */}
           <div className="text-left space-y-6 md:space-y-8 flex flex-col justify-center min-h-[60vh] lg:pr-8">
             <div className="space-y-4 md:space-y-6">

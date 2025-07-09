@@ -6,7 +6,7 @@
  */
 
 import React, { Suspense } from "react";
-import { StarsBackground, LoadingSpinner } from "@/Components/UI";
+import { StarsBackground, LoadingSpinner, ScrollToTopButton } from "@/Components/UI";
 
 import "@/styles/scrollbar.css";
 import "@/styles/parallax.css";
@@ -126,6 +126,11 @@ function App() {
           <ContactSection />
         </Suspense>
       </main>
+
+      {/* Scroll to Top Button */}
+      <div className="content-above-particles py-8">
+        <ScrollToTopButton />
+      </div>
 
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-primary/20 content-above-particles">

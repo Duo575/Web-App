@@ -438,6 +438,27 @@ body,
     transition-delay: 0.6s;
   }
 
+  /* Scroll to Top Button */
+  .scroll-to-top-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .scroll-to-top-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .scroll-to-top-button:active {
+    transform: translateY(0);
+  }
+
   /* Responsive adjustments for animations and layout */
   @media (max-width: 768px) {
     .animate-slide-from-left,
@@ -821,7 +842,7 @@ body,
     background-position: right 10px center;
     padding-right: 30px !important;
   }
-  
+
   /* Style for select options */
   select.contact-input option {
     background-color: #111827;
@@ -835,7 +856,7 @@ body,
     @apply flex items-center gap-2 text-sm font-medium text-white;
     margin-bottom: 8px !important;
   }
-  
+
   /* Success message animation */
   @keyframes fadeInDown {
     from {
@@ -847,11 +868,11 @@ body,
       transform: translateY(0);
     }
   }
-  
+
   .animate-fade-in {
     animation: fadeInDown 0.5s ease-out forwards;
   }
-  
+
   /* Simple popup animation */
   @keyframes popupSimple {
     0% {
@@ -863,7 +884,7 @@ body,
       transform: translateX(0);
     }
   }
-  
+
   .animate-popup-simple {
     animation: popupSimple 0.2s ease-out forwards;
   }
@@ -871,7 +892,7 @@ body,
   .contact-input:hover {
     @apply border-white/30;
   }
-  
+
   /* Fix for autofill background color */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
