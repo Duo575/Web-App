@@ -366,7 +366,7 @@ export function ContactSection() {
   }, [showPrivacyModal]);
 
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 section-spacing">
+    <section id="contact" className="py-20 px-6 content-above-particles">
       <div className="c-space">
         {/* Section Header */}
         <div className="text-center mb-12">

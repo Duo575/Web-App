@@ -166,7 +166,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 export const ProjectsSection: React.FC = () => {
   return (
     <section id="projects" className="py-20 px-6 content-above-particles">
-      <div className="max-w-7xl mx-auto">
+      <div className="c-space">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">

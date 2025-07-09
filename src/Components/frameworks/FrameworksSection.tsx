@@ -345,54 +345,59 @@ const FrameworksSection: React.FC = () => {
   };
 
   return (
-    <section className="frameworks-section mb-[5vh]" id="frameworks-section">
-      <h2>Powering your favorite frameworks and tools</h2>
-      <div className="frameworks-container">
-        {/* Top Row */}
-        <div className="framework-row" style={rowStyle}>
-          {Array.from({ length: numBlocksPerRow + 2 }, (_, index) => (
-            <FrameworkCard key={`top-${index}`} />
-          ))}
-        </div>
-
-        {/* Logo Rows */}
-        {Array.from({ length: numRows }, (_, rowIndex) => (
-          <div
-            key={`row-${rowIndex}`}
-            className="framework-row"
-            style={rowStyle}
-          >
-            {Array.from({ length: numBlocksPerRow + 2 }, (_, columnIndex) => {
-              const isInCenterRange =
-                columnIndex - 1 >= centerIndexes[rowIndex + 1].start &&
-                columnIndex - 1 < centerIndexes[rowIndex + 1].end;
-
-              if (isInCenterRange) {
-                const frameworkIndex =
-                  rowIndex * numFrameworksPerRow +
-                  (columnIndex - 1) -
-                  centerIndexes[rowIndex + 1].start;
-
-                return (
-                  <FrameworkCard
-                    key={`framework-${rowIndex}-${columnIndex}`}
-                    framework={frameworks[frameworkIndex]}
-                  />
-                );
-              } else {
-                return (
-                  <FrameworkCard key={`empty-${rowIndex}-${columnIndex}`} />
-                );
-              }
-            })}
+    <section
+      className="py-20 px-6 content-above-particles mb-40"
+      id="frameworks-section"
+    >
+      <div className="c-space">
+        <h2>Powering your favorite frameworks and tools</h2>
+        <div className="frameworks-container">
+          {/* Top Row */}
+          <div className="framework-row" style={rowStyle}>
+            {Array.from({ length: numBlocksPerRow + 2 }, (_, index) => (
+              <FrameworkCard key={`top-${index}`} />
+            ))}
           </div>
-        ))}
 
-        {/* Bottom Row */}
-        <div className="framework-row" style={rowStyle}>
-          {Array.from({ length: numBlocksPerRow + 2 }, (_, index) => (
-            <FrameworkCard key={`bottom-${index}`} />
+          {/* Logo Rows */}
+          {Array.from({ length: numRows }, (_, rowIndex) => (
+            <div
+              key={`row-${rowIndex}`}
+              className="framework-row"
+              style={rowStyle}
+            >
+              {Array.from({ length: numBlocksPerRow + 2 }, (_, columnIndex) => {
+                const isInCenterRange =
+                  columnIndex - 1 >= centerIndexes[rowIndex + 1].start &&
+                  columnIndex - 1 < centerIndexes[rowIndex + 1].end;
+
+                if (isInCenterRange) {
+                  const frameworkIndex =
+                    rowIndex * numFrameworksPerRow +
+                    (columnIndex - 1) -
+                    centerIndexes[rowIndex + 1].start;
+
+                  return (
+                    <FrameworkCard
+                      key={`framework-${rowIndex}-${columnIndex}`}
+                      framework={frameworks[frameworkIndex]}
+                    />
+                  );
+                } else {
+                  return (
+                    <FrameworkCard key={`empty-${rowIndex}-${columnIndex}`} />
+                  );
+                }
+              })}
+            </div>
           ))}
+
+          {/* Bottom Row */}
+          <div className="framework-row" style={rowStyle}>
+            {Array.from({ length: numBlocksPerRow + 2 }, (_, index) => (
+              <FrameworkCard key={`bottom-${index}`} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

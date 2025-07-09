@@ -1,11 +1,5 @@
 .frameworks-section {
-  margin-top: 84px;
-}
-
-@media (min-width: 768px) {
-  .frameworks-section {
-    margin-top: 134px;
-  }
+  /* Removed custom margin-top to use standard py-20 spacing */
 }
 
 .frameworks-section h2 {

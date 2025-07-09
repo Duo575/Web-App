@@ -45,77 +45,79 @@ const About: React.FC = () => {
   return (
     <section
       ref={aboutSectionRef}
-      className="c-space section-spacing"
+      className="py-20 px-6 content-above-particles mt-20"
       id="about"
     >
-      <h2 className="text-heading">About Us</h2>
-      <div className="grid grid-cols-1 gap-6 sm:gap-4 md:grid-cols-6 mt-12">
-        {/* Grid 1 - Personal Introduction (Wider) */}
-        <div
-          data-grid="1"
-          className={`flex items-end about-card grid-1 relative overflow-hidden animate-slide-from-left ${
-            visibleGrids.has(1) ? "animate-visible" : "animate-hidden"
-          }`}
-        >
-          <div className="absolute -right-[2rem] -top-[2rem] text-8xl opacity-10 text-secondary">
-            💻
+      <div className="c-space">
+        <h2 className="text-heading">About Us</h2>
+        <div className="grid grid-cols-1 gap-6 sm:gap-4 md:grid-cols-6 mt-12">
+          {/* Grid 1 - Personal Introduction (Wider) */}
+          <div
+            data-grid="1"
+            className={`flex items-end about-card grid-1 relative overflow-hidden animate-slide-from-left ${
+              visibleGrids.has(1) ? "animate-visible" : "animate-hidden"
+            }`}
+          >
+            <div className="absolute -right-[2rem] -top-[2rem] text-8xl opacity-10 text-secondary">
+              💻
+            </div>
+            <div className="z-10 max-w-2xl">
+              <p className="headtext">Hi, we are web dev</p>
+              <p className="subtext">
+                Over the last 4 years, I developed my frontend and backend dev
+                skills to deliver dynamic software and web applications.
+              </p>
+            </div>
+            <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-primary" />
           </div>
-          <div className="z-10 max-w-2xl">
-            <p className="headtext">Hi, we are web dev</p>
-            <p className="subtext">
-              Over the last 4 years, I developed my frontend and backend dev
-              skills to deliver dynamic software and web applications.
-            </p>
+
+          {/* Grid 3 - Location & Time Zone (Moved to first row) */}
+          <div
+            data-grid="3"
+            className={`about-card grid-3 relative animate-slide-from-right ${
+              visibleGrids.has(3) ? "animate-visible" : "animate-hidden"
+            }`}
+          >
+            <div className="z-10 relative">
+              <p className="headtext">Time Zone</p>
+              <p className="subtext">
+                I'm based in Mars, and open to remote work worldwide
+              </p>
+            </div>
+            <div className="absolute top-[7%] left-[5%] w-56 h-56">
+              <Globe className="scale-[0.7]" />
+            </div>
           </div>
-          <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-primary" />
-        </div>
 
-        {/* Grid 3 - Location & Time Zone (Moved to first row) */}
-        <div
-          data-grid="3"
-          className={`about-card grid-3 relative animate-slide-from-right ${
-            visibleGrids.has(3) ? "animate-visible" : "animate-hidden"
-          }`}
-        >
-          <div className="z-10 relative">
-            <p className="headtext">Time Zone</p>
-            <p className="subtext">
-              I'm based in Mars, and open to remote work worldwide
-            </p>
+          {/* Grid 5 - SSR Support Feature (Moved up to row 2) */}
+          <div
+            data-grid="5"
+            className={`about-card grid-5 animate-slide-from-left ${
+              visibleGrids.has(5) ? "animate-visible" : "animate-hidden"
+            }`}
+          >
+            <FeatureSSRSupport />
           </div>
-          <div className="absolute top-[7%] left-[5%] w-56 h-56">
-            <Globe className="scale-[0.7]" />
+
+          {/* Grid 6 - Optimized Build Feature (Moved up to row 2) */}
+          <div
+            data-grid="6"
+            className={`about-card grid-6 animate-slide-from-right ${
+              visibleGrids.has(6) ? "animate-visible" : "animate-hidden"
+            }`}
+          >
+            <FeatureOptimizedBuild />
           </div>
-        </div>
 
-        {/* Grid 5 - SSR Support Feature (Moved up to row 2) */}
-        <div
-          data-grid="5"
-          className={`about-card grid-5 animate-slide-from-left ${
-            visibleGrids.has(5) ? "animate-visible" : "animate-hidden"
-          }`}
-        >
-          <FeatureSSRSupport />
-        </div>
-
-        {/* Grid 6 - Optimized Build Feature (Moved up to row 2) */}
-        <div
-          data-grid="6"
-          className={`about-card grid-6 animate-slide-from-right ${
-            visibleGrids.has(6) ? "animate-visible" : "animate-hidden"
-          }`}
-        >
-          <FeatureOptimizedBuild />
-        </div>
-
-        {/* Grid 7 - Typed API Feature (Moved up to row 3) */}
-        <div
-          data-grid="7"
-          className={`about-card grid-7 animate-fade-in ${
-            visibleGrids.has(7) ? "animate-visible" : "animate-hidden"
-          }`}
-        >
-          <FeatureTypedAPI />
+          {/* Grid 7 - Typed API Feature (Moved up to row 3) */}
+          <div
+            data-grid="7"
+            className={`about-card grid-7 animate-fade-in ${
+              visibleGrids.has(7) ? "animate-visible" : "animate-hidden"
+            }`}
+          >
+            <FeatureTypedAPI />
+          </div>
         </div>
       </div>
     </section>

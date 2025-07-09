@@ -105,7 +105,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-12 sm:py-16 md:py-20 section-spacing"
+      className="py-20 px-6 content-above-particles"
     >
       <div className="c-space">
         <h2 className="text-heading mb-8 sm:mb-12">What People Say</h2>

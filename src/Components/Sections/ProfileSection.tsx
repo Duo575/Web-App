@@ -169,7 +169,7 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
 // Main Profile Section Component
 export function ProfileSection() {
   return (
-    <section id="profile" className="py-12 sm:py-16 md:py-20 section-spacing">
+    <section id="profile" className="py-20 px-6 content-above-particles">
       <div className="c-space">
         <h2 className="text-heading mb-8 sm:mb-12">Meet Our Team</h2>
 

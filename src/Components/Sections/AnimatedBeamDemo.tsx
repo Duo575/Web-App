@@ -9,8 +9,8 @@ import AnimatedBeamMultipleInputs from "@/Components/UI/animated-beam-multiple-i
 
 export default function AnimatedBeamDemo() {
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-6 content-above-particles">
+      <div className="c-space">
         <div className="text-center mb-20">
           <h2 className="font-heading text-4xl font-bold mb-4">
             <span className="text-gradient">Stellar Service</span> Blueprint
