@@ -343,7 +343,7 @@ const FrameworksSectionComplete: React.FC = () => {
 
   return (
     <section className="frameworks-section" id="frameworks-section">
-      <h2>Powering your favorite frameworks and tools</h2>
+      <h1 className="text-heading">Technology Stack & Development Tools</h1>
       <div className="frameworks-container">
         {/* Top Row */}
         <div className="framework-row" style={rowStyle}>

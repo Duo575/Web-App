@@ -49,6 +49,7 @@ export const Compare = ({
   const [, setIsMouseOver] = useState(false);
 
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const dragTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const startAutoplay = useCallback(() => {
     if (!autoplay) return;
@@ -76,7 +77,13 @@ export const Compare = ({
 
   useEffect(() => {
     startAutoplay();
-    return () => stopAutoplay();
+    return () => {
+      stopAutoplay();
+      // Clean up drag timeout on unmount
+      if (dragTimeoutRef.current) {
+        clearTimeout(dragTimeoutRef.current);
+      }
+    };
   }, [startAutoplay, stopAutoplay]);
 
   function mouseEnterHandler() {
@@ -89,29 +96,48 @@ export const Compare = ({
     if (slideMode === "hover") {
       setSliderXPercent(initialSliderPercentage);
     }
-    if (slideMode === "drag" && isDragging) {
-      // Don't reset dragging state on mouse leave - let global handlers manage it
-      // This prevents the glitch when dragging outside the component
+    // Don't start autoplay if we're still dragging
+    if (!(slideMode === "drag" && isDragging)) {
+      startAutoplay();
     }
-    startAutoplay();
   }
 
   const handleStart = useCallback(
     (_clientX: number) => {
       if (slideMode === "drag") {
         setIsDragging(true);
+
+        // Clear any existing timeout
+        if (dragTimeoutRef.current) {
+          clearTimeout(dragTimeoutRef.current);
+        }
+
+        // Safety timeout to prevent getting stuck in dragging state
+        dragTimeoutRef.current = setTimeout(() => {
+          setIsDragging(false);
+          setSliderXPercent(initialSliderPercentage);
+          startAutoplay();
+        }, 5000); // 5 second timeout
       }
     },
-    [slideMode]
+    [slideMode, initialSliderPercentage, startAutoplay]
   );
 
   const handleEnd = useCallback(() => {
-    if (slideMode === "drag") {
+    if (slideMode === "drag" && isDragging) {
+      // Clear the safety timeout
+      if (dragTimeoutRef.current) {
+        clearTimeout(dragTimeoutRef.current);
+        dragTimeoutRef.current = null;
+      }
+
       setIsDragging(false);
       // Return to original position when drag ends
       setSliderXPercent(initialSliderPercentage);
+      // Restart autoplay after drag ends
+      startAutoplay();
     }
-  }, [slideMode, initialSliderPercentage]);
+  }, [slideMode, isDragging, initialSliderPercentage, startAutoplay]);
 
   const handleMove = useCallback(
     (clientX: number) => {
@@ -120,9 +146,8 @@ export const Compare = ({
         const rect = sliderRef.current.getBoundingClientRect();
         const x = clientX - rect.left;
         const percent = (x / rect.width) * 100;
-        requestAnimationFrame(() => {
-          setSliderXPercent(Math.max(0, Math.min(100, percent)));
-        });
+        const clampedPercent = Math.max(0, Math.min(100, percent));
+        setSliderXPercent(clampedPercent);
       }
     },
     [slideMode, isDragging]
@@ -144,17 +169,31 @@ export const Compare = ({
   // Global mouse event handlers to fix drag issues when mouse leaves component
   useEffect(() => {
     if (slideMode === "drag" && isDragging) {
-      const handleGlobalMouseMove = (e: MouseEvent) => handleMove(e.clientX);
-      const handleGlobalMouseUp = () => handleEnd();
+      const handleGlobalMouseMove = (e: MouseEvent) => {
+        e.preventDefault();
+        handleMove(e.clientX);
+      };
+      const handleGlobalMouseUp = (e: MouseEvent) => {
+        e.preventDefault();
+        handleEnd();
+      };
 
-      // Add global listeners
-      document.addEventListener("mousemove", handleGlobalMouseMove);
-      document.addEventListener("mouseup", handleGlobalMouseUp);
+      // Add global listeners with passive: false to allow preventDefault
+      document.addEventListener("mousemove", handleGlobalMouseMove, {
+        passive: false,
+      });
+      document.addEventListener("mouseup", handleGlobalMouseUp, {
+        passive: false,
+      });
+
+      // Also listen for mouse leave on document to handle edge cases
+      document.addEventListener("mouseleave", handleGlobalMouseUp);
 
       // Cleanup
       return () => {
         document.removeEventListener("mousemove", handleGlobalMouseMove);
         document.removeEventListener("mouseup", handleGlobalMouseUp);
+        document.removeEventListener("mouseleave", handleGlobalMouseUp);
       };
     }
   }, [slideMode, isDragging, handleMove, handleEnd]);

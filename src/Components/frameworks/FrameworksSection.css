@@ -2,28 +2,7 @@
   /* Removed custom margin-top to use standard py-20 spacing */
 }
 
-.frameworks-section h2 {
-  background: linear-gradient(to right, #7f00ff, #00ffff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  width: 668px;
-  max-width: 100%;
-  margin: 0 auto 48px auto;
-  text-align: center;
-  position: relative;
-  z-index: 3;
-  font-family: "Orbitron", monospace;
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-@media (max-width: 768px) {
-  .frameworks-section h2 {
-    font-size: 2rem;
-  }
-}
+/* H1 styling now handled by .text-heading class from index.css */
 
 .frameworks-container {
   width: 100%;
