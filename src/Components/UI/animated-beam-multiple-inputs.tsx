@@ -249,19 +249,19 @@ export default function AnimatedBeamMultipleOutputDemo({
             </span>
           </div>
           <div className="flex flex-col justify-center gap-6">
-            <Circle ref={div1Ref}>
+            <Circle ref={div1Ref} className="p-1">
               <Icons.fast />
             </Circle>
-            <Circle ref={div2Ref}>
+            <Circle ref={div2Ref} className="p-1">
               <Icons.quality />
             </Circle>
-            <Circle ref={div3Ref}>
+            <Circle ref={div3Ref} className="p-1">
               <Icons.costEffective />
             </Circle>
-            <Circle ref={div4Ref}>
+            <Circle ref={div4Ref} className="p-1">
               <Icons.negotiable />
             </Circle>
-            <Circle ref={div5Ref}>
+            <Circle ref={div5Ref} className="p-1">
               <Icons.modernTech />
             </Circle>
           </div>
@@ -377,255 +377,45 @@ export default function AnimatedBeamMultipleOutputDemo({
 
 const Icons = {
   fast: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
-        fill="url(#fast-gradient)"
-        stroke="#7F00FF"
-        strokeWidth="1"
-      />
-      <defs>
-        <linearGradient id="fast-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#7F00FF" />
-          <stop offset="100%" stopColor="#0A192F" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <img src="/src/icons/Fast.svg" alt="Fast" width="24" height="24" />
   ),
 
   quality: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-        fill="url(#quality-gradient)"
-        stroke="#7F00FF"
-        strokeWidth="1"
-      />
-      <circle cx="12" cy="12" r="3" fill="#FFFFFF" />
-      <defs>
-        <linearGradient
-          id="quality-gradient"
-          x1="0%"
-          y1="0%"
-          x2="100%"
-          y2="100%"
-        >
-          <stop offset="0%" stopColor="#FFD700" />
-          <stop offset="100%" stopColor="#7F00FF" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <img src="/src/icons/Quality.svg" alt="Quality" width="24" height="24" />
   ),
 
   costEffective: () => (
-    <svg
+    <img
+      src="/src/icons/Cost_effective.svg"
+      alt="Cost Effective"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-        fill="url(#cost-gradient)"
-        stroke="#7F00FF"
-        strokeWidth="1"
-      />
-      <path
-        d="M12 6v2m0 8v2m-6-6h2m8 0h2M8.464 8.464l1.414 1.414m4.243 4.243l1.414 1.414M8.464 15.536l1.414-1.414m4.243-4.243l1.414-1.414"
-        stroke="#FFFFFF"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <text
-        x="12"
-        y="16"
-        textAnchor="middle"
-        fill="#FFFFFF"
-        fontSize="10"
-        fontWeight="bold"
-      >
-        $
-      </text>
-      <defs>
-        <linearGradient id="cost-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#00D2FF" />
-          <stop offset="100%" stopColor="#0A192F" />
-        </linearGradient>
-      </defs>
-    </svg>
+    />
   ),
 
   negotiable: () => (
-    <svg
+    <img
+      src="/src/icons/Negotiable.svg"
+      alt="Negotiable"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M8 12h8M8 8h8M8 16h8"
-        stroke="url(#nego-gradient)"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <rect
-        x="3"
-        y="4"
-        width="18"
-        height="16"
-        rx="2"
-        fill="none"
-        stroke="#7F00FF"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M7 4V2M17 4V2M7 20v2M17 20v2"
-        stroke="#0A192F"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <defs>
-        <linearGradient id="nego-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#7F00FF" />
-          <stop offset="50%" stopColor="#0A192F" />
-          <stop offset="100%" stopColor="#7F00FF" />
-        </linearGradient>
-      </defs>
-    </svg>
+    />
   ),
 
   modernTech: () => (
-    <svg
+    <img
+      src="/src/icons/Modern_technologies.svg"
+      alt="Modern Tech"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="2"
-        y="4"
-        width="20"
-        height="12"
-        rx="2"
-        fill="url(#tech-gradient)"
-        stroke="#7F00FF"
-        strokeWidth="1"
-      />
-      <circle cx="6" cy="10" r="1.5" fill="#FFFFFF" />
-      <circle cx="12" cy="10" r="1.5" fill="#FFFFFF" />
-      <circle cx="18" cy="10" r="1.5" fill="#FFFFFF" />
-      <path
-        d="M4 18h16M8 18v2M16 18v2"
-        stroke="#0A192F"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <defs>
-        <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0A192F" />
-          <stop offset="50%" stopColor="#7F00FF" />
-          <stop offset="100%" stopColor="#000000" />
-        </linearGradient>
-      </defs>
-    </svg>
+    />
   ),
 
   companyLogo: () => (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        cx="16"
-        cy="16"
-        r="14"
-        fill="url(#logo-gradient)"
-        stroke="#FFFFFF"
-        strokeWidth="2"
-      />
-      <path d="M16 6L20 12H12L16 6Z" fill="#FFFFFF" />
-      <path d="M10 14L14 20H18L22 14H10Z" fill="#FFFFFF" />
-      <circle cx="16" cy="24" r="2" fill="#FFFFFF" />
-      <path
-        d="M8 16L12 18L8 20M24 16L20 18L24 20"
-        stroke="#FFFFFF"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <defs>
-        <radialGradient id="logo-gradient" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#7F00FF" />
-          <stop offset="70%" stopColor="#0A192F" />
-          <stop offset="100%" stopColor="#000000" />
-        </radialGradient>
-      </defs>
-    </svg>
+    <img src="/src/icons/Company.svg" alt="Company" width="32" height="32" />
   ),
 
   client: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        cx="12"
-        cy="8"
-        r="4"
-        fill="url(#client-gradient)"
-        stroke="#0A192F"
-        strokeWidth="1"
-      />
-      <path
-        d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"
-        fill="none"
-        stroke="#0A192F"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <circle cx="18" cy="6" r="2" fill="#7F00FF" />
-      <circle cx="6" cy="6" r="2" fill="#7F00FF" />
-      <path
-        d="M12 12v2M10 14h4"
-        stroke="#FFFFFF"
-        strokeWidth="1"
-        strokeLinecap="round"
-      />
-      <defs>
-        <linearGradient
-          id="client-gradient"
-          x1="0%"
-          y1="0%"
-          x2="100%"
-          y2="100%"
-        >
-          <stop offset="0%" stopColor="#0A192F" />
-          <stop offset="100%" stopColor="#7F00FF" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <img src="/src/icons/Client.svg" alt="Client" width="24" height="24" />
   ),
 };
