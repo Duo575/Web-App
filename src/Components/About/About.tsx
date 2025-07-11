@@ -61,11 +61,17 @@ const About: React.FC = () => {
             <div className="absolute -right-[2rem] -top-[2rem] text-8xl opacity-10 text-secondary">
               💻
             </div>
-            <div className="z-10 max-w-2xl">
-              <p className="headtext">Hi, we are web dev</p>
+            <div className="z-10 relative max-w-2xl pl-2">
+              <p className="headtext">
+                Hi, we are a team of four passionate web developers!
+              </p>
               <p className="subtext">
-                Over the last 4 years, I developed my frontend and backend dev
-                skills to deliver dynamic software and web applications.
+                We've honed our frontend and backend skills to deliver dynamic
+                software and innovative web applications. Based in a virtual
+                'digital universe,' we combine cutting-edge technologies with
+                creative design to craft stellar solutions for our clients. From
+                full-stack websites to custom integrations like payment gateways
+                and map APIs, we're here to bring your vision to life.
               </p>
             </div>
             <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-primary" />
