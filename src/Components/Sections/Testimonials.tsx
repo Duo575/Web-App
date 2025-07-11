@@ -1,12 +1,13 @@
 /**
  * Testimonials Component
  * Purpose: Display user reviews in a scrolling marquee format
- * Dependencies: Marquee component from Magic UI, cn utility
- * Features: Responsive design, accessibility, dark mode support
+ * Dependencies: Marquee component from Magic UI, cn utility, 3D Card components
+ * Features: Responsive design, accessibility, dark mode support, 3D hover effects
  */
 
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/Components/magicui/marquee";
+import { CardContainer, CardBody, CardItem } from "@/Components/UI/3d-card";
 
 // Define the review data with a TypeScript interface for type safety
 interface Review {
@@ -60,43 +61,56 @@ const reviews: Review[] = [
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
 
-// ReviewCard component for rendering individual testimonials
+// ReviewCard component for rendering individual testimonials with 3D hover effect
 const ReviewCard = ({ img, name, username, body }: Review) => {
   return (
-    <figure
-      className={cn(
-        "relative w-64 sm:w-72 md:w-80 lg:w-96 h-48 sm:h-52 md:h-56 cursor-pointer overflow-hidden rounded-xl border p-4 sm:p-6",
-        // Glass morphism effect with our theme
-        "glass backdrop-blur-md",
-        // Card glow effect from our theme
-        "card-glow hover:scale-hover",
-        // Responsive styles
-        "transition-all duration-300 ease-in-out"
-      )}
-      aria-label={`Testimonial by ${name}`}
-    >
-      <div className="flex flex-row items-center gap-2 sm:gap-3">
-        <img
-          className="rounded-full object-cover"
-          width="40"
-          height="40"
-          alt={`Avatar of ${name}`}
-          src={img}
-          loading="lazy"
-        />
-        <div className="flex flex-col">
-          <figcaption className="text-sm sm:text-base font-medium text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs sm:text-sm font-medium text-gray-400">
-            {username}
-          </p>
-        </div>
-      </div>
-      <blockquote className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-300 line-clamp-3">
-        {body}
-      </blockquote>
-    </figure>
+    <CardContainer className="w-full max-w-sm mx-auto">
+      <CardBody 
+        className={cn(
+          "bg-black relative group/card hover:shadow-2xl hover:shadow-white/[0.15] border-white/[0.1] hover:border-white/[0.5]",
+          "w-64 sm:w-72 md:w-80 lg:w-96 h-48 sm:h-52 md:h-56 rounded-xl p-4 sm:p-6 border",
+          "glass backdrop-blur-md transition-all duration-500"
+        )}
+        aria-label={`Testimonial by ${name}`}
+      >
+        {/* User Info - Floats highest */}
+        <CardItem translateZ="50" className="flex flex-row items-center gap-2 sm:gap-3">
+          <img
+            className="rounded-full object-cover transition-all duration-300"
+            width="40"
+            height="40"
+            alt={`Avatar of ${name}`}
+            src={img}
+            loading="lazy"
+          />
+          <div className="flex flex-col">
+            <CardItem 
+              as="figcaption" 
+              translateZ="60"
+              className="text-sm sm:text-base font-medium text-white transition-all duration-300"
+            >
+              {name}
+            </CardItem>
+            <CardItem 
+              as="p" 
+              translateZ="50"
+              className="text-xs sm:text-sm font-medium text-gray-400 transition-all duration-300"
+            >
+              {username}
+            </CardItem>
+          </div>
+        </CardItem>
+        
+        {/* Review Text - Second level */}
+        <CardItem 
+          as="blockquote" 
+          translateZ="40"
+          className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-300 line-clamp-3 transition-all duration-300"
+        >
+          {body}
+        </CardItem>
+      </CardBody>
+    </CardContainer>
   );
 };
 
@@ -110,7 +124,7 @@ export function Testimonials() {
       <div className="c-space">
         <h2 className="text-heading mb-8 sm:mb-12">What People Say</h2>
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:20s] space-x-4">
+          <Marquee pauseOnHover className="[--duration:20s] space-x-8 py-4">
             {firstRow.map((review) => (
               <ReviewCard key={review.username} {...review} />
             ))}
@@ -118,7 +132,7 @@ export function Testimonials() {
           <Marquee
             reverse
             pauseOnHover
-            className="[--duration:20s] space-x-4 mt-4"
+            className="[--duration:20s] space-x-8 py-4 mt-8"
           >
             {secondRow.map((review) => (
               <ReviewCard key={review.username} {...review} />
