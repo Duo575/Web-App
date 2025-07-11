@@ -2,11 +2,59 @@
  * Global Styles - Main CSS Entry Point
  * Purpose: TailwindCSS imports, global styles, font imports
  * Dependencies: @tailwindcss/base, @tailwindcss/components, @tailwindcss/utilities
- * Features: Google Fonts (Inter, Orbitron), global reset, smooth scrolling
+ * Features: Local Quicksand font, global reset, smooth scrolling
  */
 
-/* Google Fonts Import */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+/* Quicksand Font Declarations */
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/Quicksand/Quicksand-VariableFont_wght.ttf")
+    format("truetype-variations");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/Quicksand/static/Quicksand-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/Quicksand/static/Quicksand-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/Quicksand/static/Quicksand-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/Quicksand/static/Quicksand-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/Quicksand/static/Quicksand-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* TailwindCSS Imports */
 @tailwind base;
@@ -23,15 +71,16 @@
 
   html {
     scroll-behavior: smooth;
-    font-family: "Inter", sans-serif;
+    font-family: "Quicksand", sans-serif;
   }
 
   body {
-    font-family: "Inter", sans-serif;
-    line-height: 1.6;
+    font-family: "Quicksand", sans-serif;
+    line-height: 1.65; /* Slightly increased for better readability */
     overflow-x: hidden;
     background-color: #000000 !important;
     color: #ffffff !important;
+    letter-spacing: 0.01em; /* Subtle letter spacing for better readability */
   }
 
   h1,
@@ -40,9 +89,77 @@
   h4,
   h5,
   h6 {
-    font-family: "Orbitron", monospace;
+    font-family: "Quicksand", sans-serif;
     font-weight: 600;
+    line-height: 1.3; /* Increased from 1.2 to prevent overlapping */
+    letter-spacing: -0.01em; /* Tighter letter spacing for headings */
+    margin-bottom: 0.5em; /* Ensure proper spacing below headings */
+  }
+
+  /* Specific heading adjustments for Quicksand */
+  h1 {
     line-height: 1.2;
+    margin-bottom: 0.6em;
+  }
+
+  h2 {
+    line-height: 1.25;
+    margin-bottom: 0.55em;
+  }
+
+  h3 {
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+  }
+
+  /* Paragraph and text spacing adjustments */
+  p {
+    margin-bottom: 1em;
+    line-height: 1.65;
+  }
+
+  /* Button and interactive element adjustments */
+  button,
+  .btn {
+    line-height: 1.4;
+    letter-spacing: 0.005em;
+  }
+
+  /* Quicksand-specific adjustments for common elements */
+  .card-title,
+  .card-header {
+    line-height: 1.3;
+    margin-bottom: 0.75em;
+  }
+
+  .card-content,
+  .card-body {
+    line-height: 1.65;
+  }
+
+  /* List spacing adjustments */
+  ul,
+  ol {
+    line-height: 1.65;
+    margin-bottom: 1em;
+  }
+
+  li {
+    margin-bottom: 0.25em;
+  }
+
+  /* Form element adjustments */
+  input,
+  textarea,
+  select {
+    line-height: 1.4;
+    letter-spacing: 0.005em;
+  }
+
+  /* Link adjustments */
+  a {
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   :root {
@@ -206,6 +323,8 @@
     justify-content: center;
     padding: 0.5rem 1.5rem;
     white-space: nowrap;
+    line-height: 1.4; /* Proper line height for navigation */
+    letter-spacing: 0.005em; /* Subtle letter spacing */
   }
 
   .nav-link:hover {
@@ -222,6 +341,192 @@
 
 /* Custom Utilities */
 @layer utilities {
+  /* Quicksand Font Weight Utilities with proper spacing */
+  .font-quicksand-light {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+  }
+
+  .font-quicksand-regular {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+  }
+
+  .font-quicksand-medium {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+  }
+
+  .font-quicksand-semibold {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
+  .font-quicksand-bold {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* Spacing fix utilities */
+  .text-spacing-fix {
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+    margin-bottom: 1em;
+  }
+
+  .heading-spacing-fix {
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Prevent text overflow and ensure proper spacing */
+  .text-no-overlap {
+    overflow: visible;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Override any problematic spacing in existing components */
+  .hero-title {
+    line-height: 1.2 !important;
+    letter-spacing: -0.015em !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero-subtitle {
+    line-height: 1.65 !important;
+    letter-spacing: 0.01em !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .hero-portfolio-text {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+
+  .hero-gradient-line {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    margin-bottom: 1rem;
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .meta__title {
+    line-height: 1.3 !important;
+    letter-spacing: -0.005em !important;
+  }
+
+  /* Ensure proper spacing for all text sizes */
+  .text-xs,
+  .text-sm,
+  .text-base,
+  .text-lg,
+  .text-xl,
+  .text-2xl,
+  .text-3xl,
+  .text-4xl,
+  .text-5xl,
+  .text-6xl {
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  /* Hero Section Responsive Adjustments */
+  @media (max-width: 1023px) {
+    .hero-title {
+      margin-bottom: 2rem !important;
+    }
+
+    .hero-subtitle {
+      margin-bottom: 2.5rem !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-title {
+      line-height: 1.25 !important;
+      margin-bottom: 1.5rem !important;
+    }
+
+    .hero-subtitle {
+      line-height: 1.7 !important;
+      margin-bottom: 2rem !important;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero-title {
+      line-height: 1.3 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .hero-subtitle {
+      margin-bottom: 1.5rem !important;
+    }
+  }
+
+  /* Additional Hero Section Layout Fixes */
+  @media (max-width: 1023px) {
+    /* Ensure proper stacking on mobile/tablet */
+    .hero-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* Prevent comparison component from overlapping text */
+    .hero-comparison-wrapper {
+      margin-top: 2rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-content-wrapper {
+      gap: 2.5rem;
+    }
+
+    .hero-comparison-wrapper {
+      margin-top: 1.5rem;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero-content-wrapper {
+      gap: 2rem;
+    }
+
+    .hero-comparison-wrapper {
+      margin-top: 1rem;
+    }
+  }
+
   /* Glass morphism effect */
   .glass {
     background: rgba(255, 255, 255, 0.05);
@@ -275,15 +580,22 @@ body,
   .text-heading {
     @apply text-4xl md:text-5xl font-bold text-center mb-8;
     @apply bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent;
+    line-height: 1.25; /* Proper spacing for large headings */
+    letter-spacing: -0.015em;
   }
 
   .headtext {
     @apply text-2xl md:text-3xl font-bold mb-4;
     @apply text-white;
+    line-height: 1.3; /* Better spacing for section headings */
+    letter-spacing: -0.01em;
   }
 
   .subtext {
-    @apply text-base md:text-lg text-gray-300 leading-relaxed;
+    @apply text-base md:text-lg text-gray-300;
+    line-height: 1.7; /* Increased for better readability */
+    letter-spacing: 0.01em;
+    margin-bottom: 1em; /* Ensure proper spacing */
   }
 
   /* Grid layouts for About section */

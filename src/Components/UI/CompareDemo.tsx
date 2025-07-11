@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function CompareDemo() {
   return (
     <motion.div
-      className="p-2 rounded-3xl backdrop-blur-lg bg-white/5 shadow-2xl shadow-black/30 border-2 border-white/15"
+      className="p-2 rounded-3xl backdrop-blur-lg bg-white/5 shadow-2xl shadow-black/30 border-2 border-white/15 w-full max-w-[280px] sm:max-w-[520px] lg:max-w-[700px]"
       style={{
         boxShadow:
           "0 0 20px rgba(139, 92, 246, 0.08), 0 0 40px rgba(139, 92, 246, 0.04), inset 0 0 20px rgba(255, 255, 255, 0.03)",
@@ -29,7 +29,7 @@ export default function CompareDemo() {
           secondImage="/website-design.png"
           firstImageClassName="object-cover object-left-top w-full h-full"
           secondImageClassname="object-cover object-left-top w-full h-full"
-          className="h-[250px] w-[230px] md:h-[350px] md:w-[500px] lg:h-[470px] lg:w-[680px] rounded-2xl overflow-hidden"
+          className="h-[250px] w-full max-w-[250px] sm:h-[350px] sm:max-w-[500px] lg:h-[470px] lg:max-w-[680px] rounded-2xl overflow-hidden"
           slideMode="drag"
           initialSliderPercentage={50}
           showHandlebar={true}

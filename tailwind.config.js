@@ -2,13 +2,7 @@
  * TailwindCSS Configuration
  * Purpose: Custom theme configuration for portfolio website
  * Dependencies: tailwindcss
- * Features: Night sky theme (black, dark blue, purple, white), custom fonts (Inter, Orbitron), responsive breakpoints
- */
-/**
- * TailwindCSS Configuration
- * Purpose: Custom theme configuration for portfolio website
- * Dependencies: tailwindcss
- * Features: Night sky theme (black, dark blue, purple, white), custom fonts (Inter, Orbitron), responsive breakpoints
+ * Features: Night sky theme (black, dark blue, purple, white), custom fonts (Quicksand), responsive breakpoints
  */
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -63,8 +57,24 @@ export default {
         },
       },
       fontFamily: {
-        body: ["Inter", "sans-serif"],
-        heading: ["Orbitron", "monospace"],
+        body: ["Quicksand", "sans-serif"],
+        heading: ["Quicksand", "sans-serif"],
+        sans: ["Quicksand", "sans-serif"],
+      },
+      fontSize: {
+        xs: ["0.75rem", { lineHeight: "1.5", letterSpacing: "0.01em" }],
+        sm: ["0.875rem", { lineHeight: "1.6", letterSpacing: "0.01em" }],
+        base: ["1rem", { lineHeight: "1.65", letterSpacing: "0.01em" }],
+        lg: ["1.125rem", { lineHeight: "1.6", letterSpacing: "0.005em" }],
+        xl: ["1.25rem", { lineHeight: "1.5", letterSpacing: "0.005em" }],
+        "2xl": ["1.5rem", { lineHeight: "1.4", letterSpacing: "0em" }],
+        "3xl": ["1.875rem", { lineHeight: "1.3", letterSpacing: "-0.005em" }],
+        "4xl": ["2.25rem", { lineHeight: "1.25", letterSpacing: "-0.01em" }],
+        "5xl": ["3rem", { lineHeight: "1.2", letterSpacing: "-0.015em" }],
+        "6xl": ["3.75rem", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
+        "7xl": ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.025em" }],
+        "8xl": ["6rem", { lineHeight: "1.05", letterSpacing: "-0.03em" }],
+        "9xl": ["8rem", { lineHeight: "1", letterSpacing: "-0.035em" }],
       },
       screens: {
         mobile: "320px",
