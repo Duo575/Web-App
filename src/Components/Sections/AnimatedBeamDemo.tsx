@@ -15,10 +15,6 @@ export default function AnimatedBeamDemo() {
           <h2 className="font-heading text-4xl font-bold mb-4">
             <span className="text-gradient">Stellar Service</span> Blueprint
           </h2>
-          <p className="text-xl opacity-80 max-w-2xl mx-auto">
-            Discover how our company crafts fast, quality, and cost-effective
-            solutions for clients with our animated beam visualization
-          </p>
         </div>
 
         <div className="flex justify-center">
