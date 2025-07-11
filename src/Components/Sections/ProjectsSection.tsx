@@ -79,7 +79,7 @@ const projectsData: Project[] = [
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <CardContainer className="inter-var w-full max-w-sm mx-auto">
-      <CardBody className="bg-black relative group/card hover:shadow-2xl hover:shadow-secondary/[0.3] border-white/[0.1] hover:border-secondary/[0.5] w-full h-auto rounded-xl p-6 border transition-all duration-500">
+      <CardBody className="bg-black relative group/card hover:shadow-2xl hover:shadow-white/[0.15] border-white/[0.1] hover:border-white/[0.5] w-full h-auto rounded-xl p-6 border transition-all duration-500">
         {/* Project Title - Floats highest */}
         <CardItem
           translateZ="120"
@@ -104,7 +104,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               src={project.image}
               height="1000"
               width="1000"
-              className="h-60 w-full object-cover rounded-xl transition-all duration-500 group-hover/card:scale-105 group-hover/card:shadow-2xl group-hover/card:shadow-secondary/[0.4]"
+              className="h-60 w-full object-cover rounded-xl transition-all duration-500 group-hover/card:scale-105 group-hover/card:shadow-2xl group-hover/card:shadow-white/[0.2]"
               alt={project.title}
             />
             {/* Image overlay for enhanced depth */}
@@ -152,7 +152,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 rounded-xl text-sm font-medium text-white border border-white/20 hover:border-secondary/50 hover:bg-secondary/10 transition-all duration-300"
+              className="px-6 py-2 rounded-xl text-sm font-medium text-white border border-white/20 hover:border-white/50 hover:bg-white/10 transition-all duration-300"
             >
               Live Demo →
             </CardItem>
