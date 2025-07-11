@@ -20,6 +20,7 @@ import {
   // ChevronDown,
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
+import { HoverBorderGradient } from "../UI/hover-border-gradient";
 import "react-day-picker/dist/style.css";
 
 // Form data interface
@@ -240,19 +241,19 @@ export function ContactSection() {
 
     // Form submission logic would go here
     // For now, we'll just simulate a successful submission
-    
+
     // Show success message and alert
     setShowSuccessMessage(true);
     setShowAlert(true);
-    
+
     // Reset form
     resetForm();
-    
+
     // Hide success message after 5 seconds
     setTimeout(() => {
       setShowSuccessMessage(false);
     }, 5000);
-    
+
     // Hide alert after 2 seconds
     setTimeout(() => {
       setShowAlert(false);
@@ -379,27 +380,36 @@ export function ContactSection() {
 
         {/* Contact Form */}
         <div className="max-w-4xl mx-auto">
-          <div className="grid-default-color rounded-2xl p-8 md:p-12">
+          <HoverBorderGradient
+            containerClassName="rounded-2xl w-full"
+            as="div"
+            className="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-sm text-white p-8 md:p-12 w-full rounded-2xl"
+          >
             {/* Success Message */}
             {showSuccessMessage && (
               <div className="bg-green-900/50 border border-green-500 rounded-lg p-4 mb-6 flex items-center gap-3 animate-fade-in">
                 <CheckCircle className="text-green-400" size={24} />
                 <div>
-                  <h3 className="font-semibold text-green-400">Message Sent Successfully!</h3>
-                  <p className="text-green-300 text-sm">Thank you for contacting us. We'll get back to you soon.</p>
+                  <h3 className="font-semibold text-green-400">
+                    Message Sent Successfully!
+                  </h3>
+                  <p className="text-green-300 text-sm">
+                    Thank you for contacting us. We'll get back to you soon.
+                  </p>
                 </div>
               </div>
             )}
-            
-            <form onSubmit={handleSubmit} className="space-y-7" autoComplete="on">
+
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-7"
+              autoComplete="on"
+            >
               {/* Name and Email Fields - Two Column Layout */}
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Name Field */}
                 <div className="space-y-2">
-                  <label
-                    htmlFor="name"
-                    className="contact-label"
-                  >
+                  <label htmlFor="name" className="contact-label">
                     <User size={16} />
                     Name *
                   </label>
@@ -418,10 +428,7 @@ export function ContactSection() {
 
                 {/* Email Field */}
                 <div className="space-y-2">
-                  <label
-                    htmlFor="email"
-                    className="contact-label"
-                  >
+                  <label htmlFor="email" className="contact-label">
                     <Mail size={16} />
                     Email *
                   </label>
@@ -441,10 +448,7 @@ export function ContactSection() {
 
               {/* Phone Number Field */}
               <div className="space-y-2">
-                <label
-                  htmlFor="phone"
-                  className="contact-label"
-                >
+                <label htmlFor="phone" className="contact-label">
                   <Phone size={16} />
                   Phone Number *
                 </label>
@@ -625,10 +629,7 @@ export function ContactSection() {
 
                 {/* Time Slot Selector */}
                 <div className="space-y-2 relative">
-                  <label
-                    htmlFor="timeSlot"
-                    className="contact-label"
-                  >
+                  <label htmlFor="timeSlot" className="contact-label">
                     <Clock size={16} />
                     Time Slot (GMT) *
                   </label>
@@ -642,16 +643,16 @@ export function ContactSection() {
                       className="contact-input appearance-none"
                       required
                     >
-                    <option value="">Select time slot</option>
-                    {timeSlots.map((slot) => (
-                      <option
-                        key={slot}
-                        value={slot}
-                        className="bg-black text-white"
-                      >
-                        {slot}
-                      </option>
-                    ))}
+                      <option value="">Select time slot</option>
+                      {timeSlots.map((slot) => (
+                        <option
+                          key={slot}
+                          value={slot}
+                          className="bg-black text-white"
+                        >
+                          {slot}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -659,10 +660,7 @@ export function ContactSection() {
 
               {/* Details/Message Field */}
               <div className="space-y-2">
-                <label
-                  htmlFor="details"
-                  className="contact-label"
-                >
+                <label htmlFor="details" className="contact-label">
                   <MessageSquare size={16} />
                   Details *
                 </label>
@@ -722,7 +720,7 @@ export function ContactSection() {
                 </button>
               </div>
             </form>
-          </div>
+          </HoverBorderGradient>
         </div>
       </div>
 
@@ -989,7 +987,7 @@ export function ContactSection() {
           </div>
         </div>
       )}
-      
+
       {/* Small Alert Popup */}
       {showAlert && (
         <div className="fixed top-10 right-10 z-[9999]">
