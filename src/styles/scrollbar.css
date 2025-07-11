@@ -14,6 +14,7 @@ html {
 body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  position: relative; /* For custom scroll indicator */
 }
 
 /* Ensure scrolling still works */
@@ -46,3 +47,5 @@ section::-webkit-scrollbar,
 div::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/* Custom scroll indicator is now handled by ScrollProgressBar component */

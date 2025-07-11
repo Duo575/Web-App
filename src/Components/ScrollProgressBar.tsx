@@ -37,7 +37,7 @@ const ScrollProgressBar: React.FC = () => {
 
   return (
     <div
-      className={`fixed top-0 right-0 w-1 h-full z-50 transition-all duration-500 ease-out ${
+      className={`fixed top-0 right-0 w-[3px] h-full z-50 transition-all duration-500 ease-out ${
         isVisible && isScrolling
           ? "opacity-100 translate-x-0"
           : "opacity-0 translate-x-1"
@@ -47,10 +47,9 @@ const ScrollProgressBar: React.FC = () => {
         className="w-full transition-all duration-100 ease-out"
         style={{
           height: `${scrollProgress}%`,
-          background:
-            "linear-gradient(180deg, #8b5cf6, #7c3aed, #6d28d9, #5b21b6)",
+          background: "rgb(255, 255, 255)",
           boxShadow:
-            "0 0 20px rgba(147, 51, 234, 0.8), -10px 0 40px rgba(147, 51, 234, 0.4)", // Enhanced glow to the left
+            "0 0 8px rgb(255, 255, 255), 0 0 12px rgb(255, 255, 255)", // Pure white glow
         }}
       />
     </div>
