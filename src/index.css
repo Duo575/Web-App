@@ -649,7 +649,7 @@ body,
   /* Single, instantaneous hover effect */
   .about-card:hover {
     @apply border-white/50;
-    @apply shadow-[0_0_8px_1px_rgba(255,255,255,0.15)];
+    @apply shadow-2xl shadow-white/15;
   }
 
   /* Legacy grid styles - kept for backward compatibility */
