@@ -366,6 +366,53 @@ export function ContactSection() {
     };
   }, [showPrivacyModal]);
 
+  // Handle button click for liquid glass effects
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!formData.privacyAccepted) return;
+
+    const button = e.currentTarget;
+    const rect = button.getBoundingClientRect();
+
+    // Create ripple effect
+    const ripple = document.createElement("span");
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+
+    ripple.style.width = ripple.style.height = size + "px";
+    ripple.style.left = x + "px";
+    ripple.style.top = y + "px";
+    ripple.classList.add("ripple");
+
+    button.appendChild(ripple);
+
+    // Remove ripple after animation
+    setTimeout(() => {
+      if (ripple.parentNode) {
+        ripple.parentNode.removeChild(ripple);
+      }
+    }, 600);
+
+    // Create floating particles
+    for (let i = 0; i < 6; i++) {
+      setTimeout(() => {
+        const particle = document.createElement("span");
+        particle.classList.add("particle");
+        particle.style.left = Math.random() * rect.width + "px";
+        particle.style.top = rect.height / 2 + "px";
+
+        button.appendChild(particle);
+
+        // Remove particle after animation
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, 2000);
+      }, i * 100);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-6 content-above-particles">
       <div className="c-space">
@@ -712,8 +759,9 @@ export function ContactSection() {
               <div className="pt-5">
                 <button
                   type="submit"
-                  className="contact-submit-btn btn-gradient disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="liquid-glass-btn disabled:opacity-50 disabled:cursor-not-allowed w-full px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-3"
                   disabled={!formData.privacyAccepted}
+                  onClick={handleButtonClick}
                 >
                   <Send size={20} />
                   <span>Send Message</span>
