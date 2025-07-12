@@ -497,64 +497,222 @@
       flex-direction: column;
       gap: 3rem;
     }
-
-    /* Prevent comparison component from overlapping text */
-    .hero-comparison-wrapper {
-      margin-top: 2rem;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
   }
 
-  @media (max-width: 767px) {
-    .hero-content-wrapper {
-      gap: 2.5rem;
-    }
-
-    .hero-comparison-wrapper {
-      margin-top: 1.5rem;
-    }
+  /* Calendar Grid Layout Fixes - Force Grid Structure */
+  .custom-calendar {
+    color: white !important;
+    font-family: inherit !important;
   }
 
-  @media (max-width: 639px) {
-    .hero-content-wrapper {
-      gap: 2rem;
-    }
-
-    .hero-comparison-wrapper {
-      margin-top: 1rem;
-    }
+  /* Force table structure for proper grid */
+  .custom-calendar table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 4px !important;
+    margin: 0 auto !important;
+    table-layout: fixed !important;
   }
 
-  /* Glass morphism effect */
-  .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .custom-calendar thead,
+  .custom-calendar tbody {
+    display: table-header-group !important;
   }
 
-  /* Hide scrollbar but keep functionality */
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  .custom-calendar tbody {
+    display: table-row-group !important;
   }
 
-  /* Ensure content appears above particles */
-  .content-above-particles {
-    position: relative;
-    z-index: 1;
+  .custom-calendar tr {
+    display: table-row !important;
   }
 
-  /* Hide footer when modal is open - keep space but make invisible */
-  .modal-open footer {
-    visibility: hidden !important;
-    pointer-events: none !important;
-    z-index: -1 !important;
+  .custom-calendar th,
+  .custom-calendar td {
+    display: table-cell !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    position: relative !important;
   }
+
+  /* Header cells (day names) */
+  .custom-calendar th {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  /* Day buttons */
+  .custom-calendar button {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    color: white !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+
+  .custom-calendar button:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .custom-calendar button[aria-selected="true"] {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: white !important;
+  }
+
+  .custom-calendar button[data-today="true"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .custom-calendar button:disabled {
+    color: rgba(255, 255, 255, 0.3) !important;
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+  }
+
+  .custom-calendar button[data-outside="true"] {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
+
+  /* Caption (month/year header) */
+  .custom-calendar [role="grid"] {
+    margin-top: 1rem !important;
+  }
+
+  .custom-calendar h2 {
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-bottom: 16px !important;
+    text-align: center !important;
+  }
+
+  /* Navigation buttons - Clean style without boxes */
+  .custom-calendar [name="previous-month"],
+  .custom-calendar [name="next-month"],
+  .custom-calendar button[aria-label*="Previous"],
+  .custom-calendar button[aria-label*="Next"],
+  .custom-calendar button[aria-label*="previous"],
+  .custom-calendar button[aria-label*="next"] {
+    color: white !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+  }
+
+  .custom-calendar [name="previous-month"]:hover,
+  .custom-calendar [name="next-month"]:hover,
+  .custom-calendar button[aria-label*="Previous"]:hover,
+  .custom-calendar button[aria-label*="Next"]:hover,
+  .custom-calendar button[aria-label*="previous"]:hover,
+  .custom-calendar button[aria-label*="next"]:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 4px !important;
+  }
+
+  /* Navigation arrow icons - All possible selectors */
+  .custom-calendar [name="previous-month"] svg,
+  .custom-calendar [name="next-month"] svg,
+  .custom-calendar button[aria-label*="Previous"] svg,
+  .custom-calendar button[aria-label*="Next"] svg,
+  .custom-calendar button[aria-label*="previous"] svg,
+  .custom-calendar button[aria-label*="next"] svg,
+  .custom-calendar nav button svg,
+  .custom-calendar [role="button"] svg {
+    color: white !important;
+    fill: white !important;
+    stroke: white !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Force all navigation elements to be white */
+  .custom-calendar nav,
+  .custom-calendar nav *,
+  .custom-calendar [role="button"],
+  .custom-calendar [role="button"] * {
+    color: white !important;
+  }
+}
+
+/* Prevent comparison component from overlapping text */
+.hero-comparison-wrapper {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .hero-content-wrapper {
+    gap: 2.5rem;
+  }
+
+  .hero-comparison-wrapper {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-content-wrapper {
+    gap: 2rem;
+  }
+
+  .hero-comparison-wrapper {
+    margin-top: 1rem;
+  }
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure content appears above particles */
+.content-above-particles {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide footer when modal is open - keep space but make invisible */
+.modal-open footer {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
 }
 
 /* Force Night Sky theme colors */
@@ -1173,22 +1331,47 @@ body,
     padding-right: 30px !important;
   }
 
-  /* Style for select options */
+  /* Style for select options - Match calendar dropdown */
   select.contact-input option {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 12px;
-    font-size: 14px;
-    border: none;
-    backdrop-filter: blur(8px);
+    background-color: #000000 !important;
+    color: white !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+    border: none !important;
+    backdrop-filter: blur(20px) !important;
   }
 
   select.contact-input option:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1) !important;
   }
 
-  select.contact-input option:checked {
-    background-color: rgba(255, 255, 255, 0.2);
+  select.contact-input option:checked,
+  select.contact-input option:selected {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+  }
+
+  /* Style the select dropdown itself to match calendar */
+  select.contact-input {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(12px) !important;
+    border-radius: 12px !important;
+  }
+
+  select.contact-input:focus {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+  }
+
+  /* Style the dropdown options container */
+  select.contact-input:focus,
+  select.contact-input[size],
+  select.contact-input[multiple] {
+    border-radius: 12px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9),
+      0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+    margin-top: 4px !important;
   }
 
   /* Form label consistency */

@@ -17,7 +17,7 @@ import {
   Send,
   Shield,
   CheckCircle,
-  // ChevronDown,
+  ChevronDown,
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
 import { HoverBorderGradient } from "../UI/hover-border-gradient";
@@ -94,6 +94,7 @@ export function ContactSection() {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [showTimeSlotDropdown, setShowTimeSlotDropdown] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -113,8 +114,9 @@ export function ContactSection() {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const timeSlotRef = useRef<HTMLDivElement>(null);
 
-  // Handle click outside to close calendar
+  // Handle click outside to close calendar and time slot dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -123,16 +125,22 @@ export function ContactSection() {
       ) {
         setShowCalendar(false);
       }
+      if (
+        timeSlotRef.current &&
+        !timeSlotRef.current.contains(event.target as Node)
+      ) {
+        setShowTimeSlotDropdown(false);
+      }
     };
 
-    if (showCalendar) {
+    if (showCalendar || showTimeSlotDropdown) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showCalendar]);
+  }, [showCalendar, showTimeSlotDropdown]);
 
   // Handle input changes
   const handleInputChange = (
@@ -606,28 +614,37 @@ export function ContactSection() {
                     </button>
 
                     {showCountryDropdown && (
-                      <div className="absolute top-full right-0 mt-1 w-80 bg-black backdrop-blur-3xl border border-white/20 rounded-lg shadow-2xl z-[60]">
+                      <div
+                        className="absolute top-full right-0 mt-2 w-80 bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl z-[60] p-4"
+                        style={{
+                          backgroundColor: "#000000",
+                          backdropFilter: "blur(20px)",
+                          boxShadow:
+                            "0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.2)",
+                          border: "1px solid rgba(255, 255, 255, 0.3)",
+                        }}
+                      >
                         {/* Search Input */}
-                        <div className="p-4 border-b border-white/10">
+                        <div className="mb-4 pb-4 border-b border-white/10">
                           <input
                             type="text"
                             placeholder="Search countries..."
                             value={countrySearch}
                             onChange={(e) => setCountrySearch(e.target.value)}
-                            className="w-full px-3 py-2 bg-black/70 text-white rounded border border-white/20 focus:border-white focus:outline-none text-sm"
+                            className="w-full px-3 py-2 bg-black/70 text-white rounded-lg border border-white/20 focus:border-white focus:outline-none text-sm"
                             autoFocus
                           />
                         </div>
 
                         {/* Countries List */}
-                        <div className="max-h-48 overflow-y-auto">
+                        <div className="max-h-48 overflow-y-auto -mx-4">
                           {filteredCountries.length > 0 ? (
                             filteredCountries.map((country) => (
                               <button
                                 key={country.code}
                                 type="button"
                                 onClick={() => handleCountrySelect(country)}
-                                className="w-full px-4 py-3 text-left hover:bg-white/10 flex items-center gap-3 text-sm text-white transition-all duration-200 border-b border-white/5 last:border-b-0"
+                                className="w-full px-4 py-3 text-left hover:bg-white/10 flex items-center gap-3 text-sm text-white transition-all duration-200 border-b border-white/5 last:border-b-0 rounded-lg"
                               >
                                 <span className="text-lg">{country.flag}</span>
                                 <span className="font-medium text-white">
@@ -639,7 +656,7 @@ export function ContactSection() {
                               </button>
                             ))
                           ) : (
-                            <div className="px-4 py-6 text-gray-400 text-sm text-center">
+                            <div className="py-6 text-gray-400 text-sm text-center">
                               <div>
                                 No countries found for "{countrySearch}"
                               </div>
@@ -705,7 +722,15 @@ export function ContactSection() {
                   {showCalendar && (
                     <div
                       ref={calendarRef}
-                      className="absolute top-full left-0 mt-1 z-[60] bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl shadow-2xl p-4"
+                      className="absolute top-full left-0 mt-1 z-[60] bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl p-4"
+                      style={{
+                        minWidth: "320px",
+                        backgroundColor: "#000000",
+                        backdropFilter: "blur(20px)",
+                        boxShadow:
+                          "0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.2)",
+                        border: "1px solid rgba(255, 255, 255, 0.3)",
+                      }}
                     >
                       <DayPicker
                         mode="single"
@@ -715,72 +740,7 @@ export function ContactSection() {
                         modifiers={{
                           selected: selectedDate,
                         }}
-                        modifiersStyles={{
-                          selected: {
-                            backgroundColor: "rgba(255, 255, 255, 0.2)",
-                            color: "white",
-                            border: "1px solid rgba(255, 255, 255, 0.3)",
-                          },
-                        }}
-                        className="calendar-custom"
-                        styles={{
-                          day: {
-                            color: "white",
-                            borderRadius: "6px",
-                            fontSize: "14px",
-                            padding: "8px",
-                            margin: "2px",
-                            minWidth: "36px",
-                            minHeight: "36px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            transition: "all 0.2s ease",
-                            cursor: "pointer",
-                          },
-                          day_disabled: {
-                            color: "rgba(255, 255, 255, 0.3)",
-                            cursor: "not-allowed",
-                          },
-                          day_today: {
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
-                            border: "1px solid rgba(255, 255, 255, 0.2)",
-                          },
-                          head_cell: {
-                            color: "rgba(255, 255, 255, 0.7)",
-                            fontSize: "12px",
-                            fontWeight: "600",
-                            padding: "8px",
-                            textAlign: "center",
-                          },
-                          nav_button: {
-                            color: "white",
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
-                            border: "1px solid rgba(255, 255, 255, 0.2)",
-                            borderRadius: "6px",
-                            padding: "8px",
-                            minWidth: "36px",
-                            minHeight: "36px",
-                            transition: "all 0.2s ease",
-                            cursor: "pointer",
-                          },
-                          nav_button_previous: {
-                            color: "white",
-                          },
-                          nav_button_next: {
-                            color: "white",
-                          },
-                          caption: {
-                            color: "white",
-                            fontSize: "16px",
-                            fontWeight: "600",
-                            marginBottom: "16px",
-                            textAlign: "center",
-                          },
-                          table: {
-                            margin: "0 auto",
-                          },
-                        }}
+                        className="custom-calendar"
                       />
                     </div>
                   )}
@@ -798,27 +758,61 @@ export function ContactSection() {
                     <Clock size={16} />
                     Time Slot (GMT) *
                   </label>
-                  <div className="relative">
-                    <select
-                      id="timeSlot"
-                      value={formData.timeSlot}
-                      onChange={(e) =>
-                        handleInputChange("timeSlot", e.target.value)
+                  <div className="relative" ref={timeSlotRef}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowTimeSlotDropdown(!showTimeSlotDropdown)
                       }
-                      className="contact-input appearance-none"
-                      required
+                      className="contact-input appearance-none w-full text-left flex items-center justify-between"
                     >
-                      <option value="">Select time slot</option>
-                      {timeSlots.map((slot) => (
-                        <option
-                          key={slot}
-                          value={slot}
-                          className="bg-black text-white"
-                        >
-                          {slot}
-                        </option>
-                      ))}
-                    </select>
+                      <span
+                        className={
+                          formData.timeSlot ? "text-white" : "text-gray-400"
+                        }
+                      >
+                        {formData.timeSlot || "Select time slot"}
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${
+                          showTimeSlotDropdown ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {showTimeSlotDropdown && (
+                      <div
+                        className="absolute top-full left-0 mt-2 z-[60] bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl p-4 w-full"
+                        style={{
+                          backgroundColor: "#000000",
+                          backdropFilter: "blur(20px)",
+                          boxShadow:
+                            "0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.2)",
+                          border: "1px solid rgba(255, 255, 255, 0.3)",
+                        }}
+                      >
+                        <div className="max-h-48 overflow-y-auto">
+                          {timeSlots.map((slot) => (
+                            <button
+                              key={slot}
+                              type="button"
+                              onClick={() => {
+                                handleInputChange("timeSlot", slot);
+                                setShowTimeSlotDropdown(false);
+                              }}
+                              className={`w-full text-left px-3 py-2 rounded-lg transition-colors duration-200 ${
+                                formData.timeSlot === slot
+                                  ? "bg-white/20 text-white"
+                                  : "text-white hover:bg-white/10"
+                              }`}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
