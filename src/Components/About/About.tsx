@@ -54,18 +54,18 @@ const About: React.FC = () => {
           {/* Grid 1 - Personal Introduction (Wider) */}
           <div
             data-grid="1"
-            className={`flex items-end about-card grid-1 relative overflow-hidden animate-slide-from-left ${
+            className={`flex flex-col justify-end about-card grid-1 relative overflow-hidden animate-slide-from-left ${
               visibleGrids.has(1) ? "animate-visible" : "animate-hidden"
             }`}
           >
             <div className="absolute -right-[2rem] -top-[2rem] text-8xl opacity-10 text-secondary">
               💻
             </div>
-            <div className="z-10 relative max-w-2xl pl-2">
-              <p className="headtext">
+            <div className="z-10 relative max-w-2xl pl-2 mb-6">
+              <p className="headtext mb-4">
                 Hi, we are a team of four passionate web developers!
               </p>
-              <p className="subtext">
+              <p className="subtext text-justify">
                 We've honed our frontend and backend skills to deliver dynamic
                 software and innovative web applications. Based in a virtual
                 'digital universe,' we combine cutting-edge technologies with
