@@ -169,8 +169,8 @@ export const ProjectsSection: React.FC = () => {
       <div className="c-space">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-            Our <span className="text-gradient">Projects</span>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-white">
+            Our <span className="text-white">Projects</span>
           </h2>
           <p className="text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto">
             Explore our portfolio of innovative web applications and digital
