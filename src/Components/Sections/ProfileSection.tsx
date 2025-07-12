@@ -69,7 +69,7 @@ const teamMembers: TeamMember[] = [
     role: "Backend Developer",
     bio: "",
     image: "https://avatar.vercel.sh/srujan",
-    email: "srujan@company.com",
+    email: "srujansattwik05@gmail.com",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/srujan-sattwik-739018277/",
       twitter: "#",
