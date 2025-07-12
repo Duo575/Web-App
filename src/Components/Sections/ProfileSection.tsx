@@ -30,9 +30,9 @@ const teamMembers: TeamMember[] = [
     role: "Full-Stack Developer",
     bio: "",
     image: "https://avatar.vercel.sh/debi",
-    email: "debi@company.com",
+    email: "debiprasadpanda73@gmail.com",
     socialLinks: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/debi-prasad-panda-b05b382b1/",
       twitter: "#",
       github: "#",
     },
@@ -43,11 +43,11 @@ const teamMembers: TeamMember[] = [
     role: "Full-Stack Developer",
     bio: "",
     image: "https://avatar.vercel.sh/pratik",
-    email: "pratik@company.com",
+    email: "pratikkiranrout@gmail.com",
     socialLinks: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/pratik-kiran-rout-46776b34b/",
       twitter: "#",
-      github: "#",
+      github: "https://github.com/Pratik-kiran-Rout",
     },
   },
   {
@@ -56,7 +56,7 @@ const teamMembers: TeamMember[] = [
     role: "Frontend Developer",
     bio: "",
     image: "https://avatar.vercel.sh/manas",
-    email: "manas@company.com",
+    email: "manasranjankishan55@gmail.com",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -71,7 +71,7 @@ const teamMembers: TeamMember[] = [
     image: "https://avatar.vercel.sh/srujan",
     email: "srujan@company.com",
     socialLinks: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/srujan-sattwik-739018277/",
       twitter: "#",
       github: "#",
     },
@@ -83,9 +83,12 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
   return (
     <div className="profile-card">
       {/* Mail/Contact Button */}
-      <button
+      <a
+        href={`mailto:${member.email}`}
         className="profile-card-mail"
         aria-label={`Contact ${member.name}`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <svg
           width="24"
@@ -102,7 +105,7 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </a>
 
       {/* Profile Picture */}
       <div className="profile-card-pic">
@@ -121,7 +124,12 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
           {/* Social Links */}
           <div className="profile-card-social">
             {member.socialLinks.linkedin && (
-              <a href={member.socialLinks.linkedin} aria-label="LinkedIn">
+              <a
+                href={member.socialLinks.linkedin}
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <svg
                   width="20"
                   height="20"
@@ -133,7 +141,12 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
               </a>
             )}
             {member.socialLinks.twitter && (
-              <a href={member.socialLinks.twitter} aria-label="Twitter">
+              <a
+                href={member.socialLinks.twitter}
+                aria-label="Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <svg
                   width="20"
                   height="20"
@@ -145,7 +158,12 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
               </a>
             )}
             {member.socialLinks.github && (
-              <a href={member.socialLinks.github} aria-label="GitHub">
+              <a
+                href={member.socialLinks.github}
+                aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <svg
                   width="20"
                   height="20"
@@ -159,7 +177,14 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
           </div>
 
           {/* Contact Button */}
-          <button className="profile-card-button">Contact</button>
+          <a
+            href={`mailto:${member.email}`}
+            className="profile-card-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact
+          </a>
         </div>
       </div>
     </div>
