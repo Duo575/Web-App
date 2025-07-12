@@ -26,10 +26,8 @@ export const preloadImages = async (sources: string[]): Promise<void> => {
 export const preloadCriticalResources = async (): Promise<void> => {
   // Add critical images that should be preloaded
   const criticalImages: string[] = [
-    // Parallax images for immediate hero section
-    "/src/assets/parallax images/moon.png",
-    "/src/assets/parallax images/mountains_behind.png",
-    "/src/assets/parallax images/mountains_front.png",
+    // Add any critical images here when needed
+    // Currently using ShootingStars and StarsBackground components instead of static images
   ];
 
   if (criticalImages.length > 0) {
