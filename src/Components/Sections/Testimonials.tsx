@@ -144,18 +144,9 @@ export function Testimonials() {
               ))}
             </Marquee>
           </div>
-          {/* Enhanced gradient overlays for perfect edge blending */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 sm:w-40 bg-gradient-to-r from-black via-black/90 via-black/70 to-transparent z-10"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 sm:w-40 bg-gradient-to-l from-black via-black/90 via-black/70 to-transparent z-10"></div>
-          
-          {/* Additional subtle inner gradients for ultra-smooth transition */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black/98 via-black/85 via-black/50 to-transparent z-[9]"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black/98 via-black/85 via-black/50 to-transparent z-[9]"></div>
-          
-          {/* Outermost edge blending for seamless integration */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-black/95 z-[11]"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-black/95 z-[11]"></div>
-        </div>
+          {/* Smooth gradient overlays for edge blending */}
+          <div className="pointer-events-none absolute inset-y-0 -left-[10%] w-16 sm:w-20 bg-gradient-to-r from-black via-black/80 via-black/40 to-transparent z-10"></div>
+          <div className="pointer-events-none absolute inset-y-0 -right-[10%] w-16 sm:w-20 bg-gradient-to-l from-black via-black/80 via-black/40 to-transparent z-10"></div>        </div>
       </div>
     </section>
   );
