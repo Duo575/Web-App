@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Debi Prasad Panda",
-    role: "Lead Developer",
+    role: "Full-Stack Developer",
     bio: "",
     image: "https://avatar.vercel.sh/debi",
     email: "debi@company.com",
@@ -40,7 +40,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 2,
     name: "Pratik Kiran Rout",
-    role: "UI/UX Designer",
+    role: "Full-Stack Developer",
     bio: "",
     image: "https://avatar.vercel.sh/pratik",
     email: "pratik@company.com",
@@ -53,7 +53,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 3,
     name: "Manas Ranjan Kishan",
-    role: "Backend Engineer",
+    role: "Frontend Developer",
     bio: "",
     image: "https://avatar.vercel.sh/manas",
     email: "manas@company.com",
@@ -66,7 +66,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 4,
     name: "Srujan Sattwik",
-    role: "Project Manager",
+    role: "Backend Developer",
     bio: "",
     image: "https://avatar.vercel.sh/srujan",
     email: "srujan@company.com",

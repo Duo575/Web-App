@@ -1224,6 +1224,139 @@ body,
     @apply hover:scale-105 active:scale-95;
   }
 
+  /* Liquid Glass Effect for Submit Button */
+  .liquid-glass-btn {
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    ) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      0 0 20px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .liquid-glass-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .liquid-glass-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .liquid-glass-btn:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.1) 100%
+    ) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.25),
+      0 0 40px rgba(255, 255, 255, 0.15), 0 0 80px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .liquid-glass-btn:hover::before {
+    left: 100%;
+  }
+
+  .liquid-glass-btn:hover::after {
+    opacity: 1;
+  }
+
+  .liquid-glass-btn:active {
+    transform: translateY(0) scale(0.98);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Liquid ripple effect */
+  .liquid-glass-btn .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+  }
+
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  /* Floating particles effect */
+  .liquid-glass-btn .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float-particle 2s ease-in-out infinite;
+  }
+
+  @keyframes float-particle {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 1;
+    }
+  }
+
+  /* Disabled state for liquid glass button */
+  .liquid-glass-btn:disabled {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .liquid-glass-btn:disabled::before,
+  .liquid-glass-btn:disabled::after {
+    display: none;
+  }
+
   /* Custom Calendar Styles */
   .calendar-custom {
     @apply text-white;
