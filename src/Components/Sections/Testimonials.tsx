@@ -124,7 +124,7 @@ export function Testimonials() {
       <div className="c-space">
         <h2 className="text-heading mb-8 sm:mb-12">What People Say</h2>
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:20s] space-x-8 py-4">
+          <Marquee pauseOnHover className="[--duration:20s] [--gap:1.6rem] py-4">
             {firstRow.map((review) => (
               <ReviewCard key={review.username} {...review} />
             ))}
@@ -132,7 +132,7 @@ export function Testimonials() {
           <Marquee
             reverse
             pauseOnHover
-            className="[--duration:20s] space-x-8 py-4 mt-8"
+            className="[--duration:20s] [--gap:1.6rem] py-4 mt-8"
           >
             {secondRow.map((review) => (
               <ReviewCard key={review.username} {...review} />
