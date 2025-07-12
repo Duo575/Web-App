@@ -28,7 +28,7 @@ export default function CompareDemo() {
           firstImage="/code-snippet.png"
           secondImage="/website-design.png"
           firstImageClassName="object-cover object-left-top w-full h-full"
-          secondImageClassname="object-cover object-left-top w-full h-full"
+          secondImageClassname="object-cover object-center w-full h-full scale-105"
           className="h-[250px] w-full max-w-[250px] sm:h-[350px] sm:max-w-[500px] lg:h-[470px] lg:max-w-[680px] rounded-2xl overflow-hidden"
           slideMode="drag"
           initialSliderPercentage={50}
