@@ -150,7 +150,65 @@ export function ContactSection() {
 
   // Handle date input formatting (dd/mm/yyyy)
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value.replace(/\D/g, ""); // Remove non-digits
+    const inputValue = e.target.value;
+    const currentValue = formData.date;
+
+    // If the input is being cleared or is shorter than current (backspace/delete)
+    if (inputValue.length < currentValue.length) {
+      // For deletion, just use the input value as-is but clean up trailing slashes
+      let cleanedValue = inputValue;
+
+      // Remove trailing slashes if no digits follow them
+      while (cleanedValue.endsWith("/") && !cleanedValue.match(/\d\/$/)) {
+        cleanedValue = cleanedValue.slice(0, -1);
+      }
+
+      // If only slashes remain, clear the field completely
+      if (cleanedValue.replace(/\//g, "").length === 0) {
+        cleanedValue = "";
+      }
+
+      handleInputChange("date", cleanedValue);
+      return;
+    }
+
+    // Only format when adding characters
+    let value = inputValue.replace(/\D/g, ""); // Remove non-digits
+
+    // Validate and limit day (01-31)
+    if (value.length >= 1) {
+      const firstDigit = parseInt(value[0]);
+      if (firstDigit > 3) {
+        value = "0" + firstDigit + value.substring(1);
+      }
+    }
+
+    if (value.length >= 2) {
+      const day = parseInt(value.substring(0, 2));
+      if (day > 31) {
+        value = "31" + value.substring(2);
+      } else if (day === 0) {
+        value = "01" + value.substring(2);
+      }
+    }
+
+    // Validate and limit month (01-12)
+    if (value.length >= 3) {
+      const monthFirstDigit = parseInt(value[2]);
+      if (monthFirstDigit > 1) {
+        value =
+          value.substring(0, 2) + "0" + monthFirstDigit + value.substring(3);
+      }
+    }
+
+    if (value.length >= 4) {
+      const month = parseInt(value.substring(2, 4));
+      if (month > 12) {
+        value = value.substring(0, 2) + "12" + value.substring(4);
+      } else if (month === 0) {
+        value = value.substring(0, 2) + "01" + value.substring(4);
+      }
+    }
 
     // Format as dd/mm/yyyy
     if (value.length >= 2) {
@@ -166,6 +224,36 @@ export function ContactSection() {
     }
 
     handleInputChange("date", value);
+  };
+
+  // Check if date has validation errors (for styling)
+  const hasDateError = (dateString: string): boolean => {
+    if (!dateString) return false;
+
+    // Only show error for complete or nearly complete dates
+    const parts = dateString.split("/");
+
+    // If we have day and month parts, check if they're valid
+    if (parts.length >= 2 && parts[0].length === 2 && parts[1].length >= 1) {
+      const day = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10);
+
+      // Check basic ranges only if month is complete (2 digits)
+      if (parts[1].length === 2) {
+        if (day > 31 || day < 1 || month > 12 || month < 1) return true;
+
+        // If we have a complete date, check if day exists in month
+        if (parts.length === 3 && parts[2].length === 4) {
+          const year = parseInt(parts[2], 10);
+          if (year >= new Date().getFullYear()) {
+            const daysInMonth = new Date(year, month, 0).getDate();
+            return day > daysInMonth;
+          }
+        }
+      }
+    }
+
+    return false;
   };
 
   // Validate date format (dd/mm/yyyy)
@@ -518,16 +606,15 @@ export function ContactSection() {
                     </button>
 
                     {showCountryDropdown && (
-                      <div className="absolute top-full left-0 mt-1 w-80 bg-black/90 backdrop-blur-sm border border-white/20 rounded-lg shadow-lg z-50">
+                      <div className="absolute top-full right-0 mt-1 w-80 bg-black backdrop-blur-3xl border border-white/20 rounded-lg shadow-2xl z-[60]">
                         {/* Search Input */}
-                        <div className="p-3 border-b border-white/20">
+                        <div className="p-4 border-b border-white/10">
                           <input
                             type="text"
                             placeholder="Search countries..."
                             value={countrySearch}
                             onChange={(e) => setCountrySearch(e.target.value)}
-                            className="w-full px-3 bg-gray-800 text-white rounded border border-white/20 focus:border-blue-500 focus:outline-none text-sm"
-                            style={{ height: "36px" }}
+                            className="w-full px-3 py-2 bg-black/70 text-white rounded border border-white/20 focus:border-white focus:outline-none text-sm"
                             autoFocus
                           />
                         </div>
@@ -540,10 +627,10 @@ export function ContactSection() {
                                 key={country.code}
                                 type="button"
                                 onClick={() => handleCountrySelect(country)}
-                                className="w-full px-3 py-2 text-left hover:bg-white/10 flex items-center gap-2 text-sm text-white"
+                                className="w-full px-4 py-3 text-left hover:bg-white/10 flex items-center gap-3 text-sm text-white transition-all duration-200 border-b border-white/5 last:border-b-0"
                               >
-                                <span>{country.flag}</span>
-                                <span className="font-medium">
+                                <span className="text-lg">{country.flag}</span>
+                                <span className="font-medium text-white">
                                   {country.code}
                                 </span>
                                 <span className="text-gray-300 truncate">
@@ -552,11 +639,11 @@ export function ContactSection() {
                               </button>
                             ))
                           ) : (
-                            <div className="px-3 py-2 text-gray-400 text-sm text-center">
+                            <div className="px-4 py-6 text-gray-400 text-sm text-center">
                               <div>
                                 No countries found for "{countrySearch}"
                               </div>
-                              <div className="text-xs mt-1">
+                              <div className="text-xs mt-2 text-gray-500">
                                 Try searching by country name or code (e.g.,
                                 "United States" or "+1")
                               </div>
@@ -595,7 +682,11 @@ export function ContactSection() {
                       type="text"
                       value={formData.date}
                       onChange={handleDateChange}
-                      className="contact-input pr-10"
+                      className={`contact-input pr-10 ${
+                        hasDateError(formData.date)
+                          ? "border-red-500 focus:border-red-500 focus:ring-red-500/50"
+                          : ""
+                      }`}
                       placeholder="Click calendar or type dd/mm/yyyy"
                       required
                       maxLength={10}
@@ -614,7 +705,7 @@ export function ContactSection() {
                   {showCalendar && (
                     <div
                       ref={calendarRef}
-                      className="absolute top-full left-0 mt-1 z-50 bg-black border border-white/20 rounded-xl shadow-2xl p-2 scale-75 origin-top-left"
+                      className="absolute top-full left-0 mt-1 z-[60] bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl shadow-2xl p-4"
                     >
                       <DayPicker
                         mode="single"
@@ -626,30 +717,52 @@ export function ContactSection() {
                         }}
                         modifiersStyles={{
                           selected: {
-                            backgroundColor: "#3b82f6",
+                            backgroundColor: "rgba(255, 255, 255, 0.2)",
                             color: "white",
+                            border: "1px solid rgba(255, 255, 255, 0.3)",
                           },
                         }}
                         className="calendar-custom"
                         styles={{
                           day: {
                             color: "white",
-                            borderRadius: "4px",
-                            fontSize: "10px",
-                            padding: "4px",
-                            margin: "1px",
+                            borderRadius: "6px",
+                            fontSize: "14px",
+                            padding: "8px",
+                            margin: "2px",
+                            minWidth: "36px",
+                            minHeight: "36px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "all 0.2s ease",
+                            cursor: "pointer",
+                          },
+                          day_disabled: {
+                            color: "rgba(255, 255, 255, 0.3)",
+                            cursor: "not-allowed",
+                          },
+                          day_today: {
+                            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                            border: "1px solid rgba(255, 255, 255, 0.2)",
                           },
                           head_cell: {
-                            color: "white",
-                            fontSize: "8px",
-                            fontWeight: "bold",
+                            color: "rgba(255, 255, 255, 0.7)",
+                            fontSize: "12px",
+                            fontWeight: "600",
+                            padding: "8px",
+                            textAlign: "center",
                           },
                           nav_button: {
                             color: "white",
                             backgroundColor: "rgba(255, 255, 255, 0.1)",
-                            border: "none",
-                            borderRadius: "3px",
-                            padding: "2px",
+                            border: "1px solid rgba(255, 255, 255, 0.2)",
+                            borderRadius: "6px",
+                            padding: "8px",
+                            minWidth: "36px",
+                            minHeight: "36px",
+                            transition: "all 0.2s ease",
+                            cursor: "pointer",
                           },
                           nav_button_previous: {
                             color: "white",
@@ -659,8 +772,13 @@ export function ContactSection() {
                           },
                           caption: {
                             color: "white",
-                            fontSize: "12px",
-                            fontWeight: "bold",
+                            fontSize: "16px",
+                            fontWeight: "600",
+                            marginBottom: "16px",
+                            textAlign: "center",
+                          },
+                          table: {
+                            margin: "0 auto",
                           },
                         }}
                       />
