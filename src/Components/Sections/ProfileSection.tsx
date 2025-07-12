@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/debi-prasad-panda-b05b382b1/",
       twitter: "#",
-      github: "#",
+      github: "https://github.com/SilverPhoenix57575",
     },
   },
   {
