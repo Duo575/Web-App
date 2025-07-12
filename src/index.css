@@ -869,7 +869,7 @@ body,
   .contact-input {
     @apply w-full px-4 py-3 bg-black/50 border border-white/20 rounded-lg;
     @apply text-white placeholder-gray-400;
-    @apply focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary;
+    @apply focus:outline-none focus:border-white focus:ring-1 focus:ring-white/50;
     @apply transition-all duration-300;
     @apply backdrop-blur-sm;
   }
@@ -888,15 +888,29 @@ body,
   }
 
   .calendar-custom .rdp-day {
-    @apply text-white hover:bg-secondary/20;
+    @apply text-white;
+    transition: all 0.2s ease;
+  }
+
+  .calendar-custom .rdp-day:hover:not(.rdp-day_disabled) {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.05);
   }
 
   .calendar-custom .rdp-day_selected {
-    @apply bg-secondary text-black;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
   }
 
   .calendar-custom .rdp-day_disabled {
     @apply text-gray-500 cursor-not-allowed;
+    opacity: 0.3;
+  }
+
+  .calendar-custom .rdp-nav_button:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.1);
   }
 }
 
@@ -1126,13 +1140,18 @@ body,
     @apply w-full px-4 rounded-lg;
     @apply bg-black/50 border border-white/20;
     @apply text-white placeholder-gray-400;
-    @apply focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50;
+    @apply focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white;
     @apply transition-all duration-300;
     @apply backdrop-blur-sm;
     height: 46px !important;
     line-height: 46px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    position: relative;
+  }
+
+  .contact-input:focus {
+    z-index: 70;
   }
 
   /* Special handling for textarea */
@@ -1156,10 +1175,20 @@ body,
 
   /* Style for select options */
   select.contact-input option {
-    background-color: #111827;
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
-    padding: 10px;
+    padding: 12px;
     font-size: 14px;
+    border: none;
+    backdrop-filter: blur(8px);
+  }
+
+  select.contact-input option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  select.contact-input option:checked {
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   /* Form label consistency */
@@ -1200,7 +1229,7 @@ body,
     animation: popupSimple 0.2s ease-out forwards;
   }
 
-  .contact-input:hover {
+  .contact-input:hover:not(:focus) {
     @apply border-white/30;
   }
 
@@ -1351,18 +1380,14 @@ body,
 
   /* Smooth glow transition for testimonial cards */
   .testimonial-card-glow {
-    box-shadow: 
-      0 0 0 rgba(255, 255, 255, 0),
-      0 0 0 rgba(255, 255, 255, 0),
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0), 0 0 0 rgba(255, 255, 255, 0),
       0 0 0 rgba(255, 255, 255, 0);
     transition: box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .testimonial-card-glow:hover {
-    box-shadow: 
-      0 0 20px rgba(255, 255, 255, 0.08),
-      0 0 40px rgba(255, 255, 255, 0.04),
-      0 0 80px rgba(255, 255, 255, 0.02);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.08),
+      0 0 40px rgba(255, 255, 255, 0.04), 0 0 80px rgba(255, 255, 255, 0.02);
   }
 
   .liquid-glass-btn:active {

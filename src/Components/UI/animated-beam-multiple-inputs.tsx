@@ -376,17 +376,15 @@ export default function AnimatedBeamMultipleOutputDemo({
 }
 
 const Icons = {
-  fast: () => (
-    <img src="/src/icons/Fast.svg" alt="Fast" width="24" height="24" />
-  ),
+  fast: () => <img src="/icons/Fast.svg" alt="Fast" width="24" height="24" />,
 
   quality: () => (
-    <img src="/src/icons/Quality.svg" alt="Quality" width="24" height="24" />
+    <img src="/icons/Quality.svg" alt="Quality" width="24" height="24" />
   ),
 
   costEffective: () => (
     <img
-      src="/src/icons/Cost_effective.svg"
+      src="/icons/Cost_effective.svg"
       alt="Cost Effective"
       width="24"
       height="24"
@@ -394,17 +392,12 @@ const Icons = {
   ),
 
   negotiable: () => (
-    <img
-      src="/src/icons/Negotiable.svg"
-      alt="Negotiable"
-      width="24"
-      height="24"
-    />
+    <img src="/icons/Negotiable.svg" alt="Negotiable" width="24" height="24" />
   ),
 
   modernTech: () => (
     <img
-      src="/src/icons/Modern_technologies.svg"
+      src="/icons/Modern_technologies.svg"
       alt="Modern Tech"
       width="24"
       height="24"
@@ -412,10 +405,10 @@ const Icons = {
   ),
 
   companyLogo: () => (
-    <img src="/src/icons/Company.svg" alt="Company" width="32" height="32" />
+    <img src="/icons/Company.svg" alt="Company" width="32" height="32" />
   ),
 
   client: () => (
-    <img src="/src/icons/Client.svg" alt="Client" width="24" height="24" />
+    <img src="/icons/Client.svg" alt="Client" width="24" height="24" />
   ),
 };
