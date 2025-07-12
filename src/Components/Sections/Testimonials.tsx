@@ -67,9 +67,11 @@ const ReviewCard = ({ img, name, username, body }: Review) => {
     <CardContainer className="w-full max-w-sm mx-auto">
       <CardBody 
         className={cn(
-          "bg-black relative group/card hover:shadow-2xl hover:shadow-white/[0.15] border-white/[0.1] hover:border-white/[0.5]",
+          "bg-black/90 relative group/card border-white/[0.1] hover:border-white/[0.5]",
           "w-64 sm:w-72 md:w-80 lg:w-96 h-48 sm:h-52 md:h-56 rounded-xl p-4 sm:p-6 border",
-          "glass backdrop-blur-md transition-all duration-500"
+          "glass backdrop-blur-md transition-all duration-500",
+          "testimonial-glow-card testimonial-card-glow",
+          "hover:bg-black/95 hover:backdrop-blur-lg"
         )}
         aria-label={`Testimonial by ${name}`}
       >
@@ -124,23 +126,35 @@ export function Testimonials() {
       <div className="c-space">
         <h2 className="text-heading mb-8 sm:mb-12">What People Say</h2>
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:20s] [--gap:1.6rem] py-4">
-            {firstRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-          <Marquee
-            reverse
-            pauseOnHover
-            className="[--duration:20s] [--gap:1.6rem] py-4 mt-8"
-          >
-            {secondRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-          {/* Gradient overlays for smooth edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 sm:w-1/4 bg-gradient-to-r from-black"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 sm:w-1/4 bg-gradient-to-l from-black"></div>
+          <div className="marquee-fade-edge w-full">
+            <Marquee pauseOnHover className="[--duration:20s] [--gap:1.6rem] py-4">
+              {firstRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+          </div>
+          <div className="marquee-fade-edge w-full">
+            <Marquee
+              reverse
+              pauseOnHover
+              className="[--duration:20s] [--gap:1.6rem] py-4 mt-8"
+            >
+              {secondRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+          </div>
+          {/* Enhanced gradient overlays for perfect edge blending */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 sm:w-40 bg-gradient-to-r from-black via-black/90 via-black/70 to-transparent z-10"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 sm:w-40 bg-gradient-to-l from-black via-black/90 via-black/70 to-transparent z-10"></div>
+          
+          {/* Additional subtle inner gradients for ultra-smooth transition */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black/98 via-black/85 via-black/50 to-transparent z-[9]"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black/98 via-black/85 via-black/50 to-transparent z-[9]"></div>
+          
+          {/* Outermost edge blending for seamless integration */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-black/95 z-[11]"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-black/95 z-[11]"></div>
         </div>
       </div>
     </section>
