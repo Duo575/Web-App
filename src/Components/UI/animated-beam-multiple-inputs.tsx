@@ -10,6 +10,15 @@ import {
   type ReactNode,
 } from "react";
 import { cn } from "@/lib/utils";
+import {
+  Zap,
+  CheckCircle,
+  DollarSign,
+  Handshake,
+  Cpu,
+  Building,
+  UserCheck,
+} from "lucide-react";
 
 interface AnimatedBeamProps {
   className?: string;
@@ -376,46 +385,17 @@ export default function AnimatedBeamMultipleOutputDemo({
 }
 
 const Icons = {
-  fast: () => (
-    <img src="/src/icons/Fast.svg" alt="Fast" width="24" height="24" />
-  ),
+  fast: () => <Zap className="w-6 h-6 text-blue-500" />,
 
-  quality: () => (
-    <img src="/src/icons/Quality.svg" alt="Quality" width="24" height="24" />
-  ),
+  quality: () => <CheckCircle className="w-6 h-6 text-green-500" />,
 
-  costEffective: () => (
-    <img
-      src="/src/icons/Cost_effective.svg"
-      alt="Cost Effective"
-      width="24"
-      height="24"
-    />
-  ),
+  costEffective: () => <DollarSign className="w-6 h-6 text-yellow-500" />,
 
-  negotiable: () => (
-    <img
-      src="/src/icons/Negotiable.svg"
-      alt="Negotiable"
-      width="24"
-      height="24"
-    />
-  ),
+  negotiable: () => <Handshake className="w-6 h-6 text-purple-500" />,
 
-  modernTech: () => (
-    <img
-      src="/src/icons/Modern_technologies.svg"
-      alt="Modern Tech"
-      width="24"
-      height="24"
-    />
-  ),
+  modernTech: () => <Cpu className="w-6 h-6 text-red-500" />,
 
-  companyLogo: () => (
-    <img src="/src/icons/Company.svg" alt="Company" width="32" height="32" />
-  ),
+  companyLogo: () => <Building className="w-8 h-8 text-purple-600" />,
 
-  client: () => (
-    <img src="/src/icons/Client.svg" alt="Client" width="24" height="24" />
-  ),
+  client: () => <UserCheck className="w-6 h-6 text-blue-400" />,
 };
