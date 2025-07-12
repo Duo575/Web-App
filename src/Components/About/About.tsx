@@ -62,7 +62,7 @@ const About: React.FC = () => {
               💻
             </div>
             <div className="z-10 relative max-w-2xl pl-2 mb-6">
-              <p className="headtext mb-4">
+              <p className="headtext mb-4 transform -translate-y-12">
                 Hi, we are a team of four passionate web developers!
               </p>
               <p className="subtext text-justify">
