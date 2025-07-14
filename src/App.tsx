@@ -6,7 +6,11 @@
  */
 
 import React, { Suspense } from "react";
-import { StarsBackground, LoadingSpinner, ScrollToTopButton } from "@/Components/UI";
+import {
+  StarsBackground,
+  LoadingSpinner,
+  ScrollToTopButton,
+} from "@/Components/UI";
 
 import "@/styles/scrollbar.css";
 import "@/styles/parallax.css";
@@ -136,7 +140,7 @@ function App() {
       <footer className="py-8 px-6 border-t border-primary/20 content-above-particles">
         <div className="max-w-6xl mx-auto text-center">
           <p className="opacity-60">
-            © 2025 Portfolio Website. Built with React + Vite + TailwindCSS
+            © 2025 Cosmobits. Built with React + Vite + TailwindCSS
           </p>
         </div>
       </footer>

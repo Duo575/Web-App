@@ -1,10 +1,10 @@
-# 🌌 Portfolio Website
+# 🌌 Cosmobits Website
 
-> **Modern, responsive portfolio website built with React, TypeScript, and cutting-edge web technologies**
+> **Modern, responsive Cosmobits website built with React, TypeScript, and cutting-edge web technologies**
 
 ## 🚀 **Live Demo**
 
-🔗 [Visit Portfolio](http://localhost:5173/) _(Development)_
+🔗 [Visit Cosmobits](http://localhost:5173/) _(Development)_
 
 ## ✨ **Features**
 
@@ -30,7 +30,7 @@
 
 - **Hero** - Value proposition with call-to-action
 - **Tech Stack** - Interactive technology showcase
-- **Portfolio** - Project gallery with live demos
+- **Prrojects** - Project gallery with live demos
 - **About Us** - Team introduction and skills
 - **Contact** - Interactive form with validation
 
@@ -64,7 +64,7 @@ cp .env.example .env
 npm run dev
 ```
 
-**🎯 That's it!** Your portfolio will be running at `http://localhost:5173`
+**🎯 That's it!** Your Cosmobits website website will be running at `http://localhost:5173`
 
 ### 🔧 **Development Commands**
 
@@ -137,10 +137,10 @@ Running `npm install` automatically sets up:
 ## 📂 **Project Structure**
 
 ```
-portfolio-website/
+cosmobits-website/
 ├── public/
 │   └── assets/
-│       ├── images/     # Hero, portfolio, team photos
+│       ├── images/     # Hero, prrojects, team photos
 │       ├── logos/      # Technology logos
 │       ├── models/     # 3D models (.glb files)
 │       └── icons/      # Favicons
@@ -148,7 +148,7 @@ portfolio-website/
 │   ├── Components/
 │   │   ├── UI/         # Reusable components (Button, Card, Modal)
 │   │   ├── Layout/     # Header, Footer, Navigation
-│   │   └── Sections/   # Hero, Portfolio, Contact sections
+│   │   └── Sections/   # Hero, Prrojects, Contact sections
 │   ├── custom-hooks/   # Custom React hooks
 │   ├── utils/          # Utility functions
 │   ├── constants/      # Static data and configurations
@@ -206,7 +206,7 @@ background: #000000 /* Black - page background */
 - [ ] Reusable UI components (Button, Card, Modal)
 - [ ] Navigation with mobile menu
 - [ ] Hero section with animations
-- [ ] Portfolio grid with project cards
+- [ ] Prrojects grid with project cards
 
 ### Phase 3: Advanced Features 📋
 

@@ -66,12 +66,12 @@ const About: React.FC = () => {
                 Hi, we are a team of four passionate web developers!
               </p>
               <p className="subtext text-justify">
-                We've honed our frontend and backend skills to deliver dynamic
-                software and innovative web applications. Based in a virtual
-                'digital universe,' we combine cutting-edge technologies with
-                creative design to craft stellar solutions for our clients. From
-                full-stack websites to custom integrations like payment gateways
-                and map APIs, we're here to bring your vision to life.
+                We are a team of four skilled web developers specializing in
+                full-stack development. We craft dynamic software and innovative
+                web applications by integrating cutting-edge technologies—such
+                as payment gateways and map APIs—with creative design. Operating
+                from our virtual hub, we're here to bring your digital vision to
+                life.
               </p>
             </div>
             <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-primary" />

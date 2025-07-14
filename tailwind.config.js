@@ -1,6 +1,6 @@
 /**
  * TailwindCSS Configuration
- * Purpose: Custom theme configuration for portfolio website
+ * Purpose: Custom theme configuration for Cosmobits website
  * Dependencies: tailwindcss
  * Features: Night sky theme (black, dark blue, purple, white), custom fonts (Quicksand), responsive breakpoints
  */
@@ -77,6 +77,7 @@ export default {
         "9xl": ["8rem", { lineHeight: "1", letterSpacing: "-0.035em" }],
       },
       screens: {
+        xs: "375px",
         mobile: "320px",
         tablet: "768px",
         desktop: "1024px",

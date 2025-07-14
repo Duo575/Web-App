@@ -509,6 +509,30 @@
     }
   }
 
+  /* Compare Card Responsive Improvements */
+  @media (max-width: 640px) {
+    /* Ensure compare card doesn't overflow on small screens */
+    .compare-container {
+      max-width: calc(100vw - 2rem);
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 375px) {
+    /* Extra small screens adjustments */
+    .compare-container {
+      max-width: calc(100vw - 1rem);
+    }
+  }
+
+  /* Touch interaction improvements */
+  @media (hover: none) and (pointer: coarse) {
+    /* Mobile/touch devices */
+    .compare-handle {
+      transform: scale(1.2);
+    }
+  }
+
   /* Calendar Grid Layout Fixes - Force Grid Structure */
   .custom-calendar {
     color: white !important;

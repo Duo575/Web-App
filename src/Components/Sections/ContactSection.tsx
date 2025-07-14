@@ -515,10 +515,6 @@ export function ContactSection() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-heading mb-4">Contact Us</h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Ready to start your project? Get in touch with us and let's schedule
-            a consultation.
-          </p>
         </div>
 
         {/* Contact Form */}
