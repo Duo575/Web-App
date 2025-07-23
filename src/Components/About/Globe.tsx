@@ -115,13 +115,13 @@ export function Globe({ className, config = GLOBE_CONFIG }: GlobeProps) {
   return (
     <div
       className={twMerge(
-        "mx-auto aspect-[1/1] w-full max-w-[600px]",
+        "mx-auto aspect-[1/1] w-full max-w-[300px] mobile:max-w-[400px] tablet:max-w-[500px] desktop:max-w-[600px]",
         className
       )}
     >
       <canvas
         className={twMerge(
-          "size-[30rem] opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"
+          "size-[20rem] mobile:size-[24rem] tablet:size-[28rem] desktop:size-[30rem] opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"
         )}
         ref={canvasRef}
         onPointerDown={(e) => {

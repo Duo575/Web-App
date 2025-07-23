@@ -78,12 +78,12 @@ const projectsData: Project[] = [
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
-    <CardContainer className="inter-var w-full max-w-sm mx-auto">
-      <CardBody className="bg-black relative group/card hover:shadow-2xl hover:shadow-white/[0.15] border-white/[0.1] hover:border-white/[0.5] w-full h-auto rounded-xl p-6 border transition-all duration-500">
+    <CardContainer className="inter-var w-full max-w-[90vw] mobile:max-w-[85vw] tablet:max-w-sm mx-auto">
+      <CardBody className="bg-black relative group/card hover:shadow-2xl hover:shadow-white/[0.15] border-white/[0.1] hover:border-white/[0.5] w-full h-auto rounded-xl p-4 mobile:p-5 tablet:p-6 border transition-all duration-500">
         {/* Project Title - Floats highest */}
         <CardItem
           translateZ="120"
-          className="text-xl font-bold text-white mb-3 transition-all duration-300"
+          className="text-lg mobile:text-xl font-bold text-white mb-2 mobile:mb-3 transition-all duration-300"
         >
           {project.title}
         </CardItem>
@@ -92,19 +92,19 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         <CardItem
           as="p"
           translateZ="80"
-          className="text-neutral-300 text-sm max-w-sm mb-4 leading-relaxed transition-all duration-300"
+          className="text-neutral-300 text-xs mobile:text-sm max-w-sm mb-3 mobile:mb-4 leading-relaxed transition-all duration-300"
         >
           {project.description}
         </CardItem>
 
         {/* Project Image - Floats out dramatically */}
-        <CardItem translateZ="150" className="w-full mb-4">
+        <CardItem translateZ="150" className="w-full mb-3 mobile:mb-4">
           <div className="relative overflow-hidden rounded-xl">
             <img
               src={project.image}
               height="1000"
               width="1000"
-              className="h-60 w-full object-cover rounded-xl transition-all duration-500 group-hover/card:scale-105 group-hover/card:shadow-2xl group-hover/card:shadow-white/[0.2]"
+              className="h-40 mobile:h-48 tablet:h-60 w-full object-cover rounded-xl transition-all duration-500 group-hover/card:scale-105 group-hover/card:shadow-2xl group-hover/card:shadow-white/[0.2]"
               alt={project.title}
             />
             {/* Image overlay for enhanced depth */}
@@ -113,8 +113,8 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         </CardItem>
 
         {/* Technologies - Third level */}
-        <CardItem translateZ="100" className="mb-6">
-          <div className="flex flex-wrap gap-4">
+        <CardItem translateZ="100" className="mb-4 mobile:mb-5 tablet:mb-6">
+          <div className="flex flex-wrap gap-2 mobile:gap-3 tablet:gap-4">
             {project.technologies.map((tech) => (
               <div
                 key={tech}
@@ -125,10 +125,10 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                   <img
                     src={techLogos[tech]}
                     alt={tech}
-                    className="w-7 h-7 transition-all duration-300 group-hover:drop-shadow-lg filter brightness-100 hover:brightness-110"
+                    className="w-6 h-6 mobile:w-7 mobile:h-7 transition-all duration-300 group-hover:drop-shadow-lg filter brightness-100 hover:brightness-110"
                   />
                 ) : (
-                  <div className="w-7 h-7 bg-secondary/20 rounded-lg flex items-center justify-center">
+                  <div className="w-6 h-6 mobile:w-7 mobile:h-7 bg-secondary/20 rounded-lg flex items-center justify-center">
                     <span className="text-xs text-white font-medium">
                       {tech.slice(0, 2).toUpperCase()}
                     </span>
@@ -152,7 +152,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 rounded-xl text-sm font-medium text-white border border-white/20 hover:border-white/50 hover:bg-white/10 transition-all duration-300"
+              className="px-4 mobile:px-5 tablet:px-6 py-1.5 mobile:py-2 rounded-xl text-xs mobile:text-sm font-medium text-white border border-white/20 hover:border-white/50 hover:bg-white/10 transition-all duration-300"
             >
               Live Demo →
             </CardItem>
@@ -165,21 +165,24 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 
 export const ProjectsSection: React.FC = () => {
   return (
-    <section id="projects" className="py-20 px-6 content-above-particles">
+    <section
+      id="projects"
+      className="py-12 mobile:py-16 tablet:py-20 px-3 mobile:px-4 tablet:px-6 content-above-particles"
+    >
       <div className="c-space">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-white">
+        <div className="text-center mb-10 mobile:mb-12 tablet:mb-14 desktop:mb-16">
+          <h2 className="font-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-4 mobile:mb-5 tablet:mb-6 text-white">
             Our <span className="text-white">Projects</span>
           </h2>
-          <p className="text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto">
+          <p className="text-base mobile:text-lg tablet:text-xl text-neutral-600 dark:text-neutral-300 max-w-[90%] mobile:max-w-2xl tablet:max-w-3xl mx-auto">
             Explore our portfolio of innovative web applications and digital
             solutions that demonstrate our expertise in modern web development.
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 place-items-center">
+        <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4 mobile:gap-6 tablet:gap-8 place-items-center">
           {projectsData.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

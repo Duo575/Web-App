@@ -46,7 +46,7 @@ const FeatureSSRSupport: React.FC = () => {
           viewBox="0 0 402 166"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full max-w-[380px] h-auto"
+          className="w-full max-w-[280px] mobile:max-w-[320px] tablet:max-w-[380px] h-auto"
         >
           {/* JS Box */}
           <g className="js">

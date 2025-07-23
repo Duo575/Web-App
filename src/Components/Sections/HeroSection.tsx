@@ -51,13 +51,13 @@ export default function HeroSection() {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
       >
         <nav className="flex justify-center items-center py-2 px-2 sm:py-3 sm:px-4">
-          <div className="nav-glass-card">
-            <div className="flex space-x-2 sm:space-x-4 md:space-x-6">
+          <div className="nav-glass-card w-auto mobile:w-auto tablet:w-auto">
+            <div className="flex space-x-1 mobile:space-x-2 tablet:space-x-4 desktop:space-x-6">
               {["Home", "About", "Projects", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="nav-link transition-colors duration-300 text-sm sm:text-base px-2 sm:px-3 py-1 sm:py-2"
+                  className="nav-link transition-colors duration-300 text-xs mobile:text-sm tablet:text-base px-1 mobile:px-2 tablet:px-3 py-1 tablet:py-2"
                   onClick={(e) => handleNavigation(e, item.toLowerCase())}
                 >
                   {item}
@@ -70,18 +70,18 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 w-full py-8 pt-24 md:pt-32"
+        className="relative z-10 max-w-7xl mx-auto px-3 mobile:px-4 w-full py-6 mobile:py-8 pt-20 mobile:pt-24 tablet:pt-28 desktop:pt-32"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-12 xl:gap-16 items-start lg:items-center min-h-[70vh]">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 mobile:gap-10 tablet:gap-12 desktop:gap-16 items-start lg:items-center min-h-[60vh] mobile:min-h-[65vh] tablet:min-h-[70vh]">
           {/* Left Side - Hero Title with Animation */}
-          <div className="text-left space-y-6 md:space-y-8 flex flex-col justify-center min-h-[40vh] sm:min-h-[50vh] lg:min-h-[60vh] lg:pr-8 order-1 lg:order-1">
-            <div className="space-y-4 md:space-y-6">
+          <div className="text-left space-y-4 mobile:space-y-6 tablet:space-y-8 flex flex-col justify-center min-h-[30vh] mobile:min-h-[40vh] tablet:min-h-[50vh] desktop:min-h-[60vh] lg:pr-4 tablet:pr-6 desktop:pr-8 order-1 lg:order-1">
+            <div className="space-y-3 mobile:space-y-4 tablet:space-y-6">
               {/* Animated Title */}
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight hero-title"
+                className="text-2xl mobile:text-3xl tablet:text-4xl desktop:text-5xl 2xl:text-6xl font-bold text-white mb-3 mobile:mb-4 tablet:mb-6 leading-tight hero-title"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -130,7 +130,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.p
-                  className="text-lg sm:text-xl lg:text-lg xl:text-xl 2xl:text-2xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-4 sm:mb-6"
+                  className="text-base mobile:text-lg tablet:text-xl desktop:text-xl 2xl:text-2xl text-gray-300 hero-subtitle leading-relaxed max-w-none mobile:max-w-md tablet:max-w-lg desktop:max-w-xl 2xl:max-w-2xl mb-3 mobile:mb-4 tablet:mb-6"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
@@ -160,7 +160,7 @@ export default function HeroSection() {
 
               {/* Animated Decorative Line */}
               <motion.div
-                className="w-16 sm:w-20 h-1 hero-gradient-line rounded-full"
+                className="w-12 mobile:w-16 tablet:w-20 h-1 hero-gradient-line rounded-full"
                 initial={{ width: 0, opacity: 0 }}
                 animate={{ width: 80, opacity: 1 }}
                 transition={{
@@ -173,7 +173,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Side - Compare Demo Component with Animation */}
-          <div className="flex justify-center lg:justify-end mt-8 sm:mt-12 lg:mt-4 order-2 lg:order-2">
+          <div className="flex justify-center lg:justify-end mt-6 mobile:mt-8 tablet:mt-10 desktop:mt-4 order-2 lg:order-2 w-full">
             <CompareDemo />
           </div>
         </div>

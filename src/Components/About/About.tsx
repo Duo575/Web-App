@@ -45,12 +45,14 @@ const About: React.FC = () => {
   return (
     <section
       ref={aboutSectionRef}
-      className="py-20 px-6 content-above-particles mt-20"
+      className="py-12 mobile:py-16 tablet:py-20 px-3 mobile:px-4 tablet:px-6 content-above-particles mt-12 mobile:mt-16 tablet:mt-20"
       id="about"
     >
       <div className="c-space">
-        <h2 className="text-heading">About Us</h2>
-        <div className="grid grid-cols-1 gap-6 sm:gap-4 md:grid-cols-6 mt-12">
+        <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-3 mobile:mb-4 tablet:mb-5">
+          About Us
+        </h2>
+        <div className="grid grid-cols-1 gap-4 mobile:gap-5 tablet:gap-6 md:grid-cols-6 mt-8 mobile:mt-10 tablet:mt-12">
           {/* Grid 1 - Personal Introduction (Wider) */}
           <div
             data-grid="1"
@@ -58,14 +60,14 @@ const About: React.FC = () => {
               visibleGrids.has(1) ? "animate-visible" : "animate-hidden"
             }`}
           >
-            <div className="absolute -right-[2rem] -top-[2rem] text-8xl opacity-10 text-secondary">
+            <div className="absolute -right-[2rem] -top-[2rem] text-6xl mobile:text-7xl tablet:text-8xl opacity-10 text-secondary">
               💻
             </div>
-            <div className="z-10 relative max-w-2xl pl-2 mb-6">
-              <p className="headtext mb-4 transform -translate-y-12">
+            <div className="z-10 relative max-w-full mobile:max-w-xl tablet:max-w-2xl pl-1 mobile:pl-2 mb-4 mobile:mb-5 tablet:mb-6">
+              <p className="headtext text-xl mobile:text-2xl tablet:text-3xl mb-3 mobile:mb-4 transform -translate-y-8 mobile:-translate-y-10 tablet:-translate-y-12">
                 Hi, we are a team of four passionate web developers!
               </p>
-              <p className="subtext text-justify">
+              <p className="subtext text-sm mobile:text-base tablet:text-lg text-justify">
                 We've honed our frontend and backend skills to deliver dynamic
                 software and innovative web applications. Based in a virtual
                 'digital universe,' we combine cutting-edge technologies with
@@ -85,13 +87,15 @@ const About: React.FC = () => {
             }`}
           >
             <div className="z-10 relative">
-              <p className="headtext">Time Zone</p>
-              <p className="subtext">
+              <p className="headtext text-xl mobile:text-2xl tablet:text-3xl mb-2 mobile:mb-3">
+                Time Zone
+              </p>
+              <p className="subtext text-sm mobile:text-base">
                 I'm based in Mars, and open to remote work worldwide
               </p>
             </div>
-            <div className="absolute top-[7%] left-[5%] w-56 h-56">
-              <Globe className="scale-[0.7]" />
+            <div className="absolute top-[7%] left-[5%] w-40 h-40 mobile:w-48 mobile:h-48 tablet:w-56 tablet:h-56">
+              <Globe className="scale-[0.5] mobile:scale-[0.6] tablet:scale-[0.7]" />
             </div>
           </div>
 

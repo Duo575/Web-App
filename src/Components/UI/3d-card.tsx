@@ -77,7 +77,7 @@ export const CardBody = ({
   return (
     <div
       className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
+        "h-auto w-full [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]",
         className
       )}
     >
@@ -115,7 +115,25 @@ export const CardItem = ({
   const handleAnimations = useCallback(() => {
     if (!ref.current) return;
     if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+      // Get the current viewport width
+      const viewportWidth = window.innerWidth;
+
+      // Scale down the 3D effect for smaller screens
+      let scaleFactor = 0.5; // Default for very small screens
+
+      if (viewportWidth >= 768) {
+        scaleFactor = 1; // Full effect for tablets and larger
+      } else if (viewportWidth >= 480) {
+        scaleFactor = 0.7; // 70% effect for mobile
+      }
+
+      // Apply the scaled transform
+      const scaledTranslateZ =
+        typeof translateZ === "number"
+          ? translateZ * scaleFactor
+          : parseFloat(translateZ as string) * scaleFactor;
+
+      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${scaledTranslateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
     } else {
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
     }

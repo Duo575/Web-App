@@ -208,7 +208,7 @@ const FeatureOptimizedBuild: React.FC = () => {
       <div className="feature__visualization relative flex-1 flex items-center justify-center">
         {/* Left-side lines/nodes */}
         <svg
-          className="left-lines absolute top-[60px] right-1/2 md:left-0 md:right-auto lg:right-1/2 lg:left-auto xl:left-0 xl:right-auto"
+          className="left-lines absolute top-[40px] mobile:top-[50px] tablet:top-[60px] right-1/2 md:left-0 md:right-auto lg:right-1/2 lg:left-auto xl:left-0 xl:right-auto w-[160px] h-[110px] mobile:w-[180px] mobile:h-[120px] tablet:w-[195px] tablet:h-[138px]"
           width="195"
           height="138"
           viewBox="0 0 195 138"
@@ -298,7 +298,7 @@ const FeatureOptimizedBuild: React.FC = () => {
 
         {/* Right-side lines/nodes */}
         <svg
-          className="right-lines absolute top-[71px] left-1/2 md:right-0 md:left-auto lg:left-1/2 lg:right-auto xl:right-0 xl:left-auto"
+          className="right-lines absolute top-[50px] mobile:top-[60px] tablet:top-[71px] left-1/2 md:right-0 md:left-auto lg:left-1/2 lg:right-auto xl:right-0 xl:left-auto w-[160px] h-[90px] mobile:w-[180px] mobile:h-[100px] tablet:w-[203px] tablet:h-[113px]"
           width="203"
           height="113"
           viewBox="0 0 203 113"
@@ -392,7 +392,9 @@ const FeatureOptimizedBuild: React.FC = () => {
           style={{ overflow: "hidden", pointerEvents: "none" }}
         >
           <svg
-            className={`bolt ${isBoltActive ? "active" : ""}`}
+            className={`bolt ${
+              isBoltActive ? "active" : ""
+            } w-[140px] h-[200px] mobile:w-[160px] mobile:h-[230px] tablet:w-[180px] tablet:h-[263px]`}
             width="180"
             height="263"
             viewBox="0 0 180 263"

@@ -510,33 +510,41 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 content-above-particles">
+    <section
+      id="contact"
+      className="py-12 mobile:py-16 tablet:py-20 px-3 mobile:px-4 tablet:px-6 content-above-particles"
+    >
       <div className="c-space">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-heading mb-4">Contact Us</h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+        <div className="text-center mb-8 mobile:mb-10 tablet:mb-12">
+          <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-3 mobile:mb-4 tablet:mb-5">
+            Contact Us
+          </h2>
+          <p className="text-base mobile:text-lg text-gray-300 max-w-[90%] mobile:max-w-xl tablet:max-w-2xl mx-auto">
             Ready to start your project? Get in touch with us and let's schedule
             a consultation.
           </p>
         </div>
 
         {/* Contact Form */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-[95%] mobile:max-w-[90%] tablet:max-w-4xl mx-auto">
           <HoverBorderGradient
-            containerClassName="rounded-2xl w-full"
+            containerClassName="rounded-xl mobile:rounded-2xl w-full"
             as="div"
-            className="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-sm text-white p-8 md:p-12 w-full rounded-2xl"
+            className="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-sm text-white p-4 mobile:p-6 tablet:p-8 desktop:p-12 w-full rounded-xl mobile:rounded-2xl"
           >
             {/* Success Message */}
             {showSuccessMessage && (
-              <div className="bg-green-900/50 border border-green-500 rounded-lg p-4 mb-6 flex items-center gap-3 animate-fade-in">
-                <CheckCircle className="text-green-400" size={24} />
+              <div className="bg-green-900/50 border border-green-500 rounded-lg p-3 mobile:p-4 mb-4 mobile:mb-5 tablet:mb-6 flex items-center gap-2 mobile:gap-3 animate-fade-in">
+                <CheckCircle
+                  className="text-green-400 hidden mobile:block"
+                  size={24}
+                />
                 <div>
-                  <h3 className="font-semibold text-green-400">
+                  <h3 className="font-semibold text-green-400 text-sm mobile:text-base">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-green-300 text-sm">
+                  <p className="text-green-300 text-xs mobile:text-sm">
                     Thank you for contacting us. We'll get back to you soon.
                   </p>
                 </div>
@@ -545,11 +553,11 @@ export function ContactSection() {
 
             <form
               onSubmit={handleSubmit}
-              className="space-y-7"
+              className="space-y-5 mobile:space-y-6 tablet:space-y-7"
               autoComplete="on"
             >
               {/* Name and Email Fields - Two Column Layout */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid mobile:grid-cols-1 tablet:grid-cols-2 gap-4 mobile:gap-5 tablet:gap-6">
                 {/* Name Field */}
                 <div className="space-y-2">
                   <label htmlFor="name" className="contact-label">
@@ -687,7 +695,7 @@ export function ContactSection() {
               </div>
 
               {/* Date and Time Scheduling */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid mobile:grid-cols-1 tablet:grid-cols-2 gap-4 mobile:gap-5 tablet:gap-6">
                 {/* Date Picker */}
                 <div className="space-y-2 relative">
                   <label className="contact-label">
@@ -722,9 +730,10 @@ export function ContactSection() {
                   {showCalendar && (
                     <div
                       ref={calendarRef}
-                      className="absolute top-full left-0 mt-1 z-[60] bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl p-4"
+                      className="absolute top-full left-0 mt-1 z-[60] bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl p-2 mobile:p-3 tablet:p-4"
                       style={{
-                        minWidth: "320px",
+                        minWidth: "280px",
+                        maxWidth: "95vw",
                         backgroundColor: "#000000",
                         backdropFilter: "blur(20px)",
                         boxShadow:
@@ -783,7 +792,7 @@ export function ContactSection() {
 
                     {showTimeSlotDropdown && (
                       <div
-                        className="absolute top-full left-0 mt-2 z-[60] bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl p-4 w-full"
+                        className="absolute top-full left-0 mt-2 z-[60] bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl p-2 mobile:p-3 tablet:p-4 w-full"
                         style={{
                           backgroundColor: "#000000",
                           backdropFilter: "blur(20px)",
@@ -792,7 +801,7 @@ export function ContactSection() {
                           border: "1px solid rgba(255, 255, 255, 0.3)",
                         }}
                       >
-                        <div className="max-h-48 overflow-y-auto">
+                        <div className="max-h-36 mobile:max-h-40 tablet:max-h-48 overflow-y-auto">
                           {timeSlots.map((slot) => (
                             <button
                               key={slot}
@@ -801,7 +810,7 @@ export function ContactSection() {
                                 handleInputChange("timeSlot", slot);
                                 setShowTimeSlotDropdown(false);
                               }}
-                              className={`w-full text-left px-3 py-2 rounded-lg transition-colors duration-200 ${
+                              className={`w-full text-left px-2 mobile:px-3 py-1.5 mobile:py-2 rounded-lg transition-colors duration-200 ${
                                 formData.timeSlot === slot
                                   ? "bg-white/20 text-white"
                                   : "text-white hover:bg-white/10"
@@ -825,7 +834,7 @@ export function ContactSection() {
                 </label>
                 <textarea
                   id="details"
-                  rows={5}
+                  rows={4}
                   value={formData.details}
                   onChange={(e) => handleInputChange("details", e.target.value)}
                   className="contact-input resize-none"
@@ -836,7 +845,7 @@ export function ContactSection() {
 
               {/* Privacy Policy Checkbox */}
               <div className="pt-1">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2 mobile:gap-3">
                   <input
                     id="privacyAccepted"
                     type="checkbox"
@@ -849,7 +858,7 @@ export function ContactSection() {
                   />
                   <label
                     htmlFor="privacyAccepted"
-                    className="text-sm text-gray-300"
+                    className="text-xs mobile:text-sm text-gray-300"
                   >
                     I agree to the{" "}
                     <button
@@ -868,14 +877,14 @@ export function ContactSection() {
               </div>
 
               {/* Submit Button */}
-              <div className="pt-5">
+              <div className="pt-3 mobile:pt-4 tablet:pt-5">
                 <button
                   type="submit"
-                  className="liquid-glass-btn disabled:opacity-50 disabled:cursor-not-allowed w-full px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-3"
+                  className="liquid-glass-btn disabled:opacity-50 disabled:cursor-not-allowed w-full px-6 mobile:px-7 tablet:px-8 py-3 mobile:py-3.5 tablet:py-4 rounded-lg font-medium mobile:font-semibold text-base mobile:text-lg flex items-center justify-center gap-2 mobile:gap-3"
                   disabled={!formData.privacyAccepted}
                   onClick={handleButtonClick}
                 >
-                  <Send size={20} />
+                  <Send size={18} className="hidden mobile:inline" />
                   <span>Send Message</span>
                 </button>
               </div>
@@ -887,7 +896,7 @@ export function ContactSection() {
       {/* Privacy Policy Modal */}
       {showPrivacyModal && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 mobile:p-3 tablet:p-4"
           style={{ zIndex: 2147483647 }}
           onClick={(e) => {
             if (e.target === e.currentTarget) {
@@ -896,15 +905,15 @@ export function ContactSection() {
           }}
         >
           <div
-            className="bg-gray-900 rounded-2xl w-full max-w-4xl h-[90vh] flex flex-col border border-white/20 overflow-hidden relative"
+            className="bg-gray-900 rounded-xl mobile:rounded-2xl w-full max-w-[95vw] mobile:max-w-[90vw] tablet:max-w-4xl h-[90vh] flex flex-col border border-white/20 overflow-hidden relative"
             style={{ zIndex: 2147483647 }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/20 flex-shrink-0">
-              <div className="flex items-center gap-3">
-                <Shield className="text-blue-400" size={24} />
-                <h3 className="text-xl font-semibold text-white">
+            <div className="flex items-center justify-between p-3 mobile:p-4 tablet:p-6 border-b border-white/20 flex-shrink-0">
+              <div className="flex items-center gap-2 mobile:gap-3">
+                <Shield className="text-blue-400" size={20} />
+                <h3 className="text-base mobile:text-lg tablet:text-xl font-semibold text-white">
                   Privacy Policy
                 </h3>
               </div>
@@ -912,7 +921,7 @@ export function ContactSection() {
 
             {/* Modal Content */}
             <div
-              className="flex-1 overflow-y-auto p-6"
+              className="flex-1 overflow-y-auto p-3 mobile:p-4 tablet:p-6"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="prose prose-invert max-w-none text-gray-300 space-y-6">
@@ -1128,16 +1137,15 @@ export function ContactSection() {
 
             {/* Modal Footer */}
             <div
-              className="p-6 border-t border-white/20 flex justify-end flex-shrink-0 relative"
+              className="p-3 mobile:p-4 tablet:p-6 border-t border-white/20 flex justify-end flex-shrink-0 relative"
               style={{ zIndex: 2147483647 }}
             >
               <button
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent event bubbling
-
                   setShowPrivacyModal(false);
                 }}
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer select-none relative"
+                className="px-4 mobile:px-5 tablet:px-6 py-1.5 mobile:py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm mobile:text-base rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer select-none relative"
                 style={{ zIndex: 2147483647 }}
                 type="button"
               >
@@ -1150,8 +1158,8 @@ export function ContactSection() {
 
       {/* Small Alert Popup */}
       {showAlert && (
-        <div className="fixed top-10 right-10 z-[9999]">
-          <div className="bg-green-600 text-white px-4 py-2 rounded shadow-lg animate-popup-simple text-sm font-medium">
+        <div className="fixed top-5 mobile:top-8 tablet:top-10 right-5 mobile:right-8 tablet:right-10 z-[9999]">
+          <div className="bg-green-600 text-white px-3 mobile:px-4 py-1.5 mobile:py-2 rounded shadow-lg animate-popup-simple text-xs mobile:text-sm font-medium">
             Sent successfully!
           </div>
         </div>
