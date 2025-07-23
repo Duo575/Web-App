@@ -61,26 +61,29 @@ export const useParallax = () => {
           let transform = "";
 
           switch (effect) {
-            case "zoom":
+            case "zoom": {
               // Front mountain zooms in from center
               const scale = 1 + scrollProgress * 0.2; // Scale from 1 to 1.2 (reduced)
               const yOffset = -scrollTop * speed;
               transform = `translate3d(0, ${yOffset}px, 0) scale(${scale})`;
               break;
+            }
 
-            case "curve":
+            case "curve": {
               // Moon moves in curve from center to top-left
               const curveX = -scrollProgress * 150; // Move left
               const curveY =
                 -scrollProgress * 100 - scrollProgress * scrollProgress * 50; // Curved upward motion
               transform = `translate3d(${curveX}px, ${curveY}px, 0)`;
               break;
+            }
 
-            case "slide":
+            case "slide": {
               // Behind mountain slides up with enhanced movement
               const slideY = -scrollTop * speed * 2; // 2x faster upward movement
               transform = `translate3d(0, ${slideY}px, 0)`;
               break;
+            }
 
             default:
               // Normal parallax movement

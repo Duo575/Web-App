@@ -209,7 +209,7 @@ const Circle = forwardRef<HTMLDivElement, CircleProps>(
       <div
         ref={ref}
         className={cn(
-          "z-10 flex size-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white p-3 shadow-[0_0_20px_-12px_rgba(127,0,255,0.6)]",
+          "z-10 flex size-8 sm:size-10 md:size-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white p-2 sm:p-2.5 md:p-3 shadow-[0_0_20px_-12px_rgba(127,0,255,0.6)]",
           className
         )}
       >
@@ -236,28 +236,32 @@ export default function AnimatedBeamMultipleOutputDemo({
   return (
     <div
       className={cn(
-        "relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10 bg-transparent",
+        "relative flex h-[400px] sm:h-[450px] md:h-[500px] w-full items-center justify-center overflow-hidden p-4 sm:p-6 md:p-10 bg-transparent",
         className
       )}
       ref={containerRef}
     >
-      <div className="flex size-full max-w-4xl flex-row items-center justify-between gap-10">
+      <div className="flex size-full max-w-xs sm:max-w-2xl md:max-w-4xl flex-row items-center justify-between gap-2 sm:gap-6 md:gap-10">
         {/* Left labels and icons */}
-        <div className="flex flex-row items-center gap-4">
-          <div className="flex flex-col justify-center gap-6 text-white text-lg font-medium min-w-[160px] text-right">
-            <span className="flex items-center justify-end h-12">Fast</span>
-            <span className="flex items-center justify-end h-12">Quality</span>
-            <span className="flex items-center justify-end h-12">
+        <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-4">
+          <div className="flex flex-col justify-center gap-3 sm:gap-4 md:gap-6 text-white text-xs sm:text-sm md:text-lg font-medium min-w-[80px] sm:min-w-[120px] md:min-w-[160px] text-right">
+            <span className="flex items-center justify-end h-8 sm:h-10 md:h-12">
+              Fast
+            </span>
+            <span className="flex items-center justify-end h-8 sm:h-10 md:h-12">
+              Quality
+            </span>
+            <span className="flex items-center justify-end h-8 sm:h-10 md:h-12">
               Cost effective
             </span>
-            <span className="flex items-center justify-end h-12">
+            <span className="flex items-center justify-end h-8 sm:h-10 md:h-12">
               Negotiable
             </span>
-            <span className="flex items-center justify-end h-12">
+            <span className="flex items-center justify-end h-8 sm:h-10 md:h-12">
               Modern Technologies
             </span>
           </div>
-          <div className="flex flex-col justify-center gap-6">
+          <div className="flex flex-col justify-center gap-3 sm:gap-4 md:gap-6">
             <Circle ref={div1Ref} className="p-1">
               <Icons.fast />
             </Circle>
@@ -276,20 +280,22 @@ export default function AnimatedBeamMultipleOutputDemo({
           </div>
         </div>
         {/* Center company */}
-        <div className="flex flex-col items-center mx-9">
-          <div className="flex items-center justify-center h-full mt-9">
+        <div className="flex flex-col items-center mx-2 sm:mx-4 md:mx-9">
+          <div className="flex items-center justify-center h-full mt-4 sm:mt-6 md:mt-9">
             <Circle
               ref={div6Ref}
-              className="size-16 border-purple-500 shadow-[0_0_30px_-12px_rgba(127,0,255,0.8)]"
+              className="border-purple-500 shadow-[0_0_30px_-12px_rgba(127,0,255,0.8)]"
             >
               <Icons.companyLogo />
             </Circle>
           </div>
-          <span className="mt-2 text-white text-lg font-semibold">Company</span>
+          <span className="mt-1 sm:mt-2 text-white text-sm sm:text-base md:text-lg font-semibold">
+            Company
+          </span>
         </div>
         {/* Right client */}
         <div className="flex flex-col items-center">
-          <div className="flex items-center justify-center h-full mt-9">
+          <div className="flex items-center justify-center h-full mt-4 sm:mt-6 md:mt-9">
             <Circle
               ref={div7Ref}
               className="border-blue-400 shadow-[0_0_20px_-12px_rgba(10,25,47,0.6)]"
@@ -297,7 +303,9 @@ export default function AnimatedBeamMultipleOutputDemo({
               <Icons.client />
             </Circle>
           </div>
-          <span className="mt-2 text-white text-lg font-semibold">Client</span>
+          <span className="mt-1 sm:mt-2 text-white text-sm sm:text-base md:text-lg font-semibold">
+            Client
+          </span>
         </div>
       </div>
 
@@ -313,7 +321,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         pathColor="#E5E7EB"
         pathOpacity={0.2}
         pathWidth={2}
-        curvature={25}
+        curvature={15}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -326,7 +334,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         pathColor="#E5E7EB"
         pathOpacity={0.2}
         pathWidth={2}
-        curvature={15}
+        curvature={10}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -339,7 +347,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         pathColor="#E5E7EB"
         pathOpacity={0.2}
         pathWidth={2}
-        curvature={5}
+        curvature={3}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -352,7 +360,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         pathColor="#E5E7EB"
         pathOpacity={0.2}
         pathWidth={2}
-        curvature={-15}
+        curvature={-10}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -365,7 +373,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         pathColor="#E5E7EB"
         pathOpacity={0.2}
         pathWidth={2}
-        curvature={-25}
+        curvature={-15}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -385,17 +393,31 @@ export default function AnimatedBeamMultipleOutputDemo({
 }
 
 const Icons = {
-  fast: () => <Zap className="w-6 h-6 text-blue-500" />,
+  fast: () => (
+    <Zap className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-blue-500" />
+  ),
 
-  quality: () => <CheckCircle className="w-6 h-6 text-green-500" />,
+  quality: () => (
+    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-green-500" />
+  ),
 
-  costEffective: () => <DollarSign className="w-6 h-6 text-yellow-500" />,
+  costEffective: () => (
+    <DollarSign className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-yellow-500" />
+  ),
 
-  negotiable: () => <Handshake className="w-6 h-6 text-purple-500" />,
+  negotiable: () => (
+    <Handshake className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-purple-500" />
+  ),
 
-  modernTech: () => <Cpu className="w-6 h-6 text-red-500" />,
+  modernTech: () => (
+    <Cpu className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-red-500" />
+  ),
 
-  companyLogo: () => <Building className="w-8 h-8 text-purple-600" />,
+  companyLogo: () => (
+    <Building className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-purple-600" />
+  ),
 
-  client: () => <UserCheck className="w-6 h-6 text-blue-400" />,
+  client: () => (
+    <UserCheck className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-blue-400" />
+  ),
 };

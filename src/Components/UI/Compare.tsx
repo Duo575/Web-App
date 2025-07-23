@@ -105,26 +105,23 @@ export const Compare = ({
     }
   }
 
-  const handleStart = useCallback(
-    (_clientX: number) => {
-      if (slideMode === "drag") {
-        setIsDragging(true);
+  const handleStart = useCallback(() => {
+    if (slideMode === "drag") {
+      setIsDragging(true);
 
-        // Clear any existing timeout
-        if (dragTimeoutRef.current) {
-          clearTimeout(dragTimeoutRef.current);
-        }
-
-        // Safety timeout to prevent getting stuck in dragging state
-        dragTimeoutRef.current = setTimeout(() => {
-          setIsDragging(false);
-          setSliderXPercent(initialSliderPercentage);
-          startAutoplay();
-        }, 5000); // 5 second timeout
+      // Clear any existing timeout
+      if (dragTimeoutRef.current) {
+        clearTimeout(dragTimeoutRef.current);
       }
-    },
-    [slideMode, initialSliderPercentage, startAutoplay]
-  );
+
+      // Safety timeout to prevent getting stuck in dragging state
+      dragTimeoutRef.current = setTimeout(() => {
+        setIsDragging(false);
+        setSliderXPercent(initialSliderPercentage);
+        startAutoplay();
+      }, 5000); // 5 second timeout
+    }
+  }, [slideMode, initialSliderPercentage, startAutoplay]);
 
   const handleEnd = useCallback(() => {
     if (slideMode === "drag" && isDragging) {
@@ -159,7 +156,7 @@ export const Compare = ({
   const handleMouseDown = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault(); // Prevent text selection and other default behaviors
-      handleStart(e.clientX);
+      handleStart();
     },
     [handleStart]
   );
@@ -205,7 +202,7 @@ export const Compare = ({
     (e: React.TouchEvent) => {
       e.preventDefault(); // Prevent scrolling while dragging
       if (!autoplay) {
-        handleStart(e.touches[0].clientX);
+        handleStart();
       }
     },
     [handleStart, autoplay]
@@ -270,10 +267,6 @@ export const Compare = ({
           transition={{ duration: 0 }}
         >
           {showHandlebar && (
-<<<<<<< HEAD
-            <div className="h-4 w-4 mobile:h-5 mobile:w-5 rounded mobile:rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2 mobile:-right-2.5 absolute flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
-              <IconDotsVertical className="h-3 w-3 mobile:h-4 mobile:w-4 text-black" />
-=======
             <div className="relative h-full">
               {/* Larger touch target for mobile */}
               <div className="h-8 w-8 sm:h-6 sm:w-6 absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-3 z-40 touch-manipulation" />
@@ -281,7 +274,6 @@ export const Compare = ({
               <div className="compare-handle h-4 w-4 sm:h-5 sm:w-5 rounded-md absolute top-1/2 -translate-y-1/2 bg-white z-30 -right-2 sm:-right-2.5 flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40] touch-manipulation">
                 <IconDotsVertical className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
               </div>
->>>>>>> 2968ab73d8797180c6caa55e82a930ea624b09c0
             </div>
           )}
         </motion.div>

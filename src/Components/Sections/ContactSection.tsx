@@ -7,6 +7,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { DayPicker } from "react-day-picker";
+import emailjs from "@emailjs/browser";
 import {
   Calendar,
   Clock,
@@ -21,6 +22,48 @@ import {
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
 import { HoverBorderGradient } from "../UI/hover-border-gradient";
+// EmailJS configuration - using environment variables only
+const emailConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+};
+
+// Validate EmailJS configuration
+const validateEmailConfig = () => {
+  const missing = [];
+  if (!emailConfig.serviceId) missing.push("VITE_EMAILJS_SERVICE_ID");
+  if (!emailConfig.templateId) missing.push("VITE_EMAILJS_TEMPLATE_ID");
+  if (!emailConfig.publicKey) missing.push("VITE_EMAILJS_PUBLIC_KEY");
+
+  if (missing.length > 0) {
+    console.error("Missing EmailJS environment variables:", missing);
+    console.error(
+      "Please check your .env file and ensure all EmailJS variables are set."
+    );
+    return false;
+  }
+  return true;
+};
+
+// Initialize EmailJS
+if (validateEmailConfig()) {
+  emailjs.init(emailConfig.publicKey);
+}
+
+// Email template parameters interface
+interface EmailTemplateParams extends Record<string, unknown> {
+  from_name: string;
+  from_email: string;
+  reply_to: string;
+  user_name: string;
+  user_email: string;
+  phone: string;
+  scheduled_date: string;
+  scheduled_time: string;
+  message: string;
+  to_name: string;
+}
 import "react-day-picker/dist/style.css";
 
 // Form data interface
@@ -97,6 +140,8 @@ export function ContactSection() {
   const [showTimeSlotDropdown, setShowTimeSlotDropdown] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Add/remove modal-open class to body when modal state changes
   useEffect(() => {
@@ -264,6 +309,13 @@ export function ContactSection() {
     return false;
   };
 
+  // Validate email format
+  const isValidEmail = (email: string): boolean => {
+    const emailRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return emailRegex.test(email.trim());
+  };
+
   // Validate date format (dd/mm/yyyy)
   const isValidDate = (dateString: string): boolean => {
     const regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
@@ -325,35 +377,117 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Clear any previous errors
+    setSubmitError(null);
+
     if (!formData.privacyAccepted) {
-      alert("Please accept the Privacy Policy to continue.");
+      setSubmitError("Please accept the Privacy Policy to continue.");
       return;
     }
 
     if (formData.date && !isValidDate(formData.date)) {
-      alert("Please enter a valid date in dd/mm/yyyy format.");
+      setSubmitError("Please enter a valid date in dd/mm/yyyy format.");
       return;
     }
 
-    // Form submission logic would go here
-    // For now, we'll just simulate a successful submission
+    // Validate required fields
+    if (!formData.name.trim()) {
+      setSubmitError("Please enter your name.");
+      return;
+    }
 
-    // Show success message and alert
-    setShowSuccessMessage(true);
-    setShowAlert(true);
+    if (!formData.email.trim()) {
+      setSubmitError("Please enter your email address.");
+      return;
+    }
 
-    // Reset form
-    resetForm();
+    if (!isValidEmail(formData.email)) {
+      setSubmitError("Please enter a valid email address.");
+      return;
+    }
 
-    // Hide success message after 5 seconds
-    setTimeout(() => {
-      setShowSuccessMessage(false);
-    }, 5000);
+    if (!formData.details.trim()) {
+      setSubmitError("Please enter your message.");
+      return;
+    }
 
-    // Hide alert after 2 seconds
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
+    // Check if EmailJS is configured
+    if (
+      !emailConfig.serviceId ||
+      !emailConfig.templateId ||
+      !emailConfig.publicKey
+    ) {
+      setSubmitError(
+        "Email service is not configured. Please contact the administrator."
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Prepare email template parameters
+      const templateParams: EmailTemplateParams = {
+        from_name: formData.name.trim(),
+        from_email: formData.email.trim(),
+        reply_to: formData.email.trim(), // Common EmailJS variable
+        user_name: formData.name.trim(), // Alternative name variable
+        user_email: formData.email.trim(), // Alternative email variable
+        phone: formData.phone
+          ? `${selectedCountry.code} ${formData.phone}`
+          : "Not provided",
+        scheduled_date: formData.date || "Not specified",
+        scheduled_time: formData.timeSlot || "Not specified",
+        message: formData.details.trim(),
+        to_name: "Portfolio Team",
+      };
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        emailConfig.serviceId,
+        emailConfig.templateId,
+        templateParams
+      );
+
+      console.log("Email sent successfully:", result);
+
+      // Show success message and alert
+      setShowSuccessMessage(true);
+      setShowAlert(true);
+
+      // Reset form
+      resetForm();
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 5000);
+
+      // Hide alert after 2 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+    } catch (error: any) {
+      console.error("Failed to send email:", error);
+
+      // Provide more specific error messages
+      let errorMessage =
+        "Failed to send message. Please try again or contact us directly.";
+
+      if (error?.text) {
+        // EmailJS specific error
+        errorMessage = `Email service error: ${error.text}`;
+      } else if (error?.message) {
+        // General error with message
+        errorMessage = `Error: ${error.message}`;
+      } else if (typeof error === "string") {
+        errorMessage = error;
+      }
+
+      setSubmitError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Handle country selection
@@ -378,8 +512,8 @@ export function ContactSection() {
 
       if (isNumericSearch) {
         // For numeric searches, focus on country codes
-        const cleanSearchTerm = searchTerm.replace(/[\s\-]/g, "");
-        const cleanCountryCode = countryCode.replace(/[\s\-]/g, "");
+        const cleanSearchTerm = searchTerm.replace(/[\s-]/g, "");
+        const cleanCountryCode = countryCode.replace(/[\s-]/g, "");
 
         return (
           cleanCountryCode === cleanSearchTerm ||
@@ -464,7 +598,7 @@ export function ContactSection() {
 
   // Handle button click for liquid glass effects
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!formData.privacyAccepted) return;
+    if (!formData.privacyAccepted || isSubmitting) return;
 
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
@@ -516,19 +650,8 @@ export function ContactSection() {
     >
       <div className="c-space">
         {/* Section Header */}
-<<<<<<< HEAD
-        <div className="text-center mb-8 mobile:mb-10 tablet:mb-12">
-          <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-3 mobile:mb-4 tablet:mb-5">
-            Contact Us
-          </h2>
-          <p className="text-base mobile:text-lg text-gray-300 max-w-[90%] mobile:max-w-xl tablet:max-w-2xl mx-auto">
-            Ready to start your project? Get in touch with us and let's schedule
-            a consultation.
-          </p>
-=======
         <div className="text-center mb-12">
           <h2 className="text-heading mb-4">Contact Us</h2>
->>>>>>> 2968ab73d8797180c6caa55e82a930ea624b09c0
         </div>
 
         {/* Contact Form */}
@@ -881,16 +1004,34 @@ export function ContactSection() {
                 </div>
               </div>
 
+              {/* Error Message */}
+              {submitError && (
+                <div className="pt-2 mobile:pt-3">
+                  <div className="text-red-500 text-sm mobile:text-base text-center bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800">
+                    {submitError}
+                  </div>
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="pt-3 mobile:pt-4 tablet:pt-5">
                 <button
                   type="submit"
                   className="liquid-glass-btn disabled:opacity-50 disabled:cursor-not-allowed w-full px-6 mobile:px-7 tablet:px-8 py-3 mobile:py-3.5 tablet:py-4 rounded-lg font-medium mobile:font-semibold text-base mobile:text-lg flex items-center justify-center gap-2 mobile:gap-3"
-                  disabled={!formData.privacyAccepted}
+                  disabled={!formData.privacyAccepted || isSubmitting}
                   onClick={handleButtonClick}
                 >
-                  <Send size={18} className="hidden mobile:inline" />
-                  <span>Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-current border-t-transparent"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} className="hidden mobile:inline" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </div>
             </form>

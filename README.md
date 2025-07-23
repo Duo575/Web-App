@@ -107,6 +107,22 @@ To enable the contact form functionality:
    VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
    ```
 
+### 🔒 **Security & Deployment**
+
+**Environment Variables:**
+
+- ✅ `.env` is in `.gitignore` - your credentials won't be pushed to GitHub
+- ✅ EmailJS Public Key is designed to be client-side safe
+- ✅ No sensitive server credentials are exposed
+
+**For Production Deployment:**
+
+- **Vercel**: Add environment variables in project settings
+- **Netlify**: Add in Site settings > Environment variables
+- **Other platforms**: Set environment variables in their respective dashboards
+
+**Note**: EmailJS Public Keys are meant to be public (client-side), but we still use environment variables for consistency and easy deployment management.
+
 ### ✅ **What Gets Installed**
 
 Running `npm install` automatically sets up:

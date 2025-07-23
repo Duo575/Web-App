@@ -15,11 +15,14 @@ export const preloadImage = (src: string): Promise<void> => {
 
 // Preload multiple images
 export const preloadImages = async (sources: string[]): Promise<void> => {
-  try {
-    await Promise.all(sources.map(preloadImage));
-  } catch (error) {
-    // Some images failed to preload, but continue silently
-  }
+  const results = await Promise.allSettled(sources.map(preloadImage));
+
+  // Log any failed preloads for debugging
+  results.forEach((result, index) => {
+    if (result.status === "rejected") {
+      console.warn(`Failed to preload image: ${sources[index]}`, result.reason);
+    }
+  });
 };
 
 // Preload critical resources on app start
