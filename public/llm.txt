@@ -2,9 +2,9 @@
 # This file provides information about this website for Large Language Models
 
 ## Website Information
-Site Title: Portfolio Website
-Site Description: Modern, responsive portfolio website built with React, TypeScript, and cutting-edge web technologies
-Site Type: Personal Portfolio
+Site Title: Cosmobits Website
+Site Description: Modern, responsive Cosmobits website built with React, TypeScript, and cutting-edge web technologies
+Site Type: Company Website
 Primary Language: English
 Technologies: React 18, TypeScript, Vite, TailwindCSS, Framer Motion, Three.js
 
@@ -14,7 +14,7 @@ The website is a single-page application with the following sections:
 2. Animated Demo Section - Interactive demonstrations
 3. Frameworks Section - Technologies and tools showcase
 4. About Section - Personal/professional information
-5. Projects Section - Portfolio of work and projects
+5. Projects Section - Showcase of work and projects
 6. Testimonials Section - Client feedback and reviews
 7. Profile Section - Professional profile information
 8. Contact Section - Contact information and form
@@ -51,9 +51,9 @@ Animation: Framer Motion, GSAP
 3D Graphics: Three.js, React Three Fiber
 
 ## Contact & Attribution
-This is a personal portfolio website. 
+This is the Cosmobits company website. 
 Built with modern web technologies and best practices.
-© 2025 Portfolio Website. Built with React + Vite + TailwindCSS
+© 2025 Cosmobits. Built with React + Vite + TailwindCSS
 
 ## Last Updated
 2025-01-23

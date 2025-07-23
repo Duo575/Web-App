@@ -8,7 +8,7 @@ Disallow: /*.json$
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://your-portfolio-domain.com/sitemap.xml
+Sitemap: https://cosmobits.com/sitemap.xml
 
 # Crawl delay (optional - sets delay between requests)
 Crawl-delay: 1

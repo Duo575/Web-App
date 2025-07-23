@@ -171,6 +171,7 @@ export const ProjectsSection: React.FC = () => {
     >
       <div className="c-space">
         {/* Section Header */}
+<<<<<<< HEAD
         <div className="text-center mb-10 mobile:mb-12 tablet:mb-14 desktop:mb-16">
           <h2 className="font-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-4 mobile:mb-5 tablet:mb-6 text-white">
             Our <span className="text-white">Projects</span>
@@ -179,6 +180,10 @@ export const ProjectsSection: React.FC = () => {
             Explore our portfolio of innovative web applications and digital
             solutions that demonstrate our expertise in modern web development.
           </p>
+=======
+        <div className="text-center mb-16">
+          <h2 className="text-heading mb-6">Our Projects</h2>
+>>>>>>> 2968ab73d8797180c6caa55e82a930ea624b09c0
         </div>
 
         {/* Projects Grid */}

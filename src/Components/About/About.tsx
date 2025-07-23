@@ -67,6 +67,7 @@ const About: React.FC = () => {
               <p className="headtext text-xl mobile:text-2xl tablet:text-3xl mb-3 mobile:mb-4 transform -translate-y-8 mobile:-translate-y-10 tablet:-translate-y-12">
                 Hi, we are a team of four passionate web developers!
               </p>
+<<<<<<< HEAD
               <p className="subtext text-sm mobile:text-base tablet:text-lg text-justify">
                 We've honed our frontend and backend skills to deliver dynamic
                 software and innovative web applications. Based in a virtual
@@ -74,6 +75,15 @@ const About: React.FC = () => {
                 creative design to craft stellar solutions for our clients. From
                 full-stack websites to custom integrations like payment gateways
                 and map APIs, we're here to bring your vision to life.
+=======
+              <p className="subtext text-justify">
+                We are a team of four skilled web developers specializing in
+                full-stack development. We craft dynamic software and innovative
+                web applications by integrating cutting-edge technologies—such
+                as payment gateways and map APIs—with creative design. Operating
+                from our virtual hub, we're here to bring your digital vision to
+                life.
+>>>>>>> 2968ab73d8797180c6caa55e82a930ea624b09c0
               </p>
             </div>
             <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-primary" />

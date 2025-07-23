@@ -516,6 +516,7 @@ export function ContactSection() {
     >
       <div className="c-space">
         {/* Section Header */}
+<<<<<<< HEAD
         <div className="text-center mb-8 mobile:mb-10 tablet:mb-12">
           <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-3 mobile:mb-4 tablet:mb-5">
             Contact Us
@@ -524,6 +525,10 @@ export function ContactSection() {
             Ready to start your project? Get in touch with us and let's schedule
             a consultation.
           </p>
+=======
+        <div className="text-center mb-12">
+          <h2 className="text-heading mb-4">Contact Us</h2>
+>>>>>>> 2968ab73d8797180c6caa55e82a930ea624b09c0
         </div>
 
         {/* Contact Form */}
