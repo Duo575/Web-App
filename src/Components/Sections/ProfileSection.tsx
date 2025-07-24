@@ -6,6 +6,7 @@
  */
 
 import React from "react";
+import manasProfilePic from "../../assets/Profile_Pics/manas-ranjan-kishan.png";
 
 // Define the team member data structure
 interface TeamMember {
@@ -55,7 +56,7 @@ const teamMembers: TeamMember[] = [
     name: "Manas Ranjan Kishan",
     role: "Frontend Developer",
     bio: "",
-    image: "https://avatar.vercel.sh/manas",
+    image: manasProfilePic,
     email: "manasranjankishan55@gmail.com",
     socialLinks: {
       linkedin: "#",
