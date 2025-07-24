@@ -1566,6 +1566,28 @@ body,
     @apply border-white/30;
   }
 
+  /* Country dropdown positioning for mobile */
+  .country-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    width: 20rem;
+    max-width: calc(100vw - 2rem);
+    min-width: 17.5rem;
+    z-index: 60;
+  }
+
+  @media (max-width: 640px) {
+    .country-dropdown {
+      right: auto;
+      left: 0;
+      width: 100%;
+      min-width: 280px;
+      max-width: calc(100vw - 2rem);
+    }
+  }
+
   /* Fix for autofill background color */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

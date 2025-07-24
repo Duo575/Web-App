@@ -138,7 +138,6 @@ export function ContactSection() {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [showTimeSlotDropdown, setShowTimeSlotDropdown] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -161,9 +160,16 @@ export function ContactSection() {
   const calendarRef = useRef<HTMLDivElement>(null);
   const timeSlotRef = useRef<HTMLDivElement>(null);
 
-  // Handle click outside to close calendar and time slot dropdown
+  // Handle click outside to close dropdowns
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowCountryDropdown(false);
+        setCountrySearch("");
+      }
       if (
         calendarRef.current &&
         !calendarRef.current.contains(event.target as Node)
@@ -178,14 +184,14 @@ export function ContactSection() {
       }
     };
 
-    if (showCalendar || showTimeSlotDropdown) {
+    if (showCountryDropdown || showCalendar || showTimeSlotDropdown) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showCalendar, showTimeSlotDropdown]);
+  }, [showCountryDropdown, showCalendar, showTimeSlotDropdown]);
 
   // Handle input changes
   const handleInputChange = (
@@ -451,22 +457,16 @@ export function ContactSection() {
 
       console.log("Email sent successfully:", result);
 
-      // Show success message and alert
-      setShowSuccessMessage(true);
+      // Show success alert
       setShowAlert(true);
 
       // Reset form
       resetForm();
 
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 5000);
-
-      // Hide alert after 2 seconds
+      // Hide alert after 4 seconds
       setTimeout(() => {
         setShowAlert(false);
-      }, 2000);
+      }, 4000);
     } catch (error: any) {
       console.error("Failed to send email:", error);
 
@@ -661,24 +661,6 @@ export function ContactSection() {
             as="div"
             className="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-sm text-white p-4 mobile:p-6 tablet:p-8 desktop:p-12 w-full rounded-xl mobile:rounded-2xl"
           >
-            {/* Success Message */}
-            {showSuccessMessage && (
-              <div className="bg-green-900/50 border border-green-500 rounded-lg p-3 mobile:p-4 mb-4 mobile:mb-5 tablet:mb-6 flex items-center gap-2 mobile:gap-3 animate-fade-in">
-                <CheckCircle
-                  className="text-green-400 hidden mobile:block"
-                  size={24}
-                />
-                <div>
-                  <h3 className="font-semibold text-green-400 text-sm mobile:text-base">
-                    Message Sent Successfully!
-                  </h3>
-                  <p className="text-green-300 text-xs mobile:text-sm">
-                    Thank you for contacting us. We'll get back to you soon.
-                  </p>
-                </div>
-              </div>
-            )}
-
             <form
               onSubmit={handleSubmit}
               className="space-y-5 mobile:space-y-6 tablet:space-y-7"
@@ -739,7 +721,7 @@ export function ContactSection() {
                       onClick={() =>
                         setShowCountryDropdown(!showCountryDropdown)
                       }
-                      className="contact-input w-32 flex items-center justify-between gap-1 text-sm"
+                      className="contact-input w-28 sm:w-32 flex items-center justify-between gap-1 text-sm"
                       style={{ height: "46px" }}
                     >
                       <div className="flex items-center gap-1">
@@ -751,7 +733,7 @@ export function ContactSection() {
 
                     {showCountryDropdown && (
                       <div
-                        className="absolute top-full right-0 mt-2 w-80 bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl z-[60] p-4"
+                        className="country-dropdown bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl p-4"
                         style={{
                           backgroundColor: "#000000",
                           backdropFilter: "blur(20px)",
@@ -1302,11 +1284,17 @@ export function ContactSection() {
         </div>
       )}
 
-      {/* Small Alert Popup */}
+      {/* Success Alert Popup */}
       {showAlert && (
         <div className="fixed top-5 mobile:top-8 tablet:top-10 right-5 mobile:right-8 tablet:right-10 z-[9999]">
-          <div className="bg-green-600 text-white px-3 mobile:px-4 py-1.5 mobile:py-2 rounded shadow-lg animate-popup-simple text-xs mobile:text-sm font-medium">
-            Sent successfully!
+          <div className="bg-green-600 text-white px-4 mobile:px-5 py-2 mobile:py-3 rounded-lg shadow-lg animate-popup-simple text-sm mobile:text-base font-medium flex items-center gap-2">
+            <CheckCircle size={18} />
+            <div>
+              <div className="font-semibold">Message Sent!</div>
+              <div className="text-xs mobile:text-sm opacity-90">
+                We'll get back to you soon
+              </div>
+            </div>
           </div>
         </div>
       )}
