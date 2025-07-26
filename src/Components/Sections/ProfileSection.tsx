@@ -5,7 +5,7 @@
  * Features: Hover effects, responsive design, social links, profile images
  */
 
-import React from "react";
+import React, { useEffect } from "react";
 import manasProfilePic from "../../assets/Profile_Pics/manas-ranjan-kishan.png";
 
 // Define the team member data structure
@@ -81,6 +81,14 @@ const teamMembers: TeamMember[] = [
 
 // Profile Card Component
 const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
+  // Preload image for smoother transitions
+  useEffect(() => {
+    if (member.image) {
+      const img = new Image();
+      img.src = member.image;
+    }
+  }, [member.image]);
+
   return (
     <div className="profile-card">
       {/* Mail/Contact Button */}
@@ -110,7 +118,16 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
 
       {/* Profile Picture */}
       <div className="profile-card-pic">
-        <img src={member.image} alt={`${member.name} profile`} loading="lazy" />
+        <img
+          src={member.image}
+          alt={`${member.name} profile`}
+          loading="eager"
+          onLoad={(e) => {
+            // Ensure image is fully loaded before transitions
+            (e.target as HTMLImageElement).style.opacity = "1";
+          }}
+          style={{ opacity: 0, transition: "opacity 0.3s ease" }}
+        />
       </div>
 
       {/* Bottom Content Area */}
