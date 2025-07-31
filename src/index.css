@@ -1362,6 +1362,7 @@ body,
     border: none;
     border-radius: 20px;
     font-size: 0.6rem;
+    font-weight: bold;
     padding: 0.4rem 0.6rem;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
     cursor: pointer;
@@ -1402,6 +1403,16 @@ body,
 
   .profile-card:hover .profile-card-pic img {
     transform: scale(2.5) translateY(15px);
+  }
+
+  /* Specific adjustment for Debi Prasad Panda's card (first card) */
+  .profile-card:first-child:hover .profile-card-pic img {
+    transform: scale(2.5) translateY(15px) translateX(2px);
+  }
+
+  /* Specific adjustment for Srujan Sattwik's card (fourth card) */
+  .profile-card:nth-child(4):hover .profile-card-pic img {
+    transform: scale(2.5) translateY(15px) translateX(-5px);
   }
 
   .profile-card:hover .profile-card-mail {
