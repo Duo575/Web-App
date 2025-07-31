@@ -7,6 +7,8 @@
 
 import React, { useEffect } from "react";
 import manasProfilePic from "../../assets/Profile_Pics/manas-ranjan-kishan.png";
+import debiProfilePic from "../../assets/Profile_Pics/debi-prasad-panda2.jpg";
+import srujanProfilePic from "../../assets/Profile_Pics/srujan-sattwik.jpg";
 
 // Define the team member data structure
 interface TeamMember {
@@ -30,7 +32,7 @@ const teamMembers: TeamMember[] = [
     name: "Debi Prasad Panda",
     role: "Full-Stack Developer",
     bio: "",
-    image: "https://avatar.vercel.sh/debi",
+    image: debiProfilePic,
     email: "debiprasadpanda73@gmail.com",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/debi-prasad-panda-b05b382b1/",
@@ -69,7 +71,7 @@ const teamMembers: TeamMember[] = [
     name: "Srujan Sattwik",
     role: "Backend Developer",
     bio: "",
-    image: "https://avatar.vercel.sh/srujan",
+    image: srujanProfilePic,
     email: "srujansattwik05@gmail.com",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/srujan-sattwik-739018277/",
