@@ -8,7 +8,7 @@ Disallow: /*.json$
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://cosmobits.com/sitemap.xml
+Sitemap: https://cosmobits.work/sitemap.xml
 
 # Crawl delay (optional - sets delay between requests)
 Crawl-delay: 1
