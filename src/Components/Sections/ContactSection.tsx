@@ -118,7 +118,13 @@ const timeSlots = [
   "20:00 GMT",
 ];
 
-export function ContactSection() {
+interface ContactSectionProps {
+  onPrivacyModalOpen?: () => void;
+}
+
+export function ContactSection({
+  onPrivacyModalOpen,
+}: ContactSectionProps = {}) {
   // Form state
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -974,7 +980,11 @@ export function ContactSection() {
                     <button
                       type="button"
                       onClick={() => {
-                        setShowPrivacyModal(true);
+                        if (onPrivacyModalOpen) {
+                          onPrivacyModalOpen();
+                        } else {
+                          setShowPrivacyModal(true);
+                        }
                       }}
                       className="text-blue-400 hover:text-blue-300 underline"
                     >
