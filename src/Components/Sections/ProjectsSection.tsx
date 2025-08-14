@@ -17,6 +17,11 @@ import TailwindLogo from "@/assets/icons/Tailwind_CSS.svg";
 import JavaScriptLogo from "@/assets/icons/javascript.svg";
 import AngularLogo from "@/assets/icons/angular.svg";
 
+// Project image imports
+import HarveyWebsiteImage from "@/assets/project_images/harvey website.png";
+import PortfolioLightModeImage from "@/assets/project_images/portfolio light mode.png";
+import WallpaperWebsiteImage from "@/assets/project_images/wallpaper website image.png";
+
 // Technology logo mapping
 const techLogos: Record<string, string> = {
   React: ReactLogo,
@@ -43,33 +48,30 @@ interface Project {
 const projectsData: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Harvey Website",
     description:
-      "A modern e-commerce platform built with React and Node.js, featuring real-time inventory management and secure payment processing.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "A professional business website featuring modern design, responsive layout, and optimized user experience for Harvey's services and portfolio.",
+    image: HarveyWebsiteImage,
     technologies: ["React", "Node.js", "MongoDB", "JavaScript"],
     liveUrl: "#",
     githubUrl: "#",
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "Portfolio Light Mode",
     description:
-      "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=2339&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "A clean and elegant portfolio website with light theme design, showcasing projects and skills with smooth animations and modern UI components.",
+    image: PortfolioLightModeImage,
     technologies: ["Vue.js", "TypeScript", "Tailwind", "JavaScript"],
     liveUrl: "#",
     githubUrl: "#",
   },
   {
     id: 3,
-    title: "AI-Powered Dashboard",
+    title: "Wallpaper Website",
     description:
-      "An intelligent analytics dashboard that leverages machine learning to provide actionable insights and predictive analytics.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "A stunning wallpaper gallery website featuring high-quality images, advanced search functionality, and seamless browsing experience.",
+    image: WallpaperWebsiteImage,
     technologies: ["Angular", "TypeScript", "Node.js", "MongoDB"],
     liveUrl: "#",
     githubUrl: "#",
@@ -104,7 +106,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               src={project.image}
               height="1000"
               width="1000"
-              className="h-40 mobile:h-48 tablet:h-60 w-full object-cover rounded-xl transition-all duration-500 group-hover/card:scale-105 group-hover/card:shadow-2xl group-hover/card:shadow-white/[0.2]"
+              className="h-40 mobile:h-48 tablet:h-60 w-full object-cover object-top rounded-xl transition-all duration-500 group-hover/card:scale-105 group-hover/card:shadow-2xl group-hover/card:shadow-white/[0.2]"
               alt={project.title}
             />
             {/* Image overlay for enhanced depth */}
