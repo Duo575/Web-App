@@ -1226,31 +1226,6 @@ body,
     will-change: border-radius;
   }
 
-  .profile-card-mail {
-    position: absolute;
-    right: 2rem;
-    top: 1.4rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 0;
-    transition: z-index 0.3s ease;
-  }
-
-  .profile-card-mail svg {
-    stroke: #ffffff;
-    stroke-width: 2.5px;
-    fill: none;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
-  }
-
-  .profile-card-mail:hover svg {
-    stroke: #e2e8f0;
-    filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.6));
-    transform: scale(1.1);
-  }
-
   .profile-card-pic {
     position: absolute;
     width: calc(100% - 6px);
@@ -1413,10 +1388,6 @@ body,
   /* Specific adjustment for Srujan Sattwik's card (fourth card) */
   .profile-card:nth-child(4):hover .profile-card-pic img {
     transform: scale(2.5) translateY(15px) translateX(-5px);
-  }
-
-  .profile-card:hover .profile-card-mail {
-    z-index: 5;
   }
 
   /* Responsive Design */

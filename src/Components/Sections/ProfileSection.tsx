@@ -9,6 +9,7 @@ import React, { useEffect } from "react";
 import manasProfilePic from "../../assets/Profile_Pics/manas-ranjan-kishan.png";
 import debiProfilePic from "../../assets/Profile_Pics/debi-prasad-panda2.jpg";
 import srujanProfilePic from "../../assets/Profile_Pics/srujan-sattwik.jpg";
+import pratikProfilePic from "../../assets/Profile_Pics/pratik-kiran-rout1.jpg";
 
 // Define the team member data structure
 interface TeamMember {
@@ -45,7 +46,7 @@ const teamMembers: TeamMember[] = [
     name: "Pratik Kiran Rout",
     role: "Full-Stack Developer",
     bio: "",
-    image: "https://avatar.vercel.sh/pratik",
+    image: pratikProfilePic,
     email: "pratikkiranrout@gmail.com",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/pratik-kiran-rout-46776b34b/",
@@ -93,31 +94,6 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
 
   return (
     <div className="profile-card">
-      {/* Mail/Contact Button */}
-      <a
-        href={`mailto:${member.email}`}
-        className="profile-card-mail"
-        aria-label={`Contact ${member.name}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </a>
-
       {/* Profile Picture */}
       <div className="profile-card-pic">
         <img
