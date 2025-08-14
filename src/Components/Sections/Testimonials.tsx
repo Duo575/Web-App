@@ -136,7 +136,12 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-20 px-6 content-above-particles">
       <div className="c-space">
-        <h2 className="text-heading mb-8 sm:mb-12">What People Say</h2>
+        <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-8 sm:mb-12">
+          What People{" "}
+          <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+            Say
+          </span>
+        </h2>
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <div className="marquee-fade-edge w-full">
             <Marquee

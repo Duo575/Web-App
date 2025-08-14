@@ -190,73 +190,11 @@ const ServicesSection: React.FC = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
-
-        {/* Animated Beam Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl border border-white/[0.1] bg-black/40 backdrop-blur-sm p-8 md:p-12"
-        >
-          {/* Animated beam effects */}
-          <div className="absolute inset-0 overflow-hidden">
-            <motion.div
-              className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-transparent via-blue-500/30 to-transparent rotate-45"
-              animate={{
-                x: ["-100%", "100%"],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatDelay: 2,
-                ease: "easeInOut",
-              }}
-            />
-            <motion.div
-              className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-transparent via-purple-500/30 to-transparent rotate-45"
-              animate={{
-                x: ["100%", "-100%"],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatDelay: 2,
-                delay: 1.5,
-                ease: "easeInOut",
-              }}
-            />
-          </div>
-
-          <div className="relative z-10 text-center">
-            <motion.h3
-              className="text-3xl md:text-4xl font-bold text-white mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Complete Digital Solutions
-            </motion.h3>
-            <motion.p
-              className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              From concept to deployment, we handle every aspect of your digital
-              presence with modern technology and creative excellence.
-            </motion.p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

@@ -60,11 +60,7 @@ const ServicesSection = React.lazy(() =>
     default: module.default,
   }))
 );
-const AboutCompanySection = React.lazy(() =>
-  import("@/Components/Sections/AboutCompanySection").then((module) => ({
-    default: module.default,
-  }))
-);
+// AboutCompanySection removed as requested
 const ProcessSection = React.lazy(() =>
   import("@/Components/Sections/ProcessSection").then((module) => ({
     default: module.default,
@@ -108,13 +104,6 @@ function App() {
           <HeroSection />
         </Suspense>
 
-        {/* Animated Beam Demo Section */}
-        <Suspense
-          fallback={<LoadingSpinner size="lg" className="min-h-[200px]" />}
-        >
-          <AnimatedBeamDemo />
-        </Suspense>
-
         {/* Frameworks Section */}
         <Suspense
           fallback={<LoadingSpinner size="lg" className="min-h-[400px]" />}
@@ -136,12 +125,14 @@ function App() {
           <ServicesSection />
         </Suspense>
 
-        {/* About Company Section */}
+        {/* Animated Beam Demo Section */}
         <Suspense
-          fallback={<LoadingSpinner size="lg" className="min-h-[400px]" />}
+          fallback={<LoadingSpinner size="lg" className="min-h-[200px]" />}
         >
-          <AboutCompanySection />
+          <AnimatedBeamDemo />
         </Suspense>
+
+        {/* About Company Section - Removed as requested */}
 
         {/* Process Section */}
         <Suspense

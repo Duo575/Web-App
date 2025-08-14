@@ -174,7 +174,12 @@ export const ProjectsSection: React.FC = () => {
       <div className="c-space">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-heading mb-6">Our Projects</h2>
+          <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-3 mobile:mb-4 tablet:mb-5">
+            Our{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+              Projects
+            </span>
+          </h2>
         </div>
 
         {/* Projects Grid */}

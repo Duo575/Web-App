@@ -657,7 +657,12 @@ export function ContactSection({
       <div className="c-space">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-heading mb-4">Contact Us</h2>
+          <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-4">
+            Contact{" "}
+            <span className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-violet-400 bg-clip-text text-transparent">
+              Us
+            </span>
+          </h2>
         </div>
 
         {/* Contact Form */}
