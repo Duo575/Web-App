@@ -174,7 +174,7 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
 
           {/* Contact Button */}
           <a
-            href={`mailto:${member.email}`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
             className="profile-card-button"
             target="_blank"
             rel="noopener noreferrer"
