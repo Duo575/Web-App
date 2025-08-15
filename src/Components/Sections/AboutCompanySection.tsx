@@ -7,7 +7,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Coffee, Target } from "lucide-react";
 
 const AboutCompanySection: React.FC = () => {
   return (
