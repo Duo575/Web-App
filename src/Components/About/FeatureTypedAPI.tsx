@@ -81,7 +81,7 @@ const FeatureTypedAPI: React.FC = () => {
           </span>
         </div>
       </div>
-      <div className="feature__meta meta--center text-center mt-8 pt-4">
+      <div className="feature__meta meta--center text-center mt-4 pt-2">
         <div className="meta__title text-xl font-semibold mb-2 text-white">
           Fully typed API
         </div>

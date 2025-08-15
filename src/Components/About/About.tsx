@@ -136,7 +136,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 mobile:gap-5 tablet:gap-6 md:grid-cols-6 mt-4 mobile:mt-5 tablet:mt-6">
+        <div className="grid grid-cols-1 gap-4 mobile:gap-5 tablet:gap-6 md:grid-cols-6 mt-4 mobile:mt-5 tablet:mt-6 h-full">
           {/* Grid 1 - Personal Introduction (Wider) */}
           <div
             data-grid="1"
@@ -170,12 +170,12 @@ const About: React.FC = () => {
               visibleGrids.has(3) ? "animate-visible" : "animate-hidden"
             }`}
           >
-            <div className="z-10 relative">
-              <p className="headtext text-xl mobile:text-2xl tablet:text-3xl mb-2 mobile:mb-3">
+            <div className="z-10 relative max-w-full pl-1 mobile:pl-2 mb-4 mobile:mb-5 tablet:mb-6">
+              <p className="headtext text-xl mobile:text-2xl tablet:text-3xl mb-0 mobile:mb-1 transform -translate-y-8 mobile:-translate-y-10 tablet:-translate-y-12">
                 Time Zone
-              </p>
-              <p className="subtext text-sm mobile:text-base">
-                I'm based in Mars, and open to remote work worldwide
+                <span className="block text-sm mobile:text-base subtext mt-0">
+                  We are based in Mars, and open to remote work worldwide
+                </span>
               </p>
             </div>
             <div className="absolute top-[7%] left-[5%] w-40 h-40 mobile:w-48 mobile:h-48 tablet:w-56 tablet:h-56">
@@ -206,7 +206,7 @@ const About: React.FC = () => {
           {/* Grid 7 - Typed API Feature (Moved up to row 3) */}
           <div
             data-grid="7"
-            className={`bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-cyan-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 grid-7 animate-fade-in ${
+            className={`bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-cyan-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-6 pt-4 md:p-10 md:pt-6 grid-7 animate-fade-in ${
               visibleGrids.has(7) ? "animate-visible" : "animate-hidden"
             }`}
           >

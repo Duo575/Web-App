@@ -832,37 +832,41 @@ body,
   /* Grid layouts for About section */
   .grid-1 {
     @apply col-span-1 md:col-span-4;
-    min-height: 20rem;
+    height: 24rem;
   }
 
   .grid-2 {
     @apply col-span-1 md:col-span-3;
-    min-height: 20rem;
+    height: 24rem;
   }
 
   .grid-3 {
     @apply col-span-1 md:col-span-2;
-    min-height: 20rem;
+    height: 24rem;
   }
 
   .grid-4 {
     @apply col-span-1 md:col-span-4;
-    min-height: 20rem;
+    height: 24rem;
   }
 
   .grid-5 {
     @apply col-span-1 md:col-span-2;
-    min-height: 20rem;
+    height: 24rem;
   }
 
   .grid-6 {
     @apply col-span-1 md:col-span-2;
-    min-height: 20rem;
+    height: 24rem;
   }
 
   .grid-7 {
     @apply col-span-1 md:col-span-2;
-    min-height: 20rem;
+    height: 24rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   /* Consolidated responsive grid heights */
@@ -874,7 +878,7 @@ body,
     .grid-5,
     .grid-6,
     .grid-7 {
-      min-height: 24rem;
+      height: 24rem;
     }
   }
 
@@ -886,7 +890,7 @@ body,
     .grid-5,
     .grid-6,
     .grid-7 {
-      min-height: 27rem;
+      height: 27rem;
     }
   }
 
@@ -1083,7 +1087,7 @@ body,
     .grid-5,
     .grid-6,
     .grid-7 {
-      min-height: 22rem;
+      height: 22rem;
     }
 
     /* Adjust globe positioning on smaller screens */
@@ -1101,6 +1105,7 @@ body,
   .feature-card {
     @apply h-full flex flex-col;
     position: relative;
+    height: 100%;
   }
 
   .feature__visualization {
@@ -2263,18 +2268,18 @@ body,
 /* FeatureTypedAPI Styles */
 .feature__visualization {
   position: relative;
-  min-height: 200px;
+  min-height: 180px;
 }
 
 @media (min-width: 480px) {
   .feature__visualization {
-    min-height: 220px;
+    min-height: 200px;
   }
 }
 
 @media (min-width: 768px) {
   .feature__visualization {
-    min-height: 250px;
+    min-height: 220px;
   }
 }
 
@@ -2295,10 +2300,10 @@ body,
 .feature__visualization {
   .ide {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 12px;
     right: 0;
-    height: 150px;
+    height: 140px;
     transform: translateY(-50%);
     border-radius: 0 0 0 8px;
     overflow: hidden;
@@ -2316,7 +2321,7 @@ body,
   @media (min-width: 480px) {
     .ide {
       left: 15px;
-      height: 170px;
+      height: 150px;
       border-radius: 0 0 0 10px;
     }
   }
@@ -2324,7 +2329,7 @@ body,
   @media (min-width: 768px) {
     .ide {
       left: 18px;
-      height: 195px;
+      height: 170px;
       border-radius: 0 0 0 12px;
     }
   }
@@ -2339,7 +2344,7 @@ body,
     padding: 8px 2px 4px 8px;
     position: absolute;
     z-index: 5;
-    top: 50%;
+    top: 45%;
     left: 40px;
     right: 0;
     transform: translate3d(0, -50%, 0);

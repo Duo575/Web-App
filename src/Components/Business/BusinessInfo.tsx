@@ -158,7 +158,7 @@ export const BusinessInfo: React.FC = () => {
                   <div className="flex justify-between items-center py-2">
                     <span className="text-gray-300">Sunday</span>
                     <span className="text-white font-medium">
-                      4:30 AM - 4:30 PM IST
+                      4:30 AM - 4:30 PM GMT
                     </span>
                   </div>
                 </div>
