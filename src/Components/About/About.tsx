@@ -60,8 +60,9 @@ const About: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-3 mobile:mb-4 tablet:mb-5">
+            About{" "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">
-              About Us
+              Us
             </span>
           </h2>
 
@@ -81,7 +82,11 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                The Cosmobits Story
+                The{" "}
+                <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">
+                  Cosmobits
+                </span>{" "}
+                Story
               </h3>
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
@@ -112,7 +117,10 @@ const About: React.FC = () => {
                 <div className="flex items-center mb-6">
                   <Coffee className="w-8 h-8 text-yellow-400 mr-3" />
                   <h4 className="text-xl font-semibold text-white">
-                    Our Mission
+                    Our{" "}
+                    <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
+                      Mission
+                    </span>
                   </h4>
                 </div>
                 <p className="text-gray-300 mb-6">
@@ -124,7 +132,10 @@ const About: React.FC = () => {
                 <div className="flex items-center mb-4">
                   <Target className="w-6 h-6 text-green-400 mr-3" />
                   <h5 className="text-lg font-semibold text-white">
-                    Our Vision
+                    Our{" "}
+                    <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                      Vision
+                    </span>
                   </h5>
                 </div>
                 <p className="text-gray-300">

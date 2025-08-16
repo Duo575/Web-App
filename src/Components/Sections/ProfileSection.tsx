@@ -125,6 +125,7 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="transition-colors duration-200"
               >
                 <svg
                   width="20"
@@ -142,6 +143,7 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 aria-label="Twitter"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="transition-colors duration-200"
               >
                 <svg
                   width="20"
@@ -159,6 +161,7 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 aria-label="GitHub"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="transition-colors duration-200"
               >
                 <svg
                   width="20"
@@ -175,10 +178,23 @@ const ProfileCard: React.FC<{ member: TeamMember }> = ({ member }) => {
           {/* Contact Button */}
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
-            className="profile-card-button"
+            className="profile-card-button flex items-center gap-1"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
             Contact
           </a>
         </div>
