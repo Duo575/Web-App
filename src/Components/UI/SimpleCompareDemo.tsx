@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import "./compareDemo.css";
 
@@ -22,7 +21,7 @@ export default function SimpleCompareDemo() {
               onLoad={() =>
                 console.log("First image loaded in simple component")
               }
-              onError={(e) =>
+              onError={() =>
                 console.error("Error loading first image in simple component")
               }
             />
@@ -36,7 +35,7 @@ export default function SimpleCompareDemo() {
               onLoad={() =>
                 console.log("Second image loaded in simple component")
               }
-              onError={(e) =>
+              onError={() =>
                 console.error("Error loading second image in simple component")
               }
             />
