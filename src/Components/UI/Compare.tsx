@@ -278,12 +278,15 @@ export const Compare = ({
           )}
         </motion.div>
       </AnimatePresence>
-      <div className="overflow-hidden w-full h-full relative z-20 pointer-events-none">
+      {/* Neutral background so mismatched image sizes look clean */}
+      <div className="absolute inset-0 z-10 bg-neutral-900/60 rounded-xl sm:rounded-2xl" />
+
+      <div className="overflow-hidden w-full h-full relative z-20 pointer-events-none rounded-xl sm:rounded-2xl">
         <AnimatePresence initial={false}>
           {firstImage ? (
             <motion.div
               className={cn(
-                "absolute inset-0 z-20 rounded-lg mobile:rounded-xl tablet:rounded-2xl shrink-0 w-full h-full select-none overflow-hidden",
+                "absolute inset-0 z-20 rounded-xl sm:rounded-2xl shrink-0 w-full h-full select-none overflow-hidden",
                 firstImageClassName
               )}
               style={{
@@ -295,7 +298,7 @@ export const Compare = ({
                 alt="first image"
                 src={firstImage}
                 className={cn(
-                  "absolute inset-0 z-20 rounded-lg mobile:rounded-xl tablet:rounded-2xl shrink-0 w-full h-full select-none object-cover",
+                  "absolute inset-0 z-20 rounded-xl sm:rounded-2xl shrink-0 w-full h-full select-none object-cover",
                   firstImageClassName
                 )}
                 draggable={false}
@@ -314,7 +317,7 @@ export const Compare = ({
         {secondImage ? (
           <motion.img
             className={cn(
-              "absolute top-0 left-0 z-[19] rounded-lg mobile:rounded-xl tablet:rounded-2xl w-full h-full select-none object-cover",
+              "absolute top-0 left-0 z-[19] rounded-xl sm:rounded-2xl w-full h-full select-none object-cover",
               secondImageClassname
             )}
             alt="second image"

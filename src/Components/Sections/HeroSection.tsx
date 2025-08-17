@@ -70,18 +70,18 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 md:px-6 w-full py-4 sm:py-6 md:py-8 pt-12 sm:pt-14 md:pt-16 lg:pt-16 xl:pt-20"
+        className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 md:px-5 w-full py-4 sm:py-6 md:py-8 pt-12 sm:pt-14 md:pt-16 lg:pt-16 xl:pt-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-12 xl:gap-16 items-start lg:items-center min-h-[20vh] sm:min-h-[25vh] md:min-h-[70vh]">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-8 items-start lg:items-center min-h-[20vh] sm:min-h-[25vh] md:min-h-[70vh]">
           {/* Left Side - Hero Title with Animation */}
-          <div className="text-left space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8 flex flex-col justify-start min-h-[10vh] sm:min-h-[15vh] md:min-h-[40vh] lg:min-h-[50vh] xl:min-h-[60vh] lg:pr-4 xl:pr-8 order-1 lg:order-1">
-            <div className="space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-6">
+          <div className="text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-6 flex flex-col justify-start min-h-[10vh] sm:min-h-[15vh] md:min-h-[40vh] lg:min-h-[50vh] xl:min-h-[60vh] lg:pr-2 xl:pr-4 order-1 lg:order-1">
+            <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-5">
               {/* Animated Title */}
               <motion.h1
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight hero-title"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white mb-3 sm:mb-5 leading-tight hero-title"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -131,7 +131,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.p
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-4 sm:mb-6"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
@@ -172,8 +172,10 @@ export default function HeroSection() {
           </div>
 
           {/* Right Side - Compare Demo Component with Animation */}
-          <div className="flex justify-center lg:justify-end mt-4 sm:mt-6 md:mt-8 lg:mt-4 order-2 lg:order-2 w-full">
-            <CompareDemo />
+          <div className="flex justify-center lg:justify-end mt-5 sm:mt-6 md:mt-8 lg:mt-2 order-2 lg:order-2 w-full">
+            <div className="w-full overflow-hidden">
+              <CompareDemo />
+            </div>
           </div>
         </div>
       </motion.div>

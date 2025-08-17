@@ -12,13 +12,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useInView,
-} from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
 // Create a context to share the line progress between components
 interface ProcessContextType {
@@ -152,7 +146,7 @@ const ProcessStep: React.FC<{
   step: ProcessStep;
   index: number;
   isLast: boolean;
-}> = ({ step, index, isLast }) => {
+}> = ({ step, index }) => {
   // Determine if the card should appear on the left or right
   const isLeft = index % 2 === 0;
 
@@ -162,15 +156,15 @@ const ProcessStep: React.FC<{
   // Track if the line has reached this step
   const [lineHasReached, setLineHasReached] = useState(false);
 
-  // Standard inView detection
-  const isInView = useInView(containerRef, {
+  // Standard inView detection for future use
+  useInView(containerRef, {
     once: false,
     amount: 0.3,
     margin: "-100px 0px -100px 0px",
   });
 
-  // Use scroll position to animate the line
-  const { scrollYProgress } = useScroll({
+  // Use scroll position to animate the line (for future implementation)
+  useScroll({
     target: containerRef,
     offset: ["start center", "center center"], // Changed to center alignment for better visibility
   });
