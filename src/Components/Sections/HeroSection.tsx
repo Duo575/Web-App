@@ -1,6 +1,7 @@
 import { CompareDemo } from "@/Components/UI";
 import { ShootingStars, StarsBackground } from "@/Components/UI";
 import { motion } from "framer-motion";
+import { AuroraText } from "@/Components/magicui/aurora-text";
 
 export default function HeroSection() {
   const handleNavigation = (
@@ -81,7 +82,7 @@ export default function HeroSection() {
             <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-5">
               {/* Animated Title */}
               <motion.h1
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white mb-3 sm:mb-5 leading-tight hero-title"
+                className="font-bold text-white mb-3 sm:mb-5 leading-tight hero-title"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -91,7 +92,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.span
-                  className="block"
+                  className="block text-white text-6xl sm:text-7xl md:text-8xl"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
@@ -111,12 +112,14 @@ export default function HeroSection() {
                     ease: "easeOut",
                     delay: 0.8,
                   }}
-                  whileHover={{
-                    scale: 1.05,
-                    filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.6))",
-                  }}
                 >
-                  Cosmobits
+                  <AuroraText
+                    className="font-bold text-7xl sm:text-8xl md:text-9xl"
+                    colors={["#0070F3", "#38bdf8", "#FF0080", "#7928CA"]}
+                    speed={1.2}
+                  >
+                    Cosmobits
+                  </AuroraText>
                 </motion.span>
               </motion.h1>
 
@@ -131,7 +134,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.p
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
