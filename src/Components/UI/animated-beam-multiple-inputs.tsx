@@ -290,7 +290,7 @@ export default function AnimatedBeamMultipleOutputDemo({
             </Circle>
           </div>
           <span className="mt-1 sm:mt-2 text-white text-sm sm:text-base md:text-lg font-semibold">
-            Company
+            Cosmobits
           </span>
         </div>
         {/* Right client */}
