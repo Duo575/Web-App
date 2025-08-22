@@ -144,22 +144,6 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
             ))}
           </div>
         </CardItem>
-
-        {/* Action Buttons - Fourth level */}
-        <div className="flex justify-center items-center">
-          {project.liveUrl && (
-            <CardItem
-              translateZ={60}
-              as="a"
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 mobile:px-5 tablet:px-6 py-1.5 mobile:py-2 rounded-xl text-xs mobile:text-sm font-medium text-white border border-white/20 hover:border-white/50 hover:bg-white/10 transition-all duration-300"
-            >
-              Live Demo →
-            </CardItem>
-          )}
-        </div>
       </CardBody>
     </CardContainer>
   );
