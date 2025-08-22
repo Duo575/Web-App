@@ -46,24 +46,42 @@ export default function HeroSection() {
 
       {/* Navigation */}
       <motion.header
-        className="absolute top-0 w-full z-50 pt-4"
+        className="absolute top-0 w-full z-50 pt-2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
       >
-        <nav className="flex justify-center items-center py-2 px-2 sm:py-3 sm:px-4">
-          <div className="nav-glass-card w-auto mobile:w-auto tablet:w-auto">
-            <div className="flex space-x-1 mobile:space-x-2 tablet:space-x-4 desktop:space-x-6">
-              {["Home", "About", "Projects", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="nav-link transition-colors duration-300 text-xs mobile:text-sm tablet:text-base px-1 mobile:px-2 tablet:px-3 py-1 tablet:py-2"
-                  onClick={(e) => handleNavigation(e, item.toLowerCase())}
-                >
-                  {item}
-                </a>
-              ))}
+        <nav className="flex justify-between items-center py-2 px-4 sm:py-3 sm:px-6">
+          {/* Logo */}
+          <motion.div
+            className="flex items-center justify-center"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          >
+            <img
+              src="/Cosmobits company logo.svg"
+              alt="Cosmobits Logo"
+              className="w-24 h-20 mobile:w-28 mobile:h-22 tablet:w-32 tablet:h-24 desktop:w-36 desktop:h-26 object-contain"
+              style={{ transform: "scale(2.2) translateY(6px)" }}
+            />
+          </motion.div>
+
+          {/* Navigation Links */}
+          <div className="flex justify-center flex-1">
+            <div className="nav-glass-card w-auto mobile:w-auto tablet:w-auto">
+              <div className="flex space-x-1 mobile:space-x-2 tablet:space-x-4 desktop:space-x-6">
+                {["Home", "About", "Projects", "Contact"].map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="nav-link transition-colors duration-300 text-xs mobile:text-sm tablet:text-base px-1 mobile:px-2 tablet:px-3 py-1 tablet:py-2"
+                    onClick={(e) => handleNavigation(e, item.toLowerCase())}
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </nav>

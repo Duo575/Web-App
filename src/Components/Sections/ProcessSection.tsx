@@ -133,12 +133,12 @@ const processSteps: ProcessStep[] = [
 // Process Step Card Component
 const ProcessStepCard: React.FC<{ step: ProcessStep }> = ({ step }) => {
   return (
-    <div className="scroll-stack-card relative w-full p-12 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.2)] box-border origin-top will-change-transform bg-gradient-to-br from-blue-950 via-purple-950 to-cyan-950 border border-white/20">
+    <div className="scroll-stack-card relative w-full p-14 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.2)] box-border origin-top will-change-transform bg-gradient-to-br from-blue-950 via-purple-950 to-cyan-950 border border-white/20">
       {/* Header with Icon and Duration */}
       <div className="flex items-center gap-3 mb-4">
         {/* Icon */}
         <motion.div
-          className="w-12 h-12 bg-gradient-to-br from-white/30 to-white/15 border border-white/30 rounded-xl flex items-center justify-center text-white"
+          className="w-14 h-14 bg-gradient-to-br from-white/30 to-white/15 border border-white/30 rounded-xl flex items-center justify-center text-white"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -154,7 +154,7 @@ const ProcessStepCard: React.FC<{ step: ProcessStep }> = ({ step }) => {
 
         {/* Duration Badge */}
         <motion.div
-          className="inline-flex items-center px-3 py-1 bg-blue-600 text-blue-100 text-sm font-medium rounded-full"
+          className="inline-flex items-center px-4 py-2 bg-blue-600 text-blue-100 text-base font-medium rounded-full"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -162,13 +162,13 @@ const ProcessStepCard: React.FC<{ step: ProcessStep }> = ({ step }) => {
             delay: 0.3,
           }}
         >
-          <Clock className="w-4 h-4 mr-1" />
+          <Clock className="w-5 h-5 mr-2" />
           {step.duration}
         </motion.div>
 
         {/* Step Number */}
         <motion.div
-          className="ml-auto w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
+          className="ml-auto w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -184,7 +184,7 @@ const ProcessStepCard: React.FC<{ step: ProcessStep }> = ({ step }) => {
 
       {/* Title */}
       <motion.h3
-        className="text-xl md:text-2xl font-bold text-white mb-3"
+        className="text-2xl md:text-3xl font-bold text-white mb-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
@@ -197,7 +197,7 @@ const ProcessStepCard: React.FC<{ step: ProcessStep }> = ({ step }) => {
 
       {/* Description */}
       <motion.p
-        className="text-gray-200 mb-4 leading-relaxed"
+        className="text-gray-200 text-lg md:text-xl mb-5 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
@@ -221,8 +221,8 @@ const ProcessStepCard: React.FC<{ step: ProcessStep }> = ({ step }) => {
               delay: 0.6 + 0.05 * detailIndex,
             }}
           >
-            <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-            <span className="text-sm text-gray-200">{detail}</span>
+            <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+            <span className="text-base md:text-lg text-gray-200">{detail}</span>
           </motion.div>
         ))}
       </div>
