@@ -28,32 +28,42 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
           onClose();
         }
       }}
+      onWheel={(e) => {
+        // Prevent backdrop from capturing wheel events
+        e.stopPropagation();
+      }}
     >
       <div
         className="bg-gray-900 rounded-xl mobile:rounded-2xl w-full max-w-[95vw] mobile:max-w-[90vw] tablet:max-w-4xl h-[90vh] flex flex-col border border-white/20 overflow-hidden relative"
         style={{ zIndex: 2147483647 }}
         onClick={(e) => e.stopPropagation()}
+        onWheel={(e) => {
+          // Allow wheel events to pass through to content
+          e.stopPropagation();
+        }}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-3 mobile:p-4 tablet:p-6 border-b border-white/20 flex-shrink-0">
+        <div className="flex items-center p-3 mobile:p-4 tablet:p-6 border-b border-white/20 flex-shrink-0">
           <div className="flex items-center gap-2 mobile:gap-3">
             <Shield className="text-blue-400" size={20} />
             <h3 className="text-base mobile:text-lg tablet:text-xl font-semibold text-white">
               Terms of Service
             </h3>
           </div>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors p-1"
-          >
-            <X size={20} />
-          </button>
         </div>
 
         {/* Modal Content */}
         <div
-          className="flex-1 overflow-y-auto p-3 mobile:p-4 tablet:p-6"
+          className="flex-1 overflow-y-auto p-3 mobile:p-4 tablet:p-6 modal-content"
           onClick={(e) => e.stopPropagation()}
+          onWheel={(e) => {
+            // Ensure wheel events are handled by this scrollable container
+            e.stopPropagation();
+          }}
+          style={{
+            scrollBehavior: "smooth",
+            overscrollBehavior: "contain",
+          }}
         >
           <div className="prose prose-invert max-w-none text-gray-300 space-y-6">
             <div className="text-sm text-gray-400 mb-4">

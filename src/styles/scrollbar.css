@@ -24,28 +24,53 @@ body {
   overflow-y: auto;
 }
 
-/* Additional support for all elements */
-* {
+/* Additional support for all elements except modal content */
+*:not(.modal-content):not(.modal-content *) {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
-*::-webkit-scrollbar {
+*:not(.modal-content):not(.modal-content *)::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
-/* Make sure content can still be scrolled */
-main,
-section,
-div {
+/* Make sure content can still be scrolled, but exclude modal content */
+main:not(.modal-content),
+section:not(.modal-content),
+div:not(.modal-content):not(.modal-content *) {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
-main::-webkit-scrollbar,
-section::-webkit-scrollbar,
-div::-webkit-scrollbar {
+main:not(.modal-content)::-webkit-scrollbar,
+section:not(.modal-content)::-webkit-scrollbar,
+div:not(.modal-content):not(.modal-content *)::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+/* Show scrollbars for modal content */
+.modal-content {
+  scrollbar-width: thin; /* Firefox */
+  -ms-overflow-style: auto; /* IE and Edge */
+}
+
+.modal-content::-webkit-scrollbar {
+  display: block; /* Chrome, Safari, Opera */
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Custom scroll indicator is now handled by ScrollProgressBar component */

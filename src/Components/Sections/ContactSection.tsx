@@ -766,7 +766,7 @@ export function ContactSection({
                         </div>
 
                         {/* Countries List */}
-                        <div className="max-h-48 overflow-y-auto -mx-4">
+                        <div className="max-h-48 overflow-y-auto -mx-4 modal-content">
                           {filteredCountries.length > 0 ? (
                             filteredCountries.map((country) => (
                               <button
@@ -922,7 +922,7 @@ export function ContactSection({
                           border: "1px solid rgba(255, 255, 255, 0.3)",
                         }}
                       >
-                        <div className="max-h-36 mobile:max-h-40 tablet:max-h-48 overflow-y-auto">
+                        <div className="max-h-36 mobile:max-h-40 tablet:max-h-48 overflow-y-auto modal-content">
                           {timeSlots.map((slot) => (
                             <button
                               key={slot}
@@ -1046,11 +1046,19 @@ export function ContactSection({
               setShowPrivacyModal(false);
             }
           }}
+          onWheel={(e) => {
+            // Prevent backdrop from capturing wheel events
+            e.stopPropagation();
+          }}
         >
           <div
             className="bg-gray-900 rounded-xl mobile:rounded-2xl w-full max-w-[95vw] mobile:max-w-[90vw] tablet:max-w-4xl h-[90vh] flex flex-col border border-white/20 overflow-hidden relative"
             style={{ zIndex: 2147483647 }}
             onClick={(e) => e.stopPropagation()}
+            onWheel={(e) => {
+              // Allow wheel events to pass through to content
+              e.stopPropagation();
+            }}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-3 mobile:p-4 tablet:p-6 border-b border-white/20 flex-shrink-0">
@@ -1064,8 +1072,16 @@ export function ContactSection({
 
             {/* Modal Content */}
             <div
-              className="flex-1 overflow-y-auto p-3 mobile:p-4 tablet:p-6"
+              className="flex-1 overflow-y-auto p-3 mobile:p-4 tablet:p-6 modal-content"
               onClick={(e) => e.stopPropagation()}
+              onWheel={(e) => {
+                // Ensure wheel events are handled by this scrollable container
+                e.stopPropagation();
+              }}
+              style={{
+                scrollBehavior: "smooth",
+                overscrollBehavior: "contain",
+              }}
             >
               <div className="prose prose-invert max-w-none text-gray-300 space-y-6">
                 <div className="text-sm text-gray-400 mb-4">
