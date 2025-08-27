@@ -51,11 +51,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
       >
-<<<<<<< HEAD
         <nav className="flex justify-between items-center py-2 px-4 sm:py-3 sm:px-6" role="navigation" aria-label="Main navigation">
-=======
-        <nav className="flex items-center py-2 px-4 sm:py-3 sm:px-6">
->>>>>>> a6d44d56ea74409e849897cb533049281c9020e9
           {/* Logo */}
           <motion.div
             className="flex items-center justify-center"
@@ -71,8 +67,8 @@ export default function HeroSection() {
             />
           </motion.div>
 
-          {/* Navigation Links - Centered */}
-          <div className="flex-1 flex justify-center">
+          {/* Navigation Links */}
+          <div className="flex justify-center flex-1">
             <div className="nav-glass-card w-auto mobile:w-auto tablet:w-auto">
               <div className="flex space-x-1 mobile:space-x-2 tablet:space-x-4 desktop:space-x-6">
                 {["Home", "About", "Projects", "Contact"].map((item) => (
@@ -89,9 +85,6 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
-
-          {/* Spacer to balance the logo on the left */}
-          <div className="w-24 mobile:w-28 tablet:w-32 desktop:w-36"></div>
         </nav>
       </motion.header>
 
