@@ -2,8 +2,20 @@ import { CompareDemo } from "@/Components/UI";
 import { ShootingStars, StarsBackground } from "@/Components/UI";
 import { motion } from "framer-motion";
 import { AuroraText } from "@/Components/magicui/aurora-text";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const handleNavigation = (
     e: React.MouseEvent<HTMLAnchorElement>,
     sectionId: string
@@ -30,17 +42,17 @@ export default function HeroSection() {
         <ShootingStars
           starColor="#ffffff"
           trailColor="#ffffff"
-          minSpeed={5}
-          maxSpeed={15}
-          minDelay={800}
-          maxDelay={3000}
+          minSpeed={isMobile ? 3 : 5}
+          maxSpeed={isMobile ? 8 : 15}
+          minDelay={isMobile ? 1500 : 800}
+          maxDelay={isMobile ? 5000 : 3000}
         />
         <StarsBackground
-          starDensity={0.0003}
-          allStarsTwinkle={true}
-          twinkleProbability={0.8}
+          starDensity={isMobile ? 0.0001 : 0.0003}
+          allStarsTwinkle={!isMobile}
+          twinkleProbability={isMobile ? 0.3 : 0.8}
           minTwinkleSpeed={0.3}
-          maxTwinkleSpeed={1.2}
+          maxTwinkleSpeed={isMobile ? 0.8 : 1.2}
         />
       </motion.div>
 
@@ -75,7 +87,7 @@ export default function HeroSection() {
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className="nav-link transition-colors duration-300 text-xs mobile:text-sm tablet:text-base px-1 mobile:px-2 tablet:px-3 py-1 tablet:py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
+                    className="nav-link transition-colors duration-300 text-sm mobile:text-base tablet:text-lg px-2 mobile:px-3 tablet:px-4 py-2 tablet:py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black touch-manipulation"
                     onClick={(e) => handleNavigation(e, item.toLowerCase())}
                     aria-label={`Navigate to ${item} section`}
                   >
@@ -111,7 +123,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.span
-                  className="block text-white text-6xl sm:text-7xl md:text-8xl"
+                  className="block text-white text-5xl mobile:text-6xl sm:text-7xl md:text-8xl"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
@@ -133,7 +145,7 @@ export default function HeroSection() {
                   }}
                 >
                   <AuroraText
-                    className="font-bold text-7xl sm:text-8xl md:text-9xl"
+                    className="font-bold text-6xl mobile:text-7xl sm:text-8xl md:text-9xl"
                     colors={["#0070F3", "#38bdf8", "#FF0080", "#7928CA"]}
                     speed={1.2}
                   >
@@ -153,7 +165,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.p
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5"
+                  className="text-2xl mobile:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{

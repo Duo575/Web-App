@@ -23,13 +23,13 @@ export default function CompareDemo() {
         delay: 0.5,
       }}
     >
-      <div className="flex justify-center items-center w-full">
+      <div className="flex justify-center items-center w-full touch-manipulation" role="img" aria-label="Interactive comparison between website designs">
         <Compare
           firstImage="/Snap.png"
           secondImage="/127.0.0.1_5500_.PNG"
           firstImageClassName="custom-first-image w-full h-full object-contain"
           secondImageClassname="custom-second-image w-full h-full object-contain"
-          className="w-full h-[220px] xs:h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] 2xl:h-[450px] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900/60 compare-image-container"
+          className="w-full h-[180px] mobile:h-[220px] sm:h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] 2xl:h-[450px] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900/60 compare-image-container touch-manipulation"
           slideMode="drag"
           initialSliderPercentage={52}
           showHandlebar={true}

@@ -1,0 +1,52 @@
+/* Mobile Optimizations */
+
+/* Touch interactions */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Reduce motion for mobile performance */
+@media (max-width: 768px) {
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Disable complex animations on mobile */
+  .hero-portfolio-text {
+    animation: none !important;
+  }
+  
+  /* Optimize text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Improve tap targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reduce blur effects on mobile */
+  .backdrop-blur-lg {
+    backdrop-filter: blur(8px) !important;
+  }
+  
+  /* Optimize shadows */
+  .shadow-2xl {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Prevent zoom on input focus */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
