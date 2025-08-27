@@ -275,14 +275,11 @@
     @apply bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent;
   }
 
-  /* Navigation Glass Card */
+  /* Navigation Card */
   .nav-glass-card {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000000;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     /* Center the card content */
     display: flex;
     justify-content: center;
@@ -295,8 +292,8 @@
   }
 
   .nav-glass-card:hover {
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: #000000;
+    border-color: rgba(255, 255, 255, 0.25);
   }
 
   @media (min-width: 320px) {
@@ -325,23 +322,6 @@
       max-width: 600px;
       padding: 0.5rem 3rem;
     }
-  }
-
-  .nav-glass-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.4),
-      transparent
-    );
   }
 
   /* Navigation Links */

@@ -9,7 +9,6 @@ import { useRef, useEffect, useState } from "react";
 import { Globe } from "./Globe";
 import FeatureSSRSupport from "./FeatureSSRSupport";
 import FeatureOptimizedBuild from "./FeatureOptimizedBuild";
-import FeatureTypedAPI from "./FeatureTypedAPI";
 import { Coffee, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -182,7 +181,7 @@ const About: React.FC = () => {
             }`}
           >
             <div className="z-10 relative max-w-full pl-1 mobile:pl-2 mb-4 mobile:mb-5 tablet:mb-6">
-              <p className="headtext text-xl mobile:text-2xl tablet:text-3xl mb-0 mobile:mb-1 transform -translate-y-8 mobile:-translate-y-10 tablet:-translate-y-12">
+              <p className="headtext text-xl mobile:text-2xl tablet:text-3xl mb-0 mobile:mb-1 transform -translate-y-6 mobile:-translate-y-7 tablet:-translate-y-8">
                 Time Zone
                 <span className="block text-sm mobile:text-base subtext mt-0">
                   We are based in Mars, and open to remote work worldwide
@@ -194,35 +193,7 @@ const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Grid 5 - SSR Support Feature (Moved up to row 2) */}
-          <div
-            data-grid="5"
-            className={`bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-cyan-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 grid-5 animate-slide-from-left ${
-              visibleGrids.has(5) ? "animate-visible" : "animate-hidden"
-            }`}
-          >
-            <FeatureSSRSupport />
-          </div>
 
-          {/* Grid 6 - Optimized Build Feature (Moved up to row 2) */}
-          <div
-            data-grid="6"
-            className={`bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-cyan-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 grid-6 animate-slide-from-right ${
-              visibleGrids.has(6) ? "animate-visible" : "animate-hidden"
-            }`}
-          >
-            <FeatureOptimizedBuild />
-          </div>
-
-          {/* Grid 7 - Typed API Feature (Moved up to row 3) */}
-          <div
-            data-grid="7"
-            className={`bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-cyan-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-6 pt-4 md:p-10 md:pt-6 grid-7 animate-fade-in ${
-              visibleGrids.has(7) ? "animate-visible" : "animate-hidden"
-            }`}
-          >
-            <FeatureTypedAPI />
-          </div>
         </div>
       </div>
     </section>
