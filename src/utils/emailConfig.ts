@@ -12,13 +12,25 @@ export interface EmailJSConfig {
   publicKey: string;
 }
 
-// EmailJS Configuration
-// TODO: Replace these with your actual EmailJS credentials
-export const emailConfig: EmailJSConfig = {
-  serviceId: process.env.VITE_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID",
-  templateId: process.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID",
-  publicKey: process.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY",
+// Secure EmailJS Configuration
+const getEmailConfig = (): EmailJSConfig => {
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  if (!serviceId || !templateId || !publicKey) {
+    console.warn('EmailJS configuration missing. Contact form will not work.');
+    return {
+      serviceId: '',
+      templateId: '',
+      publicKey: ''
+    };
+  }
+
+  return { serviceId, templateId, publicKey };
 };
+
+export const emailConfig = getEmailConfig();
 
 // Email Template Parameters Interface
 export interface EmailTemplateParams extends Record<string, unknown> {
