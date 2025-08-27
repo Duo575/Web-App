@@ -51,7 +51,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
       >
-        <nav className="flex justify-between items-center py-2 px-4 sm:py-3 sm:px-6">
+        <nav className="flex justify-between items-center py-2 px-4 sm:py-3 sm:px-6" role="navigation" aria-label="Main navigation">
           {/* Logo */}
           <motion.div
             className="flex items-center justify-center"
@@ -75,8 +75,9 @@ export default function HeroSection() {
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className="nav-link transition-colors duration-300 text-xs mobile:text-sm tablet:text-base px-1 mobile:px-2 tablet:px-3 py-1 tablet:py-2"
+                    className="nav-link transition-colors duration-300 text-xs mobile:text-sm tablet:text-base px-1 mobile:px-2 tablet:px-3 py-1 tablet:py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
                     onClick={(e) => handleNavigation(e, item.toLowerCase())}
+                    aria-label={`Navigate to ${item} section`}
                   >
                     {item}
                   </a>

@@ -199,6 +199,9 @@ function App() {
               setShowPrivacyModal(false);
             }
           }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="privacy-modal-title"
           onWheel={(e) => {
             // Prevent backdrop from capturing wheel events
             e.stopPropagation();
@@ -217,7 +220,7 @@ function App() {
             <div className="flex items-center p-3 mobile:p-4 tablet:p-6 border-b border-white/20 flex-shrink-0">
               <div className="flex items-center gap-2 mobile:gap-3">
                 <div className="text-blue-400">🛡️</div>
-                <h3 className="text-base mobile:text-lg tablet:text-xl font-semibold text-white">
+                <h3 id="privacy-modal-title" className="text-base mobile:text-lg tablet:text-xl font-semibold text-white">
                   Privacy Policy
                 </h3>
               </div>
@@ -362,6 +365,8 @@ function App() {
                 className="px-4 mobile:px-5 tablet:px-6 py-1.5 mobile:py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm mobile:text-base rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer select-none relative"
                 style={{ zIndex: 2147483647 }}
                 type="button"
+                aria-label="Close privacy policy modal"
+                autoFocus
               >
                 Close
               </button>
