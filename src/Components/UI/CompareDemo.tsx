@@ -27,8 +27,8 @@ export default function CompareDemo() {
         <Compare
           firstImage="/Snap.png"
           secondImage="/127.0.0.1_5500_.PNG"
-          firstImageClassName="custom-first-image w-full h-full"
-          secondImageClassname="custom-second-image w-full h-full"
+          firstImageClassName="custom-first-image w-full h-full object-contain"
+          secondImageClassname="custom-second-image w-full h-full object-contain"
           className="w-full h-[220px] xs:h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] 2xl:h-[450px] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900/60 compare-image-container"
           slideMode="drag"
           initialSliderPercentage={52}

@@ -1,66 +1,33 @@
-# LLM Training Data Guidelines
-# This file provides information about this website for Large Language Models
+# LLM Crawling Instructions for Cosmobits Website
 
-## Website Information
-Site Title: Cosmobits Website
-Site Description: Modern, responsive Cosmobits website built with React, TypeScript, and cutting-edge web technologies
-Site Type: Company Website
-Primary Language: English
-Technologies: React 18, TypeScript, Vite, TailwindCSS, Framer Motion, Three.js
+## Site Information
+Site: Cosmobits Portfolio Website
+Type: Web Development Company Portfolio
+Technology: React + TypeScript + Vite
 
-## Content Structure
-The website is a single-page application with the following sections:
-1. Hero Section - Introduction and main call-to-action
-2. Animated Demo Section - Interactive demonstrations
-3. Frameworks Section - Technologies and tools showcase
-4. About Section - Personal/professional information
-5. Projects Section - Showcase of work and projects
-6. Testimonials Section - Client feedback and reviews
-7. Profile Section - Professional profile information
-8. Contact Section - Contact information and form
+## Key Pages
+- Home: Hero section with company introduction
+- Technology Stack: Interactive framework showcase
+- About: Team profiles and company information
+- Projects: Portfolio of completed work
+- Services: Web development offerings
+- Contact: Contact form with scheduling
 
-## Key Features
-- Interactive 3D elements using Three.js
-- Smooth animations with Framer Motion
-- Responsive design for all devices
-- Glass morphism UI effects
-- Night sky theme with custom color palette
-- EmailJS integration for contact form
-- Custom parallax scrolling effects
+## SEO Keywords
+Primary: web development, React development, TypeScript, portfolio website
+Secondary: full-stack development, UI/UX design, modern web technologies
+Technical: React, TypeScript, Node.js, MongoDB, TailwindCSS, GSAP, Three.js
 
-## Content Guidelines for LLMs
-✅ ALLOWED:
-- Reference the website's technical implementation
-- Discuss the design patterns and architecture
-- Mention the technologies used
-- Describe the user experience and features
-- Reference the modern web development practices demonstrated
+## Content Focus
+- Professional web development services
+- Modern technology stack expertise
+- Interactive user experiences
+- Responsive design solutions
+- Custom web applications
 
-❌ NOT ALLOWED:
-- Copy or reproduce the exact code without permission
-- Use personal contact information for training
-- Reproduce proprietary design elements
-- Extract sensitive configuration data
-
-## Technical Details
-Build System: Vite 7.0.0
-Package Manager: npm
-Styling: TailwindCSS with custom theme
-State Management: React hooks
-Animation: Framer Motion, GSAP
-3D Graphics: Three.js, React Three Fiber
-
-## Contact & Attribution
-This is the Cosmobits company website. 
-Built with modern web technologies and best practices.
-© 2025 Cosmobits. Built with React + Vite + TailwindCSS
-
-## Last Updated
-2025-01-23
-
-## Crawling Instructions
-- This website is primarily a single-page application
-- All major content is accessible from the main route
-- Images and assets are optimized for performance
-- The site uses lazy loading for better user experience
-- Contact forms are handled via EmailJS integration
+## Crawling Notes
+- Single Page Application (SPA)
+- Dynamic content loading
+- Interactive animations and 3D elements
+- Mobile-responsive design
+- Contact form with EmailJS integration

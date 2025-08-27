@@ -22,7 +22,7 @@ interface SEOProps {
 const SEOHead: React.FC<SEOProps> = ({
   title = "Cosmobits - Your idea, Our code | Professional Web Development Services",
   description = "Professional web development services specializing in React, Node.js, full-stack development, UI/UX design, and modern web solutions. Transform your ideas into powerful digital experiences.",
-  keywords = "web development services, React development company, Node.js developers, full-stack web development, UI/UX design agency, mobile app development, e-commerce website development, custom web solutions, JavaScript development, TypeScript development, MongoDB database, responsive web design, modern web technologies, professional web developers, website design company, web application development, frontend development, backend development, MERN stack development, web development agency India, remote web developers, cosmobits web development",
+  keywords = "web developer, web designer, website designer, professional web developer, freelance web designer, web development services, React development company, Node.js developers, full-stack web development, UI/UX design agency, mobile app development, e-commerce website development, custom web solutions, JavaScript development, TypeScript development, MongoDB database, responsive web design, modern web technologies, professional web developers, website design company, web application development, frontend developer, backend developer, MERN stack development, web development agency India, remote web developers, cosmobits web development",
   image = "https://cosmobits.work/website-design.png",
   url = "https://cosmobits.work/",
   type = "website",
@@ -245,13 +245,18 @@ const SEOHead: React.FC<SEOProps> = ({
           },
           serviceType: [
             "Web Development",
+            "Web Design",
+            "Website Design",
             "React Development",
             "Node.js Development",
             "Full-Stack Development",
+            "Frontend Development",
+            "Backend Development",
             "UI/UX Design",
             "Mobile App Development",
             "E-commerce Development",
             "Custom Web Solutions",
+            "Digital Solutions",
           ],
           areaServed: "Worldwide",
           availableChannel: {
