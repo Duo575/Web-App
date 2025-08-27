@@ -13,6 +13,7 @@ import {
 } from "@/Components/UI";
 import { SEOHead } from "@/Components/SEO";
 import { Footer } from "@/Components/Layout";
+import { ErrorBoundary } from "@/Components/ErrorBoundary";
 
 import "@/styles/scrollbar.css";
 import "@/styles/parallax.css";
@@ -76,12 +77,13 @@ function App() {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   return (
-    <div
-      className="min-h-screen font-body relative"
-      style={{ backgroundColor: "#000000", color: "#ffffff" }}
-    >
-      {/* SEO Head Component */}
-      <SEOHead />
+    <ErrorBoundary>
+      <div
+        className="min-h-screen font-body relative"
+        style={{ backgroundColor: "#000000", color: "#ffffff" }}
+      >
+        {/* SEO Head Component */}
+        <SEOHead />
 
       {/* Scroll Progress Bar - Top layer */}
       <ScrollProgressBar />
@@ -367,7 +369,8 @@ function App() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </ErrorBoundary>
   );
 }
 

@@ -1,9 +1,4 @@
-/**
- * UI Components Export Index
- * Purpose: Centralized exports for UI components
- * Features: Clean imports, better organization
- */
-
+// UI Components Export Index
 export { default as ParticlesBackground } from "./ParticlesBackground";
 export { default as AnimatedBeamMultipleInputs } from "./animated-beam-multiple-inputs";
 export { ShootingStars } from "./shooting-stars";
@@ -13,6 +8,6 @@ export { useMouseEnter } from "./use-mouse-enter";
 export { default as LoadingSpinner } from "./LoadingSpinner";
 export { default as LazyImage } from "./LazyImage";
 export { Compare } from "./Compare";
-export { SparklesCore } from "./Sparkles";
 export { default as CompareDemo } from "./CompareDemo";
 export { default as ScrollToTopButton } from "./ScrollToTopButton";
+export { HoverBorderGradient } from "./hover-border-gradient";

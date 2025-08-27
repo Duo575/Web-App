@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import countryCodesData from "./ContactSectioncode.json";
 import { HoverBorderGradient } from "../UI/hover-border-gradient";
+import { ContactFormData, CountryCode } from '@/types';
 // EmailJS configuration - using environment variables only
 const emailConfig = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -66,20 +67,8 @@ interface EmailTemplateParams extends Record<string, unknown> {
 }
 import "react-day-picker/dist/style.css";
 
-// Form data interface
-interface ContactFormData {
-  name: string;
-  email: string;
-  phone: string;
-  countryCode: string;
-  date: string;
-  timeSlot: string;
-  details: string;
-  privacyAccepted: boolean;
-}
-
 // Country codes for international phone numbers
-const countryCodes = countryCodesData;
+const countryCodes: CountryCode[] = countryCodesData;
 
 // Common search aliases for better user experience
 const getSearchAliases = (country: string): string[] => {

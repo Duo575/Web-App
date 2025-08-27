@@ -1,6 +1,2 @@
-// Main exports
-export { default as FrameworksSection } from "./FrameworksSectionComplete";
-export { default as FrameworkCard } from "./FrameworkCard";
-
-// Types
-export type { Framework } from "./FrameworkCard";
+export { default as FrameworksSection } from './FrameworksSection';
+export { default as FrameworkCard } from './FrameworkCard';
