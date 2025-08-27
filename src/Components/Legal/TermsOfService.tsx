@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import { Shield, X } from "lucide-react";
+import { Shield } from "lucide-react";
 
 interface TermsOfServiceProps {
   isOpen: boolean;
