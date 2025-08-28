@@ -8,6 +8,7 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/Components/magicui/marquee";
 import { CardContainer, CardBody, CardItem } from "@/Components/UI/3d-card";
+import "@/styles/testimonial-mobile.css";
 
 // Define the review data with a TypeScript interface for type safety
 interface Review {
@@ -80,7 +81,7 @@ const ReviewCard = ({ img, name, username, body }: Review) => {
       <CardBody
         className={cn(
           "bg-black/90 relative group/card border-white/[0.1] hover:border-white/[0.5]",
-          "w-64 sm:w-72 md:w-80 lg:w-96 h-48 sm:h-52 md:h-56 rounded-xl p-4 sm:p-6 border",
+          "w-80 sm:w-96 md:w-[400px] h-56 sm:h-60 md:h-64 rounded-xl p-6 border",
           "glass backdrop-blur-md transition-all duration-500",
           "testimonial-glow-card testimonial-card-glow",
           "hover:bg-black/95 hover:backdrop-blur-lg"
@@ -134,7 +135,7 @@ const ReviewCard = ({ img, name, username, body }: Review) => {
 // Main Testimonials component
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 px-6 content-above-particles">
+    <section id="testimonials" className="py-12 mobile:py-16 tablet:py-20 px-4 mobile:px-6 content-above-particles">
       <div className="c-space">
         <h2 className="text-heading text-3xl mobile:text-4xl tablet:text-5xl font-bold mb-8 sm:mb-12">
           What People{" "}
@@ -142,11 +143,11 @@ export function Testimonials() {
             Say
           </span>
         </h2>
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden testimonial-slow">
           <div className="marquee-fade-edge w-full">
             <Marquee
               pauseOnHover
-              className="[--duration:20s] [--gap:1.6rem] py-4"
+              className="[--gap:1.6rem] py-4"
             >
               {firstRow.map((review) => (
                 <ReviewCard key={review.username} {...review} />
@@ -157,7 +158,7 @@ export function Testimonials() {
             <Marquee
               reverse
               pauseOnHover
-              className="[--duration:20s] [--gap:1.6rem] py-4 mt-8"
+              className="[--gap:1.6rem] py-4 mt-8"
             >
               {secondRow.map((review) => (
                 <ReviewCard key={review.username} {...review} />

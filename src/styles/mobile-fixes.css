@@ -1,0 +1,57 @@
+/* Mobile Layout Fixes */
+
+@media (max-width: 768px) {
+  /* Fix horizontal overflow */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  /* Container fixes */
+  .c-space {
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Section spacing */
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Text size improvements */
+  .text-xs { font-size: 0.875rem; }
+  .text-sm { font-size: 1rem; }
+  .text-base { font-size: 1.125rem; }
+  .text-lg { font-size: 1.25rem; }
+  
+  /* Button improvements */
+  button, a[role="button"], .nav-link {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+  
+  /* Marquee speed fix */
+  .marquee {
+    --duration: 40s !important;
+  }
+  
+  /* Performance optimizations */
+  * {
+    animation-duration: 0.5s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Reduce blur for performance */
+  .backdrop-blur-lg {
+    backdrop-filter: blur(6px) !important;
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(4px) !important;
+  }
+}
