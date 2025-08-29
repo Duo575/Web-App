@@ -18,6 +18,7 @@ import { ErrorBoundary } from "@/Components/ErrorBoundary";
 import "@/styles/scrollbar.css";
 import "@/styles/parallax.css";
 import "@/styles/mobile.css";
+import "@/styles/mobile-fixes.css";
 import ScrollProgressBar from "@/Components/ScrollProgressBar";
 
 // Lazy load heavy components for better performance

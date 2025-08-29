@@ -1,0 +1,22 @@
+/* Mobile-specific testimonial speed fixes */
+@media (max-width: 767px) {
+  .testimonial-slow .animate-marquee {
+    animation-duration: 20s !important;
+  }
+  
+  .testimonial-slow [data-reverse="true"] .animate-marquee {
+    animation-duration: 20s !important;
+    animation-direction: reverse !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .testimonial-slow .animate-marquee {
+    animation-duration: 20s !important;
+  }
+  
+  .testimonial-slow [data-reverse="true"] .animate-marquee {
+    animation-duration: 20s !important;
+    animation-direction: reverse !important;
+  }
+}
