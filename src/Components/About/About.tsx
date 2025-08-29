@@ -7,8 +7,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import { Globe } from "./Globe";
-import FeatureSSRSupport from "./FeatureSSRSupport";
-import FeatureOptimizedBuild from "./FeatureOptimizedBuild";
 import { Coffee, Target } from "lucide-react";
 import { motion } from "framer-motion";
 

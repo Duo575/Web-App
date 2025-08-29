@@ -18,9 +18,9 @@ import JavaScriptLogo from "@/assets/icons/javascript.svg";
 import AngularLogo from "@/assets/icons/angular.svg";
 
 // Project image imports
-import HarveyWebsiteImage from "@/assets/project_images/harvey website.png";
-import PortfolioLightModeImage from "@/assets/project_images/portfolio light mode.png";
-import WallpaperWebsiteImage from "@/assets/project_images/wallpaper website image.png";
+import HarveyWebsiteImage from "@/assets/project_images/harvey website.webp";
+import PortfolioLightModeImage from "@/assets/project_images/portfolio light mode.webp";
+import WallpaperWebsiteImage from "@/assets/project_images/wallpaper website image.webp";
 
 // Technology logo mapping
 const techLogos: Record<string, string> = {

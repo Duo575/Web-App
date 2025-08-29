@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -25,11 +26,12 @@ export default function HeroSection() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false);
   };
   return (
     <section
       id="home"
-      className="min-h-screen relative overflow-hidden flex flex-col justify-center"
+      className="min-h-screen relative overflow-hidden flex flex-col justify-center w-full"
       style={{ backgroundColor: "#000000" }}
     >
       {/* Night Sky Background with Animation */}
@@ -63,7 +65,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
       >
-        <nav className="flex justify-between items-center py-2 px-4 sm:py-3 sm:px-6" role="navigation" aria-label="Main navigation">
+        <nav className="flex justify-between items-center py-2 px-4 sm:py-3 sm:px-6 w-full max-w-full" role="navigation" aria-label="Main navigation">
           {/* Logo */}
           <motion.div
             className="flex items-center justify-center"
@@ -74,20 +76,26 @@ export default function HeroSection() {
             <img
               src="/Cosmobits company logo.svg"
               alt="Cosmobits Logo"
-              className="w-24 h-20 mobile:w-28 mobile:h-22 tablet:w-32 tablet:h-24 desktop:w-36 desktop:h-26 object-contain"
-              style={{ transform: "scale(2.2) translateY(6px)" }}
+              className="w-16 h-14 mobile:w-20 mobile:h-16 tablet:w-24 tablet:h-20 desktop:w-28 desktop:h-22 object-contain"
+              style={{ 
+                transform: isMobile 
+                  ? "scale(1.2) translateY(2px)" 
+                  : "scale(1.8) translateY(4px)",
+                maxWidth: "100px",
+                maxHeight: "80px"
+              }}
             />
           </motion.div>
 
-          {/* Navigation Links */}
-          <div className="flex justify-center flex-1">
-            <div className="nav-glass-card w-auto mobile:w-auto tablet:w-auto">
-              <div className="flex space-x-1 mobile:space-x-2 tablet:space-x-4 desktop:space-x-6">
+          {/* Desktop Navigation Links */}
+          <div className="hidden tablet:flex justify-center flex-1">
+            <div className="nav-glass-card w-auto">
+              <div className="flex space-x-4 desktop:space-x-6">
                 {["Home", "About", "Projects", "Contact"].map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className="nav-link transition-colors duration-300 text-sm mobile:text-base tablet:text-lg px-2 mobile:px-3 tablet:px-4 py-2 tablet:py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black touch-manipulation"
+                    className="nav-link transition-colors duration-300 text-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
                     onClick={(e) => handleNavigation(e, item.toLowerCase())}
                     aria-label={`Navigate to ${item} section`}
                   >
@@ -97,19 +105,54 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="tablet:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            <span className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </button>
         </nav>
+
+        {/* Mobile Menu */}
+        {isMobile && (
+          <motion.div
+            className={`absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg border-t border-white/20 ${isMenuOpen ? 'block' : 'hidden'}`}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex flex-col py-4">
+              {["Home", "About", "Projects", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="nav-link text-white hover:text-blue-400 px-6 py-3 text-lg transition-colors duration-300 touch-manipulation"
+                  onClick={(e) => handleNavigation(e, item.toLowerCase())}
+                  aria-label={`Navigate to ${item} section`}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </motion.header>
 
       {/* Hero Content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 md:px-5 w-full py-4 sm:py-6 md:py-8 pt-12 sm:pt-14 md:pt-16 lg:pt-16 xl:pt-20"
+        className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-5 py-4 sm:py-6 md:py-8 pt-12 sm:pt-14 md:pt-16 lg:pt-16 xl:pt-20 mobile-safe"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-8 items-start lg:items-center min-h-[20vh] sm:min-h-[25vh] md:min-h-[70vh]">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-8 items-start lg:items-center min-h-[20vh] sm:min-h-[25vh] md:min-h-[70vh] w-full">
           {/* Left Side - Hero Title with Animation */}
-          <div className="text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-6 flex flex-col justify-start min-h-[10vh] sm:min-h-[15vh] md:min-h-[40vh] lg:min-h-[50vh] xl:min-h-[60vh] lg:pr-2 xl:pr-4 order-1 lg:order-1">
+          <div className="text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-6 flex flex-col justify-start min-h-[10vh] sm:min-h-[15vh] md:min-h-[40vh] lg:min-h-[50vh] xl:min-h-[60vh] lg:pr-2 xl:pr-4 order-1 lg:order-1 w-full max-w-full">
             <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-5">
               {/* Animated Title */}
               <motion.h1
@@ -165,7 +208,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.p
-                  className="text-2xl mobile:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-gray-300 hero-subtitle leading-relaxed max-w-none sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5"
+                  className="text-xl mobile:text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-gray-300 hero-subtitle leading-relaxed max-w-full sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5 break-words"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
@@ -206,8 +249,8 @@ export default function HeroSection() {
           </div>
 
           {/* Right Side - Compare Demo Component with Animation */}
-          <div className="flex justify-center lg:justify-end mt-5 sm:mt-6 md:mt-8 lg:mt-2 order-2 lg:order-2 w-full">
-            <div className="w-full overflow-hidden">
+          <div className="flex justify-center lg:justify-end mt-5 sm:mt-6 md:mt-8 lg:mt-2 order-2 lg:order-2 w-full max-w-full">
+            <div className="w-full max-w-full overflow-hidden mobile-safe">
               <CompareDemo />
             </div>
           </div>

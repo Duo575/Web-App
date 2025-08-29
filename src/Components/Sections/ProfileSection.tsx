@@ -6,10 +6,10 @@
  */
 
 import React, { useEffect } from "react";
-import manasProfilePic from "../../assets/Profile_Pics/manas-ranjan-kishan.png";
-import debiProfilePic from "../../assets/Profile_Pics/debi-prasad-panda2.jpg";
-import srujanProfilePic from "../../assets/Profile_Pics/srujan-sattwik.jpg";
-import pratikProfilePic from "../../assets/Profile_Pics/pratik-kiran-rout1.jpg";
+import manasProfilePic from "../../assets/Profile_Pics/manas-ranjan-kishan.webp";
+import debiProfilePic from "../../assets/Profile_Pics/debi-prasad-panda2.webp";
+import srujanProfilePic from "../../assets/Profile_Pics/srujan-sattwik.webp";
+import pratikProfilePic from "../../assets/Profile_Pics/pratik-kiran-rout1.webp";
 
 // Define the team member data structure
 interface TeamMember {

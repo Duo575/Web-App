@@ -29,15 +29,7 @@
   opacity: 1;
 }
 
-.framework-card:not(:has(img)) {
-  transform: scale(1) translate3d(0, 0, 0);
-  transition: transform 3s ease;
-}
 
-.framework-card:not(:has(img)):hover {
-  transform: scale(0.9) translate3d(0, 0, 0);
-  transition: transform 0.2s ease-in-out;
-}
 
 .framework-card:has(img) {
   cursor: pointer;
@@ -90,12 +82,4 @@
   transition: opacity 0.2s ease;
 }
 
-.framework-card.no-image {
-  transform: scale(1) translate3d(0, 0, 0);
-  transition: transform 3s ease;
-}
 
-.framework-card.no-image:hover {
-  transform: scale(0.9) translate3d(0, 0, 0);
-  transition: transform 0.2s ease-in-out;
-}
