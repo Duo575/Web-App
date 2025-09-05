@@ -133,8 +133,6 @@
 
 .hero-gradient-line {
   background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
-  background-size: 400% 400%;
-  animation: gradient-shift 3s ease infinite;
 }
 
 /* Subtle glowing border for compare card */

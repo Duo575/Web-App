@@ -65,10 +65,10 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
       >
-        <nav className="flex justify-between items-center py-2 px-4 sm:py-3 sm:px-6 w-full max-w-full" role="navigation" aria-label="Main navigation">
+        <nav className="flex justify-between items-center py-3 px-4 sm:py-4 sm:px-6 w-full max-w-full" role="navigation" aria-label="Main navigation">
           {/* Logo */}
           <motion.div
-            className="flex items-center justify-center"
+            className="flex items-center justify-start"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
@@ -76,14 +76,7 @@ export default function HeroSection() {
             <img
               src="/Cosmobits company logo.svg"
               alt="Cosmobits Logo"
-              className="w-16 h-14 mobile:w-20 mobile:h-16 tablet:w-24 tablet:h-20 desktop:w-28 desktop:h-22 object-contain"
-              style={{ 
-                transform: isMobile 
-                  ? "scale(1.2) translateY(2px)" 
-                  : "scale(1.8) translateY(4px)",
-                maxWidth: "100px",
-                maxHeight: "80px"
-              }}
+              className="w-16 h-16 mobile:w-18 mobile:h-18 sm:w-20 sm:h-20 object-contain"
             />
           </motion.div>
 
@@ -108,7 +101,7 @@ export default function HeroSection() {
 
           {/* Mobile Menu Button */}
           <button
-            className="tablet:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none"
+            className="tablet:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1 focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
           >
@@ -145,18 +138,18 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <motion.div
-        className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-5 py-4 sm:py-6 md:py-8 pt-12 sm:pt-14 md:pt-16 lg:pt-16 xl:pt-20 mobile-safe"
+        className="absolute top-16 sm:top-20 left-0 right-0 md:relative md:top-auto md:left-auto md:right-auto z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-5 py-4 sm:py-6 md:py-8 md:pt-16 lg:pt-16 xl:pt-20 mobile-safe"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-8 items-start lg:items-center min-h-[20vh] sm:min-h-[25vh] md:min-h-[70vh] w-full">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-8 items-start lg:items-center md:min-h-[70vh] w-full">
           {/* Left Side - Hero Title with Animation */}
-          <div className="text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-6 flex flex-col justify-start min-h-[10vh] sm:min-h-[15vh] md:min-h-[40vh] lg:min-h-[50vh] xl:min-h-[60vh] lg:pr-2 xl:pr-4 order-1 lg:order-1 w-full max-w-full">
-            <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-5">
+          <div className="text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-6 flex flex-col justify-start md:min-h-[40vh] lg:min-h-[50vh] xl:min-h-[60vh] lg:pr-2 xl:pr-4 order-1 lg:order-1 w-full max-w-full">
+            <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-6">
               {/* Animated Title */}
               <motion.h1
-                className="font-bold text-white mb-3 sm:mb-5 leading-tight hero-title"
+                className="font-bold text-white mb-4 sm:mb-6 leading-tight hero-title"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -178,7 +171,7 @@ export default function HeroSection() {
                   Welcome to{" "}
                 </motion.span>
                 <motion.span
-                  className="hero-portfolio-text block"
+                  className="block"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
@@ -188,7 +181,7 @@ export default function HeroSection() {
                   }}
                 >
                   <AuroraText
-                    className="font-bold text-6xl mobile:text-7xl sm:text-8xl md:text-9xl"
+                    className="font-bold text-5xl mobile:text-6xl sm:text-7xl md:text-8xl"
                     colors={["#0070F3", "#38bdf8", "#FF0080", "#7928CA"]}
                     speed={1.2}
                   >
@@ -208,7 +201,7 @@ export default function HeroSection() {
                 }}
               >
                 <motion.p
-                  className="text-xl mobile:text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-gray-300 hero-subtitle leading-relaxed max-w-full sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-3 sm:mb-5 break-words"
+                  className="text-xl mobile:text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-gray-300 hero-subtitle leading-relaxed max-w-full sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-4 sm:mb-6 break-words"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
@@ -234,16 +227,9 @@ export default function HeroSection() {
                 </motion.p>
               </motion.div>
 
-              {/* Animated Decorative Line */}
-              <motion.div
-                className="w-12 mobile:w-16 tablet:w-20 h-1 hero-gradient-line rounded-full"
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: 80, opacity: 1 }}
-                transition={{
-                  duration: 0.8,
-                  delay: 2.5,
-                  ease: "easeOut",
-                }}
+              {/* Decorative Line */}
+              <div
+                className="w-20 h-1 hero-gradient-line rounded-full mt-2"
               />
             </div>
           </div>

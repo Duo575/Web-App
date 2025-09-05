@@ -53,9 +53,33 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   className,
 }) => {
   const [star, setStar] = useState<ShootingStar | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || !containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) return;
+
     const createStar = () => {
       const { x, y, angle } = getRandomStartPoint();
       const newStar: ShootingStar = {
@@ -76,7 +100,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
     createStar();
 
     return () => {};
-  }, [minSpeed, maxSpeed, minDelay, maxDelay]);
+  }, [minSpeed, maxSpeed, minDelay, maxDelay, isMobile]);
 
   useEffect(() => {
     const moveStar = () => {
@@ -114,11 +138,14 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
     return () => cancelAnimationFrame(animationFrame);
   }, [star]);
 
+  if (isMobile) return null;
+
   return (
-    <svg
-      ref={svgRef}
-      className={cn("w-full h-full absolute inset-0", className)}
-    >
+    <div ref={containerRef} className={cn("w-full h-full absolute inset-0", className)}>
+      <svg
+        ref={svgRef}
+        className="w-full h-full absolute inset-0"
+      >
       {star && (
         <rect
           key={star.id}
@@ -141,6 +168,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
           />
         </linearGradient>
       </defs>
-    </svg>
+      </svg>
+    </div>
   );
 };

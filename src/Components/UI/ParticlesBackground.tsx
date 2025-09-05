@@ -5,7 +5,7 @@
  * Features: Configurable particle system, responsive design, performance optimized
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import type { ISourceOptions } from "@tsparticles/engine";
@@ -19,6 +19,8 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
 }) => {
   const [init, setInit] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -30,6 +32,18 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  useEffect(() => {
+    if (!isMobile || !containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   // Initialize particles engine once
   useEffect(() => {
@@ -60,12 +74,12 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
           enable: false,
         },
         number: {
-          value: isMobile ? 60 : 120,
+          value: isMobile ? 20 : 80,
         },
         opacity: {
           value: 0.9,
           animation: {
-            enable: true,
+            enable: isMobile ? isVisible : true,
             speed: 2,
             opacity_min: 0.1,
             sync: false,
@@ -80,18 +94,20 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
       },
       detectRetina: true,
     }),
-    [isMobile]
+    [isMobile, isVisible]
   );
 
   if (init) {
     return (
-      <Particles
-        id="tsparticles"
-        className={`fixed inset-0 ${className}`}
-        style={{ zIndex: -1 }}
-        particlesLoaded={particlesLoaded}
-        options={options}
-      />
+      <div ref={containerRef} className={`fixed inset-0 ${className}`}>
+        <Particles
+          id="tsparticles"
+          className="w-full h-full"
+          style={{ zIndex: -1 }}
+          particlesLoaded={particlesLoaded}
+          options={options}
+        />
+      </div>
     );
   }
 
